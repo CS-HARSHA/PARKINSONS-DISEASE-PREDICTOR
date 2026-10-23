@@ -1,0 +1,12 @@
+BirthYear: 1940
+Gender: Female
+Parkinsons: True
+Tremors: True
+DiagnosisYear: 2002
+Sided: None
+UPDRS: Don't know
+Impact: Medium
+Levodopa: False
+DA: True
+MAOB :False
+Other: True

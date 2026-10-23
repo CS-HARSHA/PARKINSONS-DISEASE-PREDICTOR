@@ -1,0 +1,12 @@
+BirthYear: 
+Gender: 
+Parkinsons: 
+Tremors: 
+DiagnosisYear: 
+Sided: 
+UPDRS: 
+Impact: 
+Levodopa: 
+DA: 
+MAOB :
+Other: 
