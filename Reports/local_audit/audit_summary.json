@@ -1,0 +1,39 @@
+{
+  "project_root": "C:\\ML project\\PARKINSONS-DISEASE-PREDICTOR",
+  "recognized_monthly_log_files": 2165,
+  "unique_log_participants": 754,
+  "metadata_files": 646,
+  "unique_metadata_participants": 646,
+  "participants_in_both_sources": 609,
+  "log_participants_without_metadata": 145,
+  "metadata_participants_without_logs": 37,
+  "participants_with_valid_labels_and_logs": 606,
+  "participant_label_counts": {
+    "True": 438,
+    "False": 168
+  },
+  "event_rows_scanned": 40524886,
+  "blank_lines": 0,
+  "malformed_rows": 7,
+  "participant_id_mismatches": 384,
+  "invalid_date_rows": 291,
+  "invalid_time_rows": 196341,
+  "invalid_hand_rows": 1043,
+  "timing_parse_error_rows": 464803,
+  "nonfinite_timing_rows": 0,
+  "nonpositive_hold_rows": 18101,
+  "negative_latency_rows": 0,
+  "negative_flight_rows": 0,
+  "files_with_read_errors": 0,
+  "clinical_metadata_excluded_from_initial_predictors": [
+    "tremors",
+    "diagnosisyear",
+    "updrs",
+    "impact",
+    "levodopa",
+    "da",
+    "maob",
+    "other"
+  ],
+  "interpretation_note": "Research dataset audit only. This project does not provide a clinical diagnosis."
+}

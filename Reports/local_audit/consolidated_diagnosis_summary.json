@@ -1,0 +1,29 @@
+{
+  "project_root": "C:\\ML project\\PARKINSONS-DISEASE-PREDICTOR",
+  "raw_data_modified": false,
+  "monthly_log_files_discovered": 2165,
+  "metadata_files_discovered": 646,
+  "nul_diagnosis": {
+    "files_with_nul_bytes": 34,
+    "records_containing_nul": 92,
+    "total_nul_bytes": 36040
+  },
+  "tab_structure_diagnosis": {
+    "records_with_any_flag": 483295,
+    "files_with_read_errors": 0
+  },
+  "concatenation_diagnosis": {
+    "candidate_records_flagged": 2702,
+    "example_records_saved": 500
+  },
+  "date_consistency_diagnosis": {
+    "valid_dates_checked": 40524595,
+    "invalid_dates_for_check": 291,
+    "valid_dates_outside_filename_month": 0
+  },
+  "chronology_diagnosis": {
+    "valid_timestamps_checked": 40328541,
+    "backward_transitions": 44748
+  },
+  "next_stage": "Review diagnostic evidence and document cleaning rules before modifying or excluding records."
+}

@@ -1,0 +1,6 @@
+diagnostic_flag,count
+expected_id_inside_non_id_field,2309
+text_inside_time_field,673
+participant_id_mismatch,387
+text_inside_date_field,291
+tab_field_count_not_eight,4
