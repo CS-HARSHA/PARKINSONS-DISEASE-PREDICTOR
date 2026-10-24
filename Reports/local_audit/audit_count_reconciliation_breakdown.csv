@@ -1,0 +1,5 @@
+comparison,result,count
+field_count_comparison,legacy_only_malformed,3
+field_count_comparison,both_flagged_malformed,4
+id_mismatch_comparison,both_methods_flagged_mismatch,384
+id_mismatch_comparison,tab_mismatch_legacy_check_skipped,3

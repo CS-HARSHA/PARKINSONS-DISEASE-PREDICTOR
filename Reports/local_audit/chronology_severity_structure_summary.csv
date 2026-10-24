@@ -1,0 +1,4 @@
+reversal_severity,both_endpoints_invalid,both_endpoints_valid,current_endpoint_invalid,previous_endpoint_invalid,All
+at_most_1_second,343,43848,15,1,44207
+over_1_second,0,460,42,39,541
+All,343,44308,57,40,44748

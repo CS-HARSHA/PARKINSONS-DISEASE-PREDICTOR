@@ -1,0 +1,37 @@
+{
+  "project_root": "c:\\ML project\\PARKINSONS-DISEASE-PREDICTOR",
+  "raw_data_modified": false,
+  "monthly_log_files_scanned": 2165,
+  "nonblank_physical_lines": 40524886,
+  "blank_lines": 0,
+  "legacy_whitespace_audit": {
+    "malformed_rows": 7,
+    "participant_id_mismatches": 384,
+    "id_check_skipped_for_malformed_rows": true
+  },
+  "tab_delimited_diagnostic": {
+    "field_count_not_eight": 4,
+    "participant_id_mismatches_independent_of_field_count": 387,
+    "participant_id_mismatches_when_tab_field_count_is_eight": 387
+  },
+  "field_count_comparison": {
+    "legacy_only_malformed": 3,
+    "both_flagged_malformed": 4
+  },
+  "id_mismatch_comparison": {
+    "both_methods_flagged_mismatch": 384,
+    "tab_mismatch_legacy_check_skipped": 3
+  },
+  "discrepant_records_saved": 7,
+  "historical_reference_counts": {
+    "legacy_malformed_rows": 7,
+    "legacy_participant_id_mismatches": 384,
+    "tab_field_count_not_eight": 4,
+    "tab_participant_id_mismatches": 387
+  },
+  "report_files": {
+    "detail": "c:\\ML project\\PARKINSONS-DISEASE-PREDICTOR\\reports\\local_audit\\audit_count_reconciliation_detail.csv",
+    "breakdown": "c:\\ML project\\PARKINSONS-DISEASE-PREDICTOR\\reports\\local_audit\\audit_count_reconciliation_breakdown.csv",
+    "summary": "c:\\ML project\\PARKINSONS-DISEASE-PREDICTOR\\reports\\local_audit\\audit_count_reconciliation_summary.json"
+  }
+}

@@ -10,7 +10,9 @@
   },
   "tab_structure_diagnosis": {
     "records_with_any_flag": 483295,
-    "files_with_read_errors": 0
+    "files_with_read_errors": 0,
+    "field_count_not_eight": 4,
+    "participant_id_mismatches_independent_of_field_count": 387
   },
   "concatenation_diagnosis": {
     "candidate_records_flagged": 2702,
@@ -23,7 +25,55 @@
   },
   "chronology_diagnosis": {
     "valid_timestamps_checked": 40328541,
-    "backward_transitions": 44748
+    "backward_transitions": 44748,
+    "classification_counts": {
+      "backward_at_most_one_second": 44207,
+      "same_date_backward_over_one_second": 458,
+      "event_date_moved_backward": 83
+    },
+    "transitions_over_one_second": 541
   },
-  "next_stage": "Review diagnostic evidence and document cleaning rules before modifying or excluding records."
+  "next_stage": "Phase 2: Implement and test the reusable data parsing, validation, and cleaning pipeline.",
+  "count_reconciliation": {
+    "status": "reconciled",
+    "monthly_log_files_scanned": 2165,
+    "nonblank_physical_lines": 40524886,
+    "legacy_whitespace_audit": {
+      "malformed_rows": 7,
+      "participant_id_mismatches": 384,
+      "id_check_skipped_for_malformed_rows": true
+    },
+    "tab_delimited_diagnostic": {
+      "field_count_not_eight": 4,
+      "participant_id_mismatches_independent_of_field_count": 387,
+      "participant_id_mismatches_when_tab_field_count_is_eight": 387
+    },
+    "field_count_comparison": {
+      "legacy_only_malformed": 3,
+      "both_flagged_malformed": 4
+    },
+    "id_mismatch_comparison": {
+      "both_methods_flagged_mismatch": 384,
+      "tab_mismatch_legacy_check_skipped": 3
+    },
+    "interpretation": "The seven legacy malformed rows comprise four rows flagged by both methods and three leading-tab rows whose empty first field was discarded by whitespace splitting. The three leading-tab rows have missing participant IDs and must remain invalid despite having eight tab-delimited fields after trailing-empty-field handling. The original ID audit skipped checks on malformed rows, explaining 384 versus 387 mismatches."
+  },
+  "chronology_structure_crosscheck": {
+    "transitions_checked": 44748,
+    "endpoint_structure_class_counts": {
+      "both_endpoints_valid": 44308,
+      "both_endpoints_invalid": 343,
+      "current_endpoint_invalid": 57,
+      "previous_endpoint_invalid": 40
+    },
+    "transitions_involving_skipped_physical_lines": 35,
+    "interpretation": "Endpoint structural validity does not prove chronological correctness. Invalid endpoints and transitions involving skipped lines require review; no records were automatically reconstructed or removed."
+  },
+  "phase_1_status": {
+    "phase": "Dataset Diagnosis",
+    "status": "Done",
+    "count_discrepancies_reconciled": true,
+    "cleaning_policy_documented": true,
+    "raw_data_modified": false
+  }
 }

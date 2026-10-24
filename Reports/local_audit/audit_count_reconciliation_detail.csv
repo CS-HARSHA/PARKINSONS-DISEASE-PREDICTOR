@@ -1,0 +1,8 @@
+filename,physical_line_number,expected_participant_id,legacy_field_count,tab_field_count,legacy_malformed,tab_field_count_not_eight,legacy_id_check_performed,legacy_id_mismatch,tab_id_mismatch,field_count_decisions_differ,id_decisions_differ,raw_line_preview
+2JTCBKUP8T_1705.txt,28871,2JTCBKUP8T,7,8,True,False,False,,True,True,True,\t170528\t20:54:30.523\tL\t0078.1\tLL\t0312.5\t0218.8\t
+2JTCBKUP8T_1705.txt,29176,2JTCBKUP8T,7,8,True,False,False,,True,True,True,\t170529\t22:23:39.078\tL\t0085.9\tSL\t0367.2\t0289.1\t
+2JTCBKUP8T_1705.txt,29525,2JTCBKUP8T,7,8,True,False,False,,True,True,True,\t170530\t17:58:21.285\tL\t0101.6\tLL\t0332.0\t0234.4\t
+9JN39MOLWT_1709.txt,4426,9JN39MOLWT,7,7,True,True,False,,False,False,False,9JN39MOLWT\t170928\t20:25:18.828\tR\t0070.3\tRR\t0179.7\t\t
+CZGEWMX7XG_1709.txt,658,CZGEWMX7XG,7,7,True,True,False,,False,False,False,CZGEWMX7XG\t170904\t10:06:22.086\tS\t0117.2\tRS\t0394.5\t\t
+OMCPRWYBSQ_1610.txt,94971,OMCPRWYBSQ,7,7,True,True,False,,False,False,False,OMCPRWYBSQ\t161027\t11:38:01.707\tR\t0085.9\tLR\t0601.6\t\t
+QAH9IVALVC_1608.txt,10797,QAH9IVALVC,7,7,True,True,False,,False,False,False,QAH9IVALVC\t160829\t13:33:10.324\tL\t0078.1\tLL\t0250.0\t\t
