@@ -93,24 +93,27 @@ The table `features_clean.csv` cannot be used as an input to machine learning. F
 
 ## 5. Audit of Participant Splits
 
-### 5.1 Historical Split Files (`train_ids.csv`, `test_ids.csv`)
+### 5.1 Historical Split Files (`data/processed/train_ids.csv`, `data/processed/test_ids.csv`)
 - **Historical Counts:** 396 Training IDs, 99 Test IDs (Total: 495).
-- **Audit Outcome:** Rejected. These split files partition the truncated 495-row subset and completely omit 102 valid eligible participants. They are retained in `data/processed/` unchanged for historical provenance.
+- **Audit Outcome:** **REJECTED FOR MODELING.** These split files partition the truncated 495-row subset and completely omit 102 valid eligible participants. They are retained in `data/processed/` unchanged strictly for historical provenance and audit traceability.
+- **Rule:** Downstream pipelines must never load these files as the authoritative split.
 
-### 5.2 Prospective 80/20 Stratified Participant Split
+### 5.2 Authoritative 80/20 Stratified Participant Split
 In strict adherence to [`docs/experimental_protocol.md`](file:///c:/Users/prane/.vscode/extensions/ms-vscode.cmake-tools-1.21.36/ml%20project/PARKINSONS-DISEASE-PREDICTOR/docs/experimental_protocol.md) Section 9:
-- **Eligible Cohort Partitioned:** Exactly 597 participants.
+- **Eligible Cohort Partitioned:** Exactly 597 participants (432 PD, 165 Control).
 - **Split Ratio:** 80% Training / 20% Held-out Test.
 - **Stratification Variable:** Target label (`label`: PD vs Control).
 - **Random Seed:** `random_state = 42`.
 - **Partition Allocation:**
   - **Training Partition:** **477 participants** (345 PD [72.33%], 132 Control [27.67%]).
   - **Held-out Test Partition:** **120 participants** (87 PD [72.50%], 33 Control [27.50%]).
-- **Split File Locations:** `data/processed/splits/train_ids.csv` and `data/processed/splits/test_ids.csv` (Git-ignored).
+- **Authoritative Split File Locations:**
+  - **Recovery Archive:** [`data/phase2_recovery/splits/train_ids.csv`](file:///c:/Users/prane/.vscode/extensions/ms-vscode.cmake-tools-1.21.36/ml%20project/PARKINSONS-DISEASE-PREDICTOR/data/phase2_recovery/splits/train_ids.csv), [`data/phase2_recovery/splits/test_ids.csv`](file:///c:/Users/prane/.vscode/extensions/ms-vscode.cmake-tools-1.21.36/ml%20project/PARKINSONS-DISEASE-PREDICTOR/data/phase2_recovery/splits/test_ids.csv), and [`data/phase2_recovery/splits/split_manifest.json`](file:///c:/Users/prane/.vscode/extensions/ms-vscode.cmake-tools-1.21.36/ml%20project/PARKINSONS-DISEASE-PREDICTOR/data/phase2_recovery/splits/split_manifest.json).
+  - **Runtime Working Mirror:** `data/processed/splits/train_ids.csv` and `data/processed/splits/test_ids.csv` (Git-ignored per `.gitignore`).
 - **Validation:**
   - Zero partition overlap confirmed ($train \cap test = \emptyset$).
   - Exact union coverage confirmed ($train \cup test = \text{eligible cohort}$).
-  - Deterministic reproducibility verified.
+  - Deterministic reproducibility verified via `generate_prospective_split(random_state=42)`.
 
 ---
 

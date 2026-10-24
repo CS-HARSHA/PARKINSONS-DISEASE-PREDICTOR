@@ -127,15 +127,25 @@ def extract_participant_features(
     """Extract all typing-derived predictor features for a single participant."""
     features: dict[str, Any] = {}
 
+    # Domain filtering: filter out non-typing anomalies (suspended system sleep spanning hours, or suspect date codes)
+    mask = pd.Series(True, index=events_df.index)
+    if "hold_ms" in events_df.columns:
+        mask = mask & (events_df["hold_ms"].isna() | (events_df["hold_ms"] <= config.max_hold_ms))
+    if "latency_ms" in events_df.columns:
+        mask = mask & (events_df["latency_ms"].isna() | (events_df["latency_ms"] <= config.max_latency_ms))
+    if "flight_ms" in events_df.columns:
+        mask = mask & (events_df["flight_ms"].isna() | (events_df["flight_ms"].abs() <= config.max_latency_ms))
+    clean_events = events_df[mask]
+
     # 1. Overall Timing Feature Families
-    features.update(compute_timing_statistics(events_df["hold_ms"], "hold", config))
-    features.update(compute_timing_statistics(events_df["latency_ms"], "latency", config))
-    features.update(compute_timing_statistics(events_df["flight_ms"], "flight", config))
+    features.update(compute_timing_statistics(clean_events["hold_ms"], "hold", config))
+    features.update(compute_timing_statistics(clean_events["latency_ms"], "latency", config))
+    features.update(compute_timing_statistics(clean_events["flight_ms"], "flight", config))
 
     # 2. Hand Relative Frequencies
-    total_events = len(events_df)
+    total_events = len(clean_events)
     if total_events > 0:
-        hand_counts = events_df["hand"].value_counts()
+        hand_counts = clean_events["hand"].value_counts()
         for h in ALLOWED_HANDS:
             features[f"hand_freq_{h}"] = round(float(hand_counts.get(h, 0)) / total_events, 4)
     else:
@@ -144,7 +154,7 @@ def extract_participant_features(
 
     # 3. Direction Relative Frequencies
     if total_events > 0:
-        dir_counts = events_df["direction"].value_counts()
+        dir_counts = clean_events["direction"].value_counts()
         for d in ALLOWED_DIRECTIONS:
             features[f"dir_freq_{d}"] = round(float(dir_counts.get(d, 0)) / total_events, 4)
     else:
@@ -153,8 +163,8 @@ def extract_participant_features(
 
     # 4. Direction-Specific Timing Dynamics
     for d in ALLOWED_DIRECTIONS:
-        dir_mask = events_df["direction"] == d
-        subset = events_df[dir_mask]
+        dir_mask = clean_events["direction"] == d
+        subset = clean_events[dir_mask]
 
         features.update(compute_directional_timing(subset["hold_ms"].dropna(), "hold", d))
         features.update(compute_directional_timing(subset["latency_ms"].dropna(), "latency", d))

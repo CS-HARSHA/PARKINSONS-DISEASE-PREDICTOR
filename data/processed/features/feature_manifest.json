@@ -3,8 +3,8 @@
   "phase": "Phase 6 \u2014 Feature Engineering and Preprocessing",
   "dataset_name": "Tappy Extended Keystroke Dataset, Mendeley Data Version 3",
   "dataset_doi": "10.17632/z39mhdsynx.3",
-  "generated_at_utc": "2026-10-24T13:17:34.350063+00:00",
-  "execution_time_seconds": 115.31,
+  "generated_at_utc": "2026-10-24T18:31:23.871159+00:00",
+  "execution_time_seconds": 135.39,
   "cohort": {
     "eligible_participant_count": 597,
     "parkinsons_count": 432,
@@ -20,7 +20,7 @@
   "artifacts": {
     "raw_features_parquet": {
       "path": "data\\processed\\features\\participant_features_raw.parquet",
-      "sha256": "68a22acba34901549f3dd55e4e52dcd8a683b41c75666c41187e26736259e0ef",
+      "sha256": "c9c58bb0a7fcecf3312f4cdfe781b5b2e60e15cf8e29f23a23669408be2a37cf",
       "rows": 597,
       "columns": 155
     },

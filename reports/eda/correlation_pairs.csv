@@ -1,114 +1,31 @@
 feature_1,feature_2,spearman_rho,absolute_rho,relationship_interpretation
-lat1_mean,lat1_median,0.9923,0.9923,Collinear central tendencies / scale metrics
-lat1_LR_mean,lat1_LR_median,0.9893,0.9893,Collinear central tendencies / scale metrics
-lat1_RL_mean,lat1_RL_median,0.9892,0.9892,Collinear central tendencies / scale metrics
-lat1_LL_mean,lat1_LL_median,0.988,0.988,Collinear central tendencies / scale metrics
-lat1_RR_mean,lat1_RR_median,0.9874,0.9874,Collinear central tendencies / scale metrics
-lat1_RS_mean,lat1_RS_median,0.9873,0.9873,Collinear central tendencies / scale metrics
-lat1_LS_mean,lat1_LS_median,0.985,0.985,Collinear central tendencies / scale metrics
-lat2_RL_mean,lat2_RL_median,0.9846,0.9846,Collinear central tendencies / scale metrics
-hold_LR_diff,hold_LR_ratio,0.9844,0.9844,Collinear central tendencies / scale metrics
-hold_R_mean,hold_R_median,0.9843,0.9843,Collinear central tendencies / scale metrics
-hold_mean,hold_median,0.9814,0.9814,Collinear central tendencies / scale metrics
-lat2_mean,lat2_median,0.9784,0.9784,Collinear central tendencies / scale metrics
-hold_S_mean,hold_S_median,0.9768,0.9768,Collinear central tendencies / scale metrics
-lat2_RS_mean,lat2_RS_median,0.9755,0.9755,Collinear central tendencies / scale metrics
-hold_L_mean,hold_L_median,0.9745,0.9745,Collinear central tendencies / scale metrics
-lat2_LS_mean,lat2_LS_median,0.9741,0.9741,Collinear central tendencies / scale metrics
-lat1_mean,lat1_RL_mean,0.9681,0.9681,Collinear central tendencies / scale metrics
-lat2_LR_mean,lat2_LR_median,0.9678,0.9678,Collinear central tendencies / scale metrics
-lat1_mean,lat1_RR_mean,0.9662,0.9662,Collinear central tendencies / scale metrics
-hold_mean,hold_L_mean,0.9651,0.9651,Collinear central tendencies / scale metrics
-lat2_LL_mean,lat2_LL_median,0.9645,0.9645,Collinear central tendencies / scale metrics
-lat1_mean,lat1_LR_mean,0.9638,0.9638,Collinear central tendencies / scale metrics
-lat1_median,lat1_RL_mean,0.9633,0.9633,Collinear central tendencies / scale metrics
-hold_mean,hold_R_mean,0.9618,0.9618,Collinear central tendencies / scale metrics
-lat1_median,lat1_RR_median,0.961,0.961,Collinear central tendencies / scale metrics
-lat1_median,lat1_RR_mean,0.9594,0.9594,Collinear central tendencies / scale metrics
-hold_median,hold_R_median,0.959,0.959,Collinear central tendencies / scale metrics
-lat1_median,lat1_RL_median,0.9582,0.9582,Collinear central tendencies / scale metrics
-lat1_median,lat1_LR_mean,0.9569,0.9569,Collinear central tendencies / scale metrics
-lat1_median,lat1_LR_median,0.9568,0.9568,Collinear central tendencies / scale metrics
-lat1_mean,lat1_RR_median,0.955,0.955,Collinear central tendencies / scale metrics
-hold_median,hold_R_mean,0.9541,0.9541,Collinear central tendencies / scale metrics
-hold_median,hold_L_median,0.9541,0.9541,Collinear central tendencies / scale metrics
-lat1_mean,lat1_RL_median,0.9534,0.9534,Collinear central tendencies / scale metrics
-lat2_RR_mean,lat2_RR_median,0.9531,0.9531,Collinear central tendencies / scale metrics
-lat1_mean,lat1_LR_median,0.9528,0.9528,Collinear central tendencies / scale metrics
-lat1_mean,lat1_LL_mean,0.9524,0.9524,Collinear central tendencies / scale metrics
-lat1_RR_iqr,lat2_RR_iqr,0.9524,0.9524,Cross-feature correlation
-lat1_LR_mean,lat1_RL_mean,0.9516,0.9516,Collinear central tendencies / scale metrics
-lat2_mean,lat2_RL_mean,0.9503,0.9503,Collinear central tendencies / scale metrics
-lat2_median,lat2_RL_mean,0.9465,0.9465,Collinear central tendencies / scale metrics
-lat1_median,lat1_LL_mean,0.9464,0.9464,Collinear central tendencies / scale metrics
-hold_mean,hold_R_median,0.9463,0.9463,Collinear central tendencies / scale metrics
-lat1_LR_median,lat1_RL_mean,0.9451,0.9451,Collinear central tendencies / scale metrics
-hold_L_std,hold_L_iqr,0.9449,0.9449,Collinear central tendencies / scale metrics
-hold_mean,hold_L_median,0.9444,0.9444,Collinear central tendencies / scale metrics
-hold_median,hold_L_mean,0.9429,0.9429,Collinear central tendencies / scale metrics
-lat1_LR_median,lat1_RL_median,0.9413,0.9413,Collinear central tendencies / scale metrics
-lat1_median,lat1_LL_median,0.9409,0.9409,Collinear central tendencies / scale metrics
-lat1_LR_mean,lat1_RL_median,0.9392,0.9392,Collinear central tendencies / scale metrics
-hold_std,hold_iqr,0.9383,0.9383,Collinear central tendencies / scale metrics
-hold_std,hold_L_std,0.9378,0.9378,Collinear central tendencies / scale metrics
-hold_cv,hold_L_cv,0.9377,0.9377,Collinear central tendencies / scale metrics
-lat2_RS_skew,lat2_RS_kurt,0.9375,0.9375,Collinear central tendencies / scale metrics
-hold_R_std,hold_R_iqr,0.9371,0.9371,Collinear central tendencies / scale metrics
-hold_S_std,hold_S_iqr,0.9368,0.9368,Collinear central tendencies / scale metrics
-lat2_mean,lat2_LR_mean,0.9361,0.9361,Collinear central tendencies / scale metrics
-lat2_median,lat2_RL_median,0.9361,0.9361,Collinear central tendencies / scale metrics
-lat1_mean,lat1_LL_median,0.9337,0.9337,Collinear central tendencies / scale metrics
-lat1_mean,lat2_median,0.9319,0.9319,Cross-feature correlation
-lat1_LR_mean,lat1_RR_mean,0.9318,0.9318,Collinear central tendencies / scale metrics
-lat2_LS_skew,lat2_LS_kurt,0.9312,0.9312,Collinear central tendencies / scale metrics
-lat1_RL_mean,lat2_RL_mean,0.9295,0.9295,Cross-feature correlation
-lat1_RS_mean,lat1_LS_mean,0.9283,0.9283,Collinear central tendencies / scale metrics
-lat1_median,lat2_median,0.9279,0.9279,Cross-feature correlation
-lat2_mean,lat2_RL_median,0.9276,0.9276,Collinear central tendencies / scale metrics
-lat1_iqr,lat2_iqr,0.9268,0.9268,Cross-feature correlation
-lat2_mean,lat2_LL_mean,0.9262,0.9262,Collinear central tendencies / scale metrics
-lat1_mean,lat2_mean,0.9258,0.9258,Cross-feature correlation
-lat1_LL_iqr,lat2_LL_iqr,0.9238,0.9238,Cross-feature correlation
-lat1_LL_mean,lat1_RR_mean,0.9237,0.9237,Collinear central tendencies / scale metrics
-lat1_RR_median,lat2_RR_median,0.9233,0.9233,Cross-feature correlation
-lat2_median,lat2_RR_median,0.9231,0.9231,Collinear central tendencies / scale metrics
-lat1_RS_median,lat2_RS_median,0.921,0.921,Cross-feature correlation
-lat2_median,lat1_RL_mean,0.9206,0.9206,Cross-feature correlation
-lat2_median,lat2_LR_mean,0.9206,0.9206,Collinear central tendencies / scale metrics
-lat1_RS_mean,lat1_LS_median,0.9194,0.9194,Collinear central tendencies / scale metrics
-lat1_RR_mean,lat2_RR_median,0.9194,0.9194,Cross-feature correlation
-lat2_mean,lat1_RL_mean,0.9192,0.9192,Cross-feature correlation
-lat1_RL_mean,lat2_RL_median,0.9191,0.9191,Cross-feature correlation
-lat1_LR_median,lat1_RR_mean,0.9184,0.9184,Collinear central tendencies / scale metrics
-lat1_RL_median,lat2_RL_median,0.9183,0.9183,Cross-feature correlation
-lat1_LR_mean,lat1_RR_median,0.9176,0.9176,Collinear central tendencies / scale metrics
-lat1_RL_median,lat2_RL_mean,0.9172,0.9172,Cross-feature correlation
-lat1_RS_median,lat1_LS_median,0.9171,0.9171,Collinear central tendencies / scale metrics
-lat2_median,lat1_LR_mean,0.9166,0.9166,Cross-feature correlation
-lat2_skew,lat2_cv,0.9166,0.9166,Collinear central tendencies / scale metrics
-lat2_median,lat2_LL_median,0.9164,0.9164,Collinear central tendencies / scale metrics
-lat2_median,lat2_LL_mean,0.9157,0.9157,Collinear central tendencies / scale metrics
-lat1_LL_mean,lat1_RR_median,0.9153,0.9153,Collinear central tendencies / scale metrics
-lat2_median,lat2_LR_median,0.9153,0.9153,Collinear central tendencies / scale metrics
-lat1_LR_median,lat1_RR_median,0.9145,0.9145,Collinear central tendencies / scale metrics
-lat2_mean,lat2_RR_mean,0.9139,0.9139,Collinear central tendencies / scale metrics
-lat1_RS_mean,lat2_RS_mean,0.9134,0.9134,Cross-feature correlation
-lat1_LL_median,lat1_RR_median,0.9134,0.9134,Collinear central tendencies / scale metrics
-lat2_mean,lat1_LR_mean,0.9133,0.9133,Cross-feature correlation
-lat1_RS_mean,lat2_RS_median,0.9128,0.9128,Cross-feature correlation
-lat2_median,lat1_RL_median,0.9124,0.9124,Cross-feature correlation
-lat1_RS_median,lat1_LS_mean,0.9123,0.9123,Collinear central tendencies / scale metrics
-lat2_LR_mean,lat2_RL_mean,0.9119,0.9119,Collinear central tendencies / scale metrics
-lat1_RR_mean,lat2_RR_mean,0.9112,0.9112,Cross-feature correlation
-lat1_LL_mean,lat2_LL_median,0.9106,0.9106,Cross-feature correlation
-lat1_median,lat2_mean,0.9102,0.9102,Cross-feature correlation
-lat2_median,lat1_LR_median,0.9087,0.9087,Cross-feature correlation
-lat1_LL_median,lat1_RR_mean,0.9081,0.9081,Collinear central tendencies / scale metrics
-lat1_LR_median,lat1_LR_skew,-0.908,0.908,Collinear central tendencies / scale metrics
-lat1_RR_mean,lat1_RL_mean,0.908,0.908,Collinear central tendencies / scale metrics
-lat1_LL_mean,lat1_RL_mean,0.9047,0.9047,Collinear central tendencies / scale metrics
-lat1_LL_median,lat2_LL_median,0.9042,0.9042,Cross-feature correlation
-lat2_mean,lat2_LR_median,0.9035,0.9035,Collinear central tendencies / scale metrics
-lat2_median,lat2_RR_mean,0.9032,0.9032,Collinear central tendencies / scale metrics
-lat2_mean,lat1_RL_median,0.9018,0.9018,Cross-feature correlation
-lat1_RS_median,lat2_RS_mean,0.9002,0.9002,Cross-feature correlation
+latency_mean,latency_median,0.9904,0.9904,Collinear central tendencies / scale metrics
+flight_mean,flight_q75,0.9876,0.9876,Collinear central tendencies / scale metrics
+latency_mean,latency_q75,0.9866,0.9866,Collinear central tendencies / scale metrics
+flight_mean,flight_median,0.9861,0.9861,Collinear central tendencies / scale metrics
+latency_median,latency_q75,0.9772,0.9772,Collinear central tendencies / scale metrics
+flight_median,flight_q75,0.9748,0.9748,Collinear central tendencies / scale metrics
+hold_mean,hold_median,0.9742,0.9742,Collinear central tendencies / scale metrics
+latency_median,latency_q25,0.9644,0.9644,Collinear central tendencies / scale metrics
+hold_mean,hold_q75,0.9601,0.9601,Collinear central tendencies / scale metrics
+latency_mean,latency_q25,0.9592,0.9592,Collinear central tendencies / scale metrics
+flight_median,flight_q25,0.9582,0.9582,Collinear central tendencies / scale metrics
+hold_median,hold_q75,0.9535,0.9535,Collinear central tendencies / scale metrics
+latency_q75,flight_median,0.9483,0.9483,Cross-feature correlation
+latency_q75,flight_q75,0.9474,0.9474,Cross-feature correlation
+latency_q75,flight_mean,0.9463,0.9463,Cross-feature correlation
+flight_mean,flight_q25,0.9438,0.9438,Collinear central tendencies / scale metrics
+latency_mean,flight_median,0.9362,0.9362,Cross-feature correlation
+latency_std,flight_std,0.9357,0.9357,Cross-feature correlation
+latency_median,flight_median,0.9341,0.9341,Cross-feature correlation
+latency_mean,flight_mean,0.9334,0.9334,Cross-feature correlation
+latency_iqr,flight_iqr,0.9284,0.9284,Cross-feature correlation
+latency_median,flight_q25,0.9247,0.9247,Cross-feature correlation
+latency_mean,flight_q25,0.9216,0.9216,Cross-feature correlation
+latency_mean,flight_q75,0.9167,0.9167,Cross-feature correlation
+latency_median,flight_mean,0.9132,0.9132,Cross-feature correlation
+latency_q25,latency_q75,0.9127,0.9127,Collinear central tendencies / scale metrics
+latency_q75,flight_q25,0.9065,0.9065,Cross-feature correlation
+flight_std,flight_iqr,0.906,0.906,Collinear central tendencies / scale metrics
+latency_q25,flight_q25,0.9012,0.9012,Cross-feature correlation
+flight_q25,flight_q75,0.9012,0.9012,Collinear central tendencies / scale metrics

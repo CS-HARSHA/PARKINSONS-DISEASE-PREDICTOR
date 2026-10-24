@@ -23,6 +23,8 @@ class ExtractionConfig:
     min_obs_kurtosis: int = 30
     min_obs_cv: int = 10
     cv_mean_epsilon: float = 1e-6
+    max_hold_ms: float = 10000.0
+    max_latency_ms: float = 100000.0
     allowed_hands: tuple[str, ...] = ("L", "R", "S")
     allowed_directions: tuple[str, ...] = (
         "LL", "LR", "RL", "RR",
@@ -92,6 +94,8 @@ class FeatureEngineeringConfig:
             min_obs_kurtosis=ext_data.get("min_obs_kurtosis", 30),
             min_obs_cv=ext_data.get("min_obs_cv", 10),
             cv_mean_epsilon=ext_data.get("cv_mean_epsilon", 1e-6),
+            max_hold_ms=ext_data.get("max_hold_ms", 10000.0),
+            max_latency_ms=ext_data.get("max_latency_ms", 100000.0),
             allowed_hands=tuple(ext_data.get("allowed_hands", ["L", "R", "S"])),
             allowed_directions=tuple(
                 ext_data.get("allowed_directions", [

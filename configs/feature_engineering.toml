@@ -32,6 +32,10 @@ min_obs_cv = 10
 # Threshold for near-zero mean in CV calculation to prevent division explosion
 cv_mean_epsilon = 1e-6
 
+# Domain timing bounds: filter out system suspension / sleep outliers and suspect date codes
+max_hold_ms = 10000.0
+max_latency_ms = 100000.0
+
 # Allowed categorical values per Phase 2 log format specification
 allowed_hands = ["L", "R", "S"]
 allowed_directions = [

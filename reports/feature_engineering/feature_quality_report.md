@@ -40,18 +40,18 @@
 
 | Feature Name | Missing Count (out of 597) | Missing Percentage | Interpretation |
 | :--- | :--- | :--- | :--- |
-| `flight_iqr_SS` | 74 | 12.4% | Zero transition occurrences in participant sessions |
-| `flight_mean_SS` | 74 | 12.4% | Zero transition occurrences in participant sessions |
-| `hold_iqr_SS` | 74 | 12.4% | Zero transition occurrences in participant sessions |
-| `flight_std_SS` | 74 | 12.4% | Zero transition occurrences in participant sessions |
-| `flight_median_SS` | 74 | 12.4% | Zero transition occurrences in participant sessions |
-| `latency_iqr_SS` | 74 | 12.4% | Zero transition occurrences in participant sessions |
-| `latency_mean_SS` | 74 | 12.4% | Zero transition occurrences in participant sessions |
-| `latency_std_SS` | 74 | 12.4% | Zero transition occurrences in participant sessions |
-| `latency_median_SS` | 74 | 12.4% | Zero transition occurrences in participant sessions |
-| `hold_median_SS` | 74 | 12.4% | Zero transition occurrences in participant sessions |
-| `hold_std_SS` | 74 | 12.4% | Zero transition occurrences in participant sessions |
-| `hold_mean_SS` | 74 | 12.4% | Zero transition occurrences in participant sessions |
+| `flight_iqr_SS` | 75 | 12.56% | Zero transition occurrences in participant sessions |
+| `flight_mean_SS` | 75 | 12.56% | Zero transition occurrences in participant sessions |
+| `hold_iqr_SS` | 75 | 12.56% | Zero transition occurrences in participant sessions |
+| `flight_std_SS` | 75 | 12.56% | Zero transition occurrences in participant sessions |
+| `flight_median_SS` | 75 | 12.56% | Zero transition occurrences in participant sessions |
+| `latency_iqr_SS` | 75 | 12.56% | Zero transition occurrences in participant sessions |
+| `latency_mean_SS` | 75 | 12.56% | Zero transition occurrences in participant sessions |
+| `latency_std_SS` | 75 | 12.56% | Zero transition occurrences in participant sessions |
+| `latency_median_SS` | 75 | 12.56% | Zero transition occurrences in participant sessions |
+| `hold_median_SS` | 75 | 12.56% | Zero transition occurrences in participant sessions |
+| `hold_std_SS` | 75 | 12.56% | Zero transition occurrences in participant sessions |
+| `hold_mean_SS` | 75 | 12.56% | Zero transition occurrences in participant sessions |
 | `flight_median_SR` | 42 | 7.04% | Zero transition occurrences in participant sessions |
 | `hold_median_SR` | 42 | 7.04% | Zero transition occurrences in participant sessions |
 | `flight_mean_SR` | 42 | 7.04% | Zero transition occurrences in participant sessions |

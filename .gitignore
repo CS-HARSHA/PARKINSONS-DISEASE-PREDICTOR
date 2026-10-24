@@ -16,6 +16,7 @@ env/
 # Generated interim data and Parquet artifacts (Rule 12 & Exit criterion 11)
 data/interim/*
 !data/interim/.gitkeep
+data/phase2_recovery/interim/*
 *.parquet
 data/processed/splits/
 

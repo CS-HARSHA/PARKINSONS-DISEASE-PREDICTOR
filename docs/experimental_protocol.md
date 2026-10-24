@@ -147,7 +147,7 @@ Raw Keystroke Logs (2,165 files, 40.5M lines) ──► Phase 2 Parser & Cleaner
                                                            │
                                ┌───────────────────────────┴───────────────────────────┐
                                ▼                                                       ▼
-                 Stratified Training Split (80%, N≈478)                   Held-out Test Split (20%, N≈119)
+                 Stratified Training Split (80%, N=477)                   Held-out Test Split (20%, N=120)
                  - Stratified 5-Fold Cross-Validation                     - FROZEN UNTIL PHASE 10
                  - Inner-Fold Imputation & Scaling                        - Final Independent Evaluation
                  - Model Comparison & Hyperparameter Tuning
@@ -274,8 +274,8 @@ To answer RQ3 and RQ4, the modeling workflow will execute structured comparative
 ## 15. Sample-Size Limitations and Statistical Uncertainty
 
 1. **Finite Cohort Constraints `[Verified]`:**
-   - With an eligible cohort of 597 participants (432 PD, 165 Control), an 80/20 train/test split allocates approximately 478 participants to training (~346 PD, ~132 Control) and 119 participants to the holdout test set (~86 PD, ~33 Control).
-   - In a test set of 119 participants with 33 controls, each individual misclassification in the control group alters specificity by approximately $\frac{1}{33} \approx 3.03\%$.
+   - With an eligible cohort of 597 participants (432 PD, 165 Control), an 80/20 train/test split allocates exactly 477 participants to training (345 PD, 132 Control) and 120 participants to the holdout test set (87 PD, 33 Control).
+   - In a test set of 120 participants with 33 controls, each individual misclassification in the control group alters specificity by approximately $\frac{1}{33} \approx 3.03\%$.
 2. **Confidence Intervals `[Proposed]`:**
    - Final holdout metrics must be reported with 95% bootstrap confidence intervals (1,000 bootstrap resamples of the test set) to convey statistical uncertainty honestly.
 3. **No Over-Interpretation `[Verified]`:**

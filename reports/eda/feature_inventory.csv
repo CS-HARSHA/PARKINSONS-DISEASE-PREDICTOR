@@ -1,219 +1,154 @@
 feature_name,family,dtype,unit,missing_count,missing_pct,n_unique,is_constant,integrity_status
-hold_LR_diff,Hold Time (HT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-hold_LR_ratio,Hold Time (HT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-hold_L_cv,Hold Time (HT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-hold_L_iqr,Hold Time (HT),float64,Milliseconds (ms),0,0.0,149,False,VERIFIED_NUMERIC
-hold_L_kurt,Hold Time (HT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-hold_L_max,Hold Time (HT),float64,Milliseconds (ms),0,0.0,90,False,VERIFIED_NUMERIC
-hold_L_mean,Hold Time (HT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-hold_L_median,Hold Time (HT),float64,Milliseconds (ms),0,0.0,60,False,VERIFIED_NUMERIC
-hold_L_min,Hold Time (HT),float64,Milliseconds (ms),0,0.0,26,False,VERIFIED_NUMERIC
-hold_L_skew,Hold Time (HT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-hold_L_std,Hold Time (HT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-hold_R_cv,Hold Time (HT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-hold_R_iqr,Hold Time (HT),float64,Milliseconds (ms),0,0.0,143,False,VERIFIED_NUMERIC
-hold_R_kurt,Hold Time (HT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-hold_R_max,Hold Time (HT),float64,Milliseconds (ms),0,0.0,93,False,VERIFIED_NUMERIC
-hold_R_mean,Hold Time (HT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-hold_R_median,Hold Time (HT),float64,Milliseconds (ms),0,0.0,60,False,VERIFIED_NUMERIC
-hold_R_min,Hold Time (HT),float64,Milliseconds (ms),0,0.0,28,False,VERIFIED_NUMERIC
-hold_R_skew,Hold Time (HT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-hold_R_std,Hold Time (HT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-hold_S_cv,Hold Time (HT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-hold_S_iqr,Hold Time (HT),float64,Milliseconds (ms),0,0.0,145,False,VERIFIED_NUMERIC
-hold_S_kurt,Hold Time (HT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-hold_S_max,Hold Time (HT),float64,Milliseconds (ms),0,0.0,98,False,VERIFIED_NUMERIC
-hold_S_mean,Hold Time (HT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-hold_S_median,Hold Time (HT),float64,Milliseconds (ms),0,0.0,74,False,VERIFIED_NUMERIC
-hold_S_min,Hold Time (HT),float64,Milliseconds (ms),0,0.0,31,False,VERIFIED_NUMERIC
-hold_S_skew,Hold Time (HT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-hold_S_std,Hold Time (HT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-hold_cv,Hold Time (HT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-hold_iqr,Hold Time (HT),float64,Milliseconds (ms),0,0.0,139,False,VERIFIED_NUMERIC
-hold_kurt,Hold Time (HT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-hold_max,Hold Time (HT),float64,Milliseconds (ms),0,0.0,71,False,VERIFIED_NUMERIC
-hold_mean,Hold Time (HT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-hold_median,Hold Time (HT),float64,Milliseconds (ms),0,0.0,70,False,VERIFIED_NUMERIC
-hold_min,Hold Time (HT),float64,Milliseconds (ms),0,0.0,24,False,VERIFIED_NUMERIC
-hold_skew,Hold Time (HT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-hold_std,Hold Time (HT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat1_LL_cv,Latency (L),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat1_LL_iqr,Latency (L),float64,Milliseconds (ms),0,0.0,228,False,VERIFIED_NUMERIC
-lat1_LL_kurt,Latency (L),float64,Milliseconds (ms),0,0.0,395,False,DATE_CORRUPTED
-lat1_LL_max,Latency (L),float64,Milliseconds (ms),0,0.0,53,False,DATE_CORRUPTED
-lat1_LL_mean,Latency (L),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat1_LL_median,Latency (L),float64,Milliseconds (ms),0,0.0,151,False,VERIFIED_NUMERIC
-lat1_LL_min,Latency (L),float64,Milliseconds (ms),0,0.0,46,False,VERIFIED_NUMERIC
-lat1_LL_skew,Latency (L),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat1_LL_std,Latency (L),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat1_LR_cv,Latency (L),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat1_LR_iqr,Latency (L),float64,Milliseconds (ms),0,0.0,257,False,VERIFIED_NUMERIC
-lat1_LR_kurt,Latency (L),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat1_LR_max,Latency (L),float64,Milliseconds (ms),0,0.0,40,False,DATE_CORRUPTED
-lat1_LR_mean,Latency (L),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat1_LR_median,Latency (L),float64,Milliseconds (ms),0,0.0,158,False,VERIFIED_NUMERIC
-lat1_LR_min,Latency (L),float64,Milliseconds (ms),0,0.0,59,False,VERIFIED_NUMERIC
-lat1_LR_skew,Latency (L),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat1_LR_std,Latency (L),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat1_LS_cv,Latency (L),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat1_LS_iqr,Latency (L),float64,Milliseconds (ms),0,0.0,250,False,VERIFIED_NUMERIC
-lat1_LS_kurt,Latency (L),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat1_LS_max,Latency (L),float64,Milliseconds (ms),0,0.0,57,False,DATE_CORRUPTED
-lat1_LS_mean,Latency (L),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat1_LS_median,Latency (L),float64,Milliseconds (ms),0,0.0,149,False,VERIFIED_NUMERIC
-lat1_LS_min,Latency (L),float64,Milliseconds (ms),0,0.0,76,False,VERIFIED_NUMERIC
-lat1_LS_skew,Latency (L),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat1_LS_std,Latency (L),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat1_RL_cv,Latency (L),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat1_RL_iqr,Latency (L),float64,Milliseconds (ms),0,0.0,250,False,VERIFIED_NUMERIC
-lat1_RL_kurt,Latency (L),float64,Milliseconds (ms),0,0.0,395,False,DATE_CORRUPTED
-lat1_RL_max,Latency (L),float64,Milliseconds (ms),0,0.0,50,False,DATE_CORRUPTED
-lat1_RL_mean,Latency (L),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat1_RL_median,Latency (L),float64,Milliseconds (ms),0,0.0,164,False,VERIFIED_NUMERIC
-lat1_RL_min,Latency (L),float64,Milliseconds (ms),0,0.0,54,False,VERIFIED_NUMERIC
-lat1_RL_skew,Latency (L),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat1_RL_std,Latency (L),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat1_RR_cv,Latency (L),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat1_RR_iqr,Latency (L),float64,Milliseconds (ms),0,0.0,240,False,VERIFIED_NUMERIC
-lat1_RR_kurt,Latency (L),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat1_RR_max,Latency (L),float64,Milliseconds (ms),0,0.0,46,False,DATE_CORRUPTED
-lat1_RR_mean,Latency (L),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat1_RR_median,Latency (L),float64,Milliseconds (ms),0,0.0,142,False,VERIFIED_NUMERIC
-lat1_RR_min,Latency (L),float64,Milliseconds (ms),0,0.0,51,False,VERIFIED_NUMERIC
-lat1_RR_skew,Latency (L),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat1_RR_std,Latency (L),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat1_RS_cv,Latency (L),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat1_RS_iqr,Latency (L),float64,Milliseconds (ms),0,0.0,266,False,VERIFIED_NUMERIC
-lat1_RS_kurt,Latency (L),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat1_RS_max,Latency (L),float64,Milliseconds (ms),0,0.0,55,False,DATE_CORRUPTED
-lat1_RS_mean,Latency (L),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat1_RS_median,Latency (L),float64,Milliseconds (ms),0,0.0,153,False,VERIFIED_NUMERIC
-lat1_RS_min,Latency (L),float64,Milliseconds (ms),0,0.0,90,False,VERIFIED_NUMERIC
-lat1_RS_skew,Latency (L),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat1_RS_std,Latency (L),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat1_SL_cv,Latency (L),float64,Milliseconds (ms),1,0.25,394,False,CONTAINS_NULLS
-lat1_SL_iqr,Latency (L),float64,Milliseconds (ms),1,0.25,257,False,CONTAINS_NULLS
-lat1_SL_kurt,Latency (L),float64,Milliseconds (ms),1,0.25,394,False,CONTAINS_NULLS
-lat1_SL_max,Latency (L),float64,Milliseconds (ms),1,0.25,42,False,DATE_CORRUPTED;CONTAINS_NULLS
-lat1_SL_mean,Latency (L),float64,Milliseconds (ms),1,0.25,394,False,CONTAINS_NULLS
-lat1_SL_median,Latency (L),float64,Milliseconds (ms),1,0.25,172,False,CONTAINS_NULLS
-lat1_SL_min,Latency (L),float64,Milliseconds (ms),1,0.25,62,False,CONTAINS_NULLS
-lat1_SL_skew,Latency (L),float64,Milliseconds (ms),1,0.25,394,False,CONTAINS_NULLS
-lat1_SL_std,Latency (L),float64,Milliseconds (ms),1,0.25,394,False,CONTAINS_NULLS
-lat1_SR_cv,Latency (L),float64,Milliseconds (ms),1,0.25,394,False,CONTAINS_NULLS
-lat1_SR_iqr,Latency (L),float64,Milliseconds (ms),1,0.25,274,False,CONTAINS_NULLS
-lat1_SR_kurt,Latency (L),float64,Milliseconds (ms),2,0.51,393,False,CONTAINS_NULLS
-lat1_SR_max,Latency (L),float64,Milliseconds (ms),1,0.25,47,False,DATE_CORRUPTED;CONTAINS_NULLS
-lat1_SR_mean,Latency (L),float64,Milliseconds (ms),1,0.25,394,False,CONTAINS_NULLS
-lat1_SR_median,Latency (L),float64,Milliseconds (ms),1,0.25,191,False,CONTAINS_NULLS
-lat1_SR_min,Latency (L),float64,Milliseconds (ms),1,0.25,75,False,CONTAINS_NULLS
-lat1_SR_skew,Latency (L),float64,Milliseconds (ms),2,0.51,393,False,CONTAINS_NULLS
-lat1_SR_std,Latency (L),float64,Milliseconds (ms),1,0.25,394,False,CONTAINS_NULLS
-lat1_SS_cv,Latency (L),float64,Milliseconds (ms),21,5.32,374,False,CONTAINS_NULLS
-lat1_SS_iqr,Latency (L),float64,Milliseconds (ms),21,5.32,305,False,CONTAINS_NULLS
-lat1_SS_kurt,Latency (L),float64,Milliseconds (ms),22,5.57,369,False,CONTAINS_NULLS
-lat1_SS_max,Latency (L),float64,Milliseconds (ms),21,5.32,119,False,DATE_CORRUPTED;CONTAINS_NULLS
-lat1_SS_mean,Latency (L),float64,Milliseconds (ms),21,5.32,374,False,CONTAINS_NULLS
-lat1_SS_median,Latency (L),float64,Milliseconds (ms),21,5.32,157,False,CONTAINS_NULLS
-lat1_SS_min,Latency (L),float64,Milliseconds (ms),21,5.32,84,False,CONTAINS_NULLS
-lat1_SS_skew,Latency (L),float64,Milliseconds (ms),22,5.57,371,False,CONTAINS_NULLS
-lat1_SS_std,Latency (L),float64,Milliseconds (ms),21,5.32,374,False,CONTAINS_NULLS
-lat1_cv,Latency (L),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat1_iqr,Latency (L),float64,Milliseconds (ms),0,0.0,213,False,VERIFIED_NUMERIC
-lat1_kurt,Latency (L),float64,Milliseconds (ms),0,0.0,395,False,DATE_CORRUPTED
-lat1_max,Latency (L),float64,Milliseconds (ms),0,0.0,59,False,DATE_CORRUPTED
-lat1_mean,Latency (L),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat1_median,Latency (L),float64,Milliseconds (ms),0,0.0,145,False,VERIFIED_NUMERIC
-lat1_min,Latency (L),float64,Milliseconds (ms),0,0.0,31,False,VERIFIED_NUMERIC
-lat1_skew,Latency (L),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat1_std,Latency (L),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat2_LL_cv,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat2_LL_iqr,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,200,False,VERIFIED_NUMERIC
-lat2_LL_kurt,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,395,False,DATE_CORRUPTED
-lat2_LL_max,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,115,False,DATE_CORRUPTED
-lat2_LL_mean,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat2_LL_median,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,104,False,VERIFIED_NUMERIC
-lat2_LL_min,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,27,False,VERIFIED_NUMERIC
-lat2_LL_skew,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat2_LL_std,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat2_LR_cv,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat2_LR_iqr,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,231,False,VERIFIED_NUMERIC
-lat2_LR_kurt,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,395,False,DATE_CORRUPTED
-lat2_LR_max,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,107,False,DATE_CORRUPTED
-lat2_LR_mean,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat2_LR_median,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,134,False,VERIFIED_NUMERIC
-lat2_LR_min,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,34,False,VERIFIED_NUMERIC
-lat2_LR_skew,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat2_LR_std,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat2_LS_cv,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat2_LS_iqr,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,242,False,VERIFIED_NUMERIC
-lat2_LS_kurt,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat2_LS_max,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,109,False,DATE_CORRUPTED
-lat2_LS_mean,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat2_LS_median,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,134,False,VERIFIED_NUMERIC
-lat2_LS_min,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,40,False,VERIFIED_NUMERIC
-lat2_LS_skew,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat2_LS_std,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat2_RL_cv,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat2_RL_iqr,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,224,False,VERIFIED_NUMERIC
-lat2_RL_kurt,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,395,False,DATE_CORRUPTED
-lat2_RL_max,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,105,False,DATE_CORRUPTED
-lat2_RL_mean,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat2_RL_median,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,138,False,VERIFIED_NUMERIC
-lat2_RL_min,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,42,False,VERIFIED_NUMERIC
-lat2_RL_skew,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat2_RL_std,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat2_RR_cv,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat2_RR_iqr,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,236,False,VERIFIED_NUMERIC
-lat2_RR_kurt,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,395,False,DATE_CORRUPTED
-lat2_RR_max,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,124,False,DATE_CORRUPTED
-lat2_RR_mean,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat2_RR_median,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,118,False,VERIFIED_NUMERIC
-lat2_RR_min,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,32,False,VERIFIED_NUMERIC
-lat2_RR_skew,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat2_RR_std,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat2_RS_cv,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat2_RS_iqr,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,245,False,VERIFIED_NUMERIC
-lat2_RS_kurt,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat2_RS_max,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,105,False,DATE_CORRUPTED
-lat2_RS_mean,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat2_RS_median,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,142,False,VERIFIED_NUMERIC
-lat2_RS_min,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,64,False,VERIFIED_NUMERIC
-lat2_RS_skew,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat2_RS_std,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat2_SL_cv,Flight Time / Rollover (FT),float64,Milliseconds (ms),1,0.25,394,False,CONTAINS_NULLS
-lat2_SL_iqr,Flight Time / Rollover (FT),float64,Milliseconds (ms),1,0.25,239,False,CONTAINS_NULLS
-lat2_SL_kurt,Flight Time / Rollover (FT),float64,Milliseconds (ms),1,0.25,394,False,CONTAINS_NULLS
-lat2_SL_max,Flight Time / Rollover (FT),float64,Milliseconds (ms),1,0.25,85,False,DATE_CORRUPTED;CONTAINS_NULLS
-lat2_SL_mean,Flight Time / Rollover (FT),float64,Milliseconds (ms),1,0.25,394,False,CONTAINS_NULLS
-lat2_SL_median,Flight Time / Rollover (FT),float64,Milliseconds (ms),1,0.25,138,False,CONTAINS_NULLS
-lat2_SL_min,Flight Time / Rollover (FT),float64,Milliseconds (ms),1,0.25,53,False,CONTAINS_NULLS
-lat2_SL_skew,Flight Time / Rollover (FT),float64,Milliseconds (ms),1,0.25,394,False,CONTAINS_NULLS
-lat2_SL_std,Flight Time / Rollover (FT),float64,Milliseconds (ms),1,0.25,394,False,CONTAINS_NULLS
-lat2_SR_cv,Flight Time / Rollover (FT),float64,Milliseconds (ms),1,0.25,394,False,CONTAINS_NULLS
-lat2_SR_iqr,Flight Time / Rollover (FT),float64,Milliseconds (ms),1,0.25,269,False,CONTAINS_NULLS
-lat2_SR_kurt,Flight Time / Rollover (FT),float64,Milliseconds (ms),1,0.25,393,False,CONTAINS_NULLS
-lat2_SR_max,Flight Time / Rollover (FT),float64,Milliseconds (ms),1,0.25,86,False,DATE_CORRUPTED;CONTAINS_NULLS
-lat2_SR_mean,Flight Time / Rollover (FT),float64,Milliseconds (ms),1,0.25,394,False,CONTAINS_NULLS
-lat2_SR_median,Flight Time / Rollover (FT),float64,Milliseconds (ms),1,0.25,148,False,CONTAINS_NULLS
-lat2_SR_min,Flight Time / Rollover (FT),float64,Milliseconds (ms),1,0.25,75,False,CONTAINS_NULLS
-lat2_SR_skew,Flight Time / Rollover (FT),float64,Milliseconds (ms),1,0.25,394,False,CONTAINS_NULLS
-lat2_SR_std,Flight Time / Rollover (FT),float64,Milliseconds (ms),1,0.25,394,False,CONTAINS_NULLS
-lat2_SS_cv,Flight Time / Rollover (FT),float64,Milliseconds (ms),21,5.32,374,False,CONTAINS_NULLS
-lat2_SS_iqr,Flight Time / Rollover (FT),float64,Milliseconds (ms),21,5.32,282,False,CONTAINS_NULLS
-lat2_SS_kurt,Flight Time / Rollover (FT),float64,Milliseconds (ms),21,5.32,368,False,CONTAINS_NULLS
-lat2_SS_max,Flight Time / Rollover (FT),float64,Milliseconds (ms),21,5.32,158,False,DATE_CORRUPTED;CONTAINS_NULLS
-lat2_SS_mean,Flight Time / Rollover (FT),float64,Milliseconds (ms),21,5.32,374,False,CONTAINS_NULLS
-lat2_SS_median,Flight Time / Rollover (FT),float64,Milliseconds (ms),21,5.32,128,False,CONTAINS_NULLS
-lat2_SS_min,Flight Time / Rollover (FT),float64,Milliseconds (ms),21,5.32,55,False,CONTAINS_NULLS
-lat2_SS_skew,Flight Time / Rollover (FT),float64,Milliseconds (ms),21,5.32,373,False,CONTAINS_NULLS
-lat2_SS_std,Flight Time / Rollover (FT),float64,Milliseconds (ms),21,5.32,374,False,CONTAINS_NULLS
-lat2_cv,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat2_iqr,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,195,False,VERIFIED_NUMERIC
-lat2_kurt,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,395,False,DATE_CORRUPTED
-lat2_max,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,130,False,DATE_CORRUPTED
-lat2_mean,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat2_median,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,116,False,VERIFIED_NUMERIC
-lat2_min,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,20,False,DESTROYED_ROLLOVER
-lat2_skew,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
-lat2_std,Flight Time / Rollover (FT),float64,Milliseconds (ms),0,0.0,395,False,VERIFIED_NUMERIC
+dir_freq_LL,Transition Dynamics,float64,Milliseconds / Proportion,0,0.0,403,False,VERIFIED_NUMERIC
+dir_freq_LR,Transition Dynamics,float64,Milliseconds / Proportion,0,0.0,368,False,VERIFIED_NUMERIC
+dir_freq_LS,Transition Dynamics,float64,Milliseconds / Proportion,0,0.0,367,False,VERIFIED_NUMERIC
+dir_freq_RL,Transition Dynamics,float64,Milliseconds / Proportion,0,0.0,362,False,VERIFIED_NUMERIC
+dir_freq_RR,Transition Dynamics,float64,Milliseconds / Proportion,0,0.0,363,False,VERIFIED_NUMERIC
+dir_freq_RS,Transition Dynamics,float64,Milliseconds / Proportion,0,0.0,318,False,VERIFIED_NUMERIC
+dir_freq_SL,Transition Dynamics,float64,Milliseconds / Proportion,0,0.0,358,False,VERIFIED_NUMERIC
+dir_freq_SR,Transition Dynamics,float64,Milliseconds / Proportion,0,0.0,312,False,VERIFIED_NUMERIC
+dir_freq_SS,Transition Dynamics,float64,Milliseconds / Proportion,0,0.0,212,False,VERIFIED_NUMERIC
+flight_cv,Typing Predictor,float64,Unspecified,15,3.14,446,False,CONTAINS_NULLS
+flight_iqr,Typing Predictor,float64,Unspecified,0,0.0,199,False,VERIFIED_NUMERIC
+flight_iqr_LL,Transition Dynamics,float64,Milliseconds / Proportion,3,0.63,212,False,CONTAINS_NULLS
+flight_iqr_LR,Transition Dynamics,float64,Milliseconds / Proportion,6,1.26,238,False,CONTAINS_NULLS
+flight_iqr_LS,Transition Dynamics,float64,Milliseconds / Proportion,18,3.77,233,False,CONTAINS_NULLS
+flight_iqr_RL,Transition Dynamics,float64,Milliseconds / Proportion,10,2.1,237,False,CONTAINS_NULLS
+flight_iqr_RR,Transition Dynamics,float64,Milliseconds / Proportion,5,1.05,238,False,CONTAINS_NULLS
+flight_iqr_RS,Transition Dynamics,float64,Milliseconds / Proportion,21,4.4,223,False,CONTAINS_NULLS
+flight_iqr_SL,Transition Dynamics,float64,Milliseconds / Proportion,28,5.87,242,False,CONTAINS_NULLS
+flight_iqr_SR,Transition Dynamics,float64,Milliseconds / Proportion,32,6.71,259,False,CONTAINS_NULLS
+flight_iqr_SS,Transition Dynamics,float64,Milliseconds / Proportion,64,13.42,249,False,CONTAINS_NULLS
+flight_kurt,Typing Predictor,float64,Unspecified,17,3.56,458,False,CONTAINS_NULLS
+flight_max,Typing Predictor,float64,Unspecified,0,0.0,82,False,VERIFIED_NUMERIC
+flight_mean,Typing Predictor,float64,Unspecified,0,0.0,477,False,VERIFIED_NUMERIC
+flight_mean_LL,Transition Dynamics,float64,Milliseconds / Proportion,3,0.63,472,False,CONTAINS_NULLS
+flight_mean_LR,Transition Dynamics,float64,Milliseconds / Proportion,6,1.26,471,False,CONTAINS_NULLS
+flight_mean_LS,Transition Dynamics,float64,Milliseconds / Proportion,18,3.77,459,False,CONTAINS_NULLS
+flight_mean_RL,Transition Dynamics,float64,Milliseconds / Proportion,10,2.1,467,False,CONTAINS_NULLS
+flight_mean_RR,Transition Dynamics,float64,Milliseconds / Proportion,5,1.05,472,False,CONTAINS_NULLS
+flight_mean_RS,Transition Dynamics,float64,Milliseconds / Proportion,21,4.4,454,False,CONTAINS_NULLS
+flight_mean_SL,Transition Dynamics,float64,Milliseconds / Proportion,28,5.87,449,False,CONTAINS_NULLS
+flight_mean_SR,Transition Dynamics,float64,Milliseconds / Proportion,32,6.71,445,False,CONTAINS_NULLS
+flight_mean_SS,Transition Dynamics,float64,Milliseconds / Proportion,64,13.42,409,False,CONTAINS_NULLS
+flight_median,Typing Predictor,float64,Unspecified,0,0.0,136,False,VERIFIED_NUMERIC
+flight_median_LL,Transition Dynamics,float64,Milliseconds / Proportion,3,0.63,127,False,CONTAINS_NULLS
+flight_median_LR,Transition Dynamics,float64,Milliseconds / Proportion,6,1.26,163,False,CONTAINS_NULLS
+flight_median_LS,Transition Dynamics,float64,Milliseconds / Proportion,18,3.77,162,False,CONTAINS_NULLS
+flight_median_RL,Transition Dynamics,float64,Milliseconds / Proportion,10,2.1,171,False,CONTAINS_NULLS
+flight_median_RR,Transition Dynamics,float64,Milliseconds / Proportion,5,1.05,144,False,CONTAINS_NULLS
+flight_median_RS,Transition Dynamics,float64,Milliseconds / Proportion,21,4.4,165,False,CONTAINS_NULLS
+flight_median_SL,Transition Dynamics,float64,Milliseconds / Proportion,28,5.87,162,False,CONTAINS_NULLS
+flight_median_SR,Transition Dynamics,float64,Milliseconds / Proportion,32,6.71,169,False,CONTAINS_NULLS
+flight_median_SS,Transition Dynamics,float64,Milliseconds / Proportion,64,13.42,145,False,CONTAINS_NULLS
+flight_min,Typing Predictor,float64,Unspecified,0,0.0,43,False,VERIFIED_NUMERIC
+flight_q25,Typing Predictor,float64,Unspecified,0,0.0,128,False,VERIFIED_NUMERIC
+flight_q75,Typing Predictor,float64,Unspecified,0,0.0,164,False,VERIFIED_NUMERIC
+flight_skew,Typing Predictor,float64,Unspecified,16,3.35,453,False,CONTAINS_NULLS
+flight_std,Typing Predictor,float64,Unspecified,0,0.0,475,False,VERIFIED_NUMERIC
+flight_std_LL,Transition Dynamics,float64,Milliseconds / Proportion,3,0.63,469,False,CONTAINS_NULLS
+flight_std_LR,Transition Dynamics,float64,Milliseconds / Proportion,6,1.26,465,False,CONTAINS_NULLS
+flight_std_LS,Transition Dynamics,float64,Milliseconds / Proportion,18,3.77,451,False,CONTAINS_NULLS
+flight_std_RL,Transition Dynamics,float64,Milliseconds / Proportion,10,2.1,463,False,CONTAINS_NULLS
+flight_std_RR,Transition Dynamics,float64,Milliseconds / Proportion,5,1.05,468,False,CONTAINS_NULLS
+flight_std_RS,Transition Dynamics,float64,Milliseconds / Proportion,21,4.4,443,False,CONTAINS_NULLS
+flight_std_SL,Transition Dynamics,float64,Milliseconds / Proportion,28,5.87,446,False,CONTAINS_NULLS
+flight_std_SR,Transition Dynamics,float64,Milliseconds / Proportion,32,6.71,434,False,CONTAINS_NULLS
+flight_std_SS,Transition Dynamics,float64,Milliseconds / Proportion,64,13.42,394,False,CONTAINS_NULLS
+hand_freq_L,Hand Dynamics,float64,"Proportion [0, 1]",0,0.0,398,False,VERIFIED_NUMERIC
+hand_freq_R,Hand Dynamics,float64,"Proportion [0, 1]",0,0.0,388,False,VERIFIED_NUMERIC
+hand_freq_S,Hand Dynamics,float64,"Proportion [0, 1]",0,0.0,397,False,VERIFIED_NUMERIC
+hold_cv,Hold Time (HT),float64,Milliseconds (ms),15,3.14,437,False,CONTAINS_NULLS
+hold_iqr,Hold Time (HT),float64,Milliseconds (ms),0,0.0,111,False,VERIFIED_NUMERIC
+hold_iqr_LL,Hold Time (HT),float64,Milliseconds (ms),3,0.63,125,False,CONTAINS_NULLS
+hold_iqr_LR,Hold Time (HT),float64,Milliseconds (ms),6,1.26,149,False,CONTAINS_NULLS
+hold_iqr_LS,Hold Time (HT),float64,Milliseconds (ms),18,3.77,140,False,CONTAINS_NULLS
+hold_iqr_RL,Hold Time (HT),float64,Milliseconds (ms),10,2.1,144,False,CONTAINS_NULLS
+hold_iqr_RR,Hold Time (HT),float64,Milliseconds (ms),5,1.05,134,False,CONTAINS_NULLS
+hold_iqr_RS,Hold Time (HT),float64,Milliseconds (ms),21,4.4,138,False,CONTAINS_NULLS
+hold_iqr_SL,Hold Time (HT),float64,Milliseconds (ms),28,5.87,177,False,CONTAINS_NULLS
+hold_iqr_SR,Hold Time (HT),float64,Milliseconds (ms),32,6.71,143,False,CONTAINS_NULLS
+hold_iqr_SS,Hold Time (HT),float64,Milliseconds (ms),64,13.42,170,False,CONTAINS_NULLS
+hold_kurt,Hold Time (HT),float64,Milliseconds (ms),17,3.56,460,False,CONTAINS_NULLS
+hold_max,Hold Time (HT),float64,Milliseconds (ms),0,0.0,291,False,VERIFIED_NUMERIC
+hold_mean,Hold Time (HT),float64,Milliseconds (ms),0,0.0,477,False,VERIFIED_NUMERIC
+hold_mean_LL,Hold Time (HT),float64,Milliseconds (ms),3,0.63,474,False,CONTAINS_NULLS
+hold_mean_LR,Hold Time (HT),float64,Milliseconds (ms),6,1.26,469,False,CONTAINS_NULLS
+hold_mean_LS,Hold Time (HT),float64,Milliseconds (ms),18,3.77,456,False,CONTAINS_NULLS
+hold_mean_RL,Hold Time (HT),float64,Milliseconds (ms),10,2.1,467,False,CONTAINS_NULLS
+hold_mean_RR,Hold Time (HT),float64,Milliseconds (ms),5,1.05,471,False,CONTAINS_NULLS
+hold_mean_RS,Hold Time (HT),float64,Milliseconds (ms),21,4.4,452,False,CONTAINS_NULLS
+hold_mean_SL,Hold Time (HT),float64,Milliseconds (ms),28,5.87,447,False,CONTAINS_NULLS
+hold_mean_SR,Hold Time (HT),float64,Milliseconds (ms),32,6.71,444,False,CONTAINS_NULLS
+hold_mean_SS,Hold Time (HT),float64,Milliseconds (ms),64,13.42,407,False,CONTAINS_NULLS
+hold_median,Hold Time (HT),float64,Milliseconds (ms),0,0.0,78,False,VERIFIED_NUMERIC
+hold_median_LL,Hold Time (HT),float64,Milliseconds (ms),3,0.63,80,False,CONTAINS_NULLS
+hold_median_LR,Hold Time (HT),float64,Milliseconds (ms),6,1.26,79,False,CONTAINS_NULLS
+hold_median_LS,Hold Time (HT),float64,Milliseconds (ms),18,3.77,91,False,CONTAINS_NULLS
+hold_median_RL,Hold Time (HT),float64,Milliseconds (ms),10,2.1,80,False,CONTAINS_NULLS
+hold_median_RR,Hold Time (HT),float64,Milliseconds (ms),5,1.05,85,False,CONTAINS_NULLS
+hold_median_RS,Hold Time (HT),float64,Milliseconds (ms),21,4.4,102,False,CONTAINS_NULLS
+hold_median_SL,Hold Time (HT),float64,Milliseconds (ms),28,5.87,77,False,CONTAINS_NULLS
+hold_median_SR,Hold Time (HT),float64,Milliseconds (ms),32,6.71,79,False,CONTAINS_NULLS
+hold_median_SS,Hold Time (HT),float64,Milliseconds (ms),64,13.42,101,False,CONTAINS_NULLS
+hold_min,Hold Time (HT),float64,Milliseconds (ms),0,0.0,49,False,VERIFIED_NUMERIC
+hold_q25,Hold Time (HT),float64,Milliseconds (ms),0,0.0,70,False,VERIFIED_NUMERIC
+hold_q75,Hold Time (HT),float64,Milliseconds (ms),0,0.0,98,False,VERIFIED_NUMERIC
+hold_skew,Hold Time (HT),float64,Milliseconds (ms),16,3.35,458,False,CONTAINS_NULLS
+hold_std,Hold Time (HT),float64,Milliseconds (ms),0,0.0,475,False,VERIFIED_NUMERIC
+hold_std_LL,Hold Time (HT),float64,Milliseconds (ms),3,0.63,468,False,CONTAINS_NULLS
+hold_std_LR,Hold Time (HT),float64,Milliseconds (ms),6,1.26,465,False,CONTAINS_NULLS
+hold_std_LS,Hold Time (HT),float64,Milliseconds (ms),18,3.77,450,False,CONTAINS_NULLS
+hold_std_RL,Hold Time (HT),float64,Milliseconds (ms),10,2.1,464,False,CONTAINS_NULLS
+hold_std_RR,Hold Time (HT),float64,Milliseconds (ms),5,1.05,467,False,CONTAINS_NULLS
+hold_std_RS,Hold Time (HT),float64,Milliseconds (ms),21,4.4,444,False,CONTAINS_NULLS
+hold_std_SL,Hold Time (HT),float64,Milliseconds (ms),28,5.87,444,False,CONTAINS_NULLS
+hold_std_SR,Hold Time (HT),float64,Milliseconds (ms),32,6.71,434,False,CONTAINS_NULLS
+hold_std_SS,Hold Time (HT),float64,Milliseconds (ms),64,13.42,394,False,CONTAINS_NULLS
+latency_cv,Typing Predictor,float64,Unspecified,15,3.14,444,False,CONTAINS_NULLS
+latency_iqr,Typing Predictor,float64,Unspecified,0,0.0,194,False,VERIFIED_NUMERIC
+latency_iqr_LL,Transition Dynamics,float64,Milliseconds / Proportion,3,0.63,213,False,CONTAINS_NULLS
+latency_iqr_LR,Transition Dynamics,float64,Milliseconds / Proportion,6,1.26,243,False,CONTAINS_NULLS
+latency_iqr_LS,Transition Dynamics,float64,Milliseconds / Proportion,18,3.77,230,False,CONTAINS_NULLS
+latency_iqr_RL,Transition Dynamics,float64,Milliseconds / Proportion,10,2.1,243,False,CONTAINS_NULLS
+latency_iqr_RR,Transition Dynamics,float64,Milliseconds / Proportion,5,1.05,227,False,CONTAINS_NULLS
+latency_iqr_RS,Transition Dynamics,float64,Milliseconds / Proportion,21,4.4,223,False,CONTAINS_NULLS
+latency_iqr_SL,Transition Dynamics,float64,Milliseconds / Proportion,28,5.87,250,False,CONTAINS_NULLS
+latency_iqr_SR,Transition Dynamics,float64,Milliseconds / Proportion,32,6.71,246,False,CONTAINS_NULLS
+latency_iqr_SS,Transition Dynamics,float64,Milliseconds / Proportion,64,13.42,271,False,CONTAINS_NULLS
+latency_kurt,Typing Predictor,float64,Unspecified,17,3.56,454,False,CONTAINS_NULLS
+latency_max,Typing Predictor,float64,Unspecified,0,0.0,41,False,VERIFIED_NUMERIC
+latency_mean,Typing Predictor,float64,Unspecified,0,0.0,477,False,VERIFIED_NUMERIC
+latency_mean_LL,Transition Dynamics,float64,Milliseconds / Proportion,3,0.63,472,False,CONTAINS_NULLS
+latency_mean_LR,Transition Dynamics,float64,Milliseconds / Proportion,6,1.26,471,False,CONTAINS_NULLS
+latency_mean_LS,Transition Dynamics,float64,Milliseconds / Proportion,18,3.77,459,False,CONTAINS_NULLS
+latency_mean_RL,Transition Dynamics,float64,Milliseconds / Proportion,10,2.1,467,False,CONTAINS_NULLS
+latency_mean_RR,Transition Dynamics,float64,Milliseconds / Proportion,5,1.05,472,False,CONTAINS_NULLS
+latency_mean_RS,Transition Dynamics,float64,Milliseconds / Proportion,21,4.4,454,False,CONTAINS_NULLS
+latency_mean_SL,Transition Dynamics,float64,Milliseconds / Proportion,28,5.87,449,False,CONTAINS_NULLS
+latency_mean_SR,Transition Dynamics,float64,Milliseconds / Proportion,32,6.71,444,False,CONTAINS_NULLS
+latency_mean_SS,Transition Dynamics,float64,Milliseconds / Proportion,64,13.42,410,False,CONTAINS_NULLS
+latency_median,Typing Predictor,float64,Unspecified,0,0.0,163,False,VERIFIED_NUMERIC
+latency_median_LL,Transition Dynamics,float64,Milliseconds / Proportion,3,0.63,172,False,CONTAINS_NULLS
+latency_median_LR,Transition Dynamics,float64,Milliseconds / Proportion,6,1.26,186,False,CONTAINS_NULLS
+latency_median_LS,Transition Dynamics,float64,Milliseconds / Proportion,18,3.77,175,False,CONTAINS_NULLS
+latency_median_RL,Transition Dynamics,float64,Milliseconds / Proportion,10,2.1,199,False,CONTAINS_NULLS
+latency_median_RR,Transition Dynamics,float64,Milliseconds / Proportion,5,1.05,174,False,CONTAINS_NULLS
+latency_median_RS,Transition Dynamics,float64,Milliseconds / Proportion,21,4.4,177,False,CONTAINS_NULLS
+latency_median_SL,Transition Dynamics,float64,Milliseconds / Proportion,28,5.87,197,False,CONTAINS_NULLS
+latency_median_SR,Transition Dynamics,float64,Milliseconds / Proportion,32,6.71,201,False,CONTAINS_NULLS
+latency_median_SS,Transition Dynamics,float64,Milliseconds / Proportion,64,13.42,179,False,CONTAINS_NULLS
+latency_min,Typing Predictor,float64,Unspecified,0,0.0,73,False,VERIFIED_NUMERIC
+latency_q25,Typing Predictor,float64,Unspecified,0,0.0,141,False,VERIFIED_NUMERIC
+latency_q75,Typing Predictor,float64,Unspecified,0,0.0,193,False,VERIFIED_NUMERIC
+latency_skew,Typing Predictor,float64,Unspecified,16,3.35,458,False,CONTAINS_NULLS
+latency_std,Typing Predictor,float64,Unspecified,0,0.0,475,False,VERIFIED_NUMERIC
+latency_std_LL,Transition Dynamics,float64,Milliseconds / Proportion,3,0.63,469,False,CONTAINS_NULLS
+latency_std_LR,Transition Dynamics,float64,Milliseconds / Proportion,6,1.26,465,False,CONTAINS_NULLS
+latency_std_LS,Transition Dynamics,float64,Milliseconds / Proportion,18,3.77,451,False,CONTAINS_NULLS
+latency_std_RL,Transition Dynamics,float64,Milliseconds / Proportion,10,2.1,464,False,CONTAINS_NULLS
+latency_std_RR,Transition Dynamics,float64,Milliseconds / Proportion,5,1.05,468,False,CONTAINS_NULLS
+latency_std_RS,Transition Dynamics,float64,Milliseconds / Proportion,21,4.4,444,False,CONTAINS_NULLS
+latency_std_SL,Transition Dynamics,float64,Milliseconds / Proportion,28,5.87,446,False,CONTAINS_NULLS
+latency_std_SR,Transition Dynamics,float64,Milliseconds / Proportion,32,6.71,434,False,CONTAINS_NULLS
+latency_std_SS,Transition Dynamics,float64,Milliseconds / Proportion,64,13.42,393,False,CONTAINS_NULLS
