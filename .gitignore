@@ -17,6 +17,7 @@ env/
 data/interim/*
 !data/interim/.gitkeep
 *.parquet
+data/processed/splits/
 
 # Temporary directories
 staging/
