@@ -1,0 +1,20 @@
+metric,phase1_baseline,phase2_value,difference,explanation
+total_unique_participants,791,791,0,754 with logs + 37 with metadata only
+participants_with_logs,754,754,0,Confirmed via monthly log file prefixes
+participants_with_metadata,646,646,0,Confirmed via User_*.txt files
+participants_in_both_sources,609,609,0,Intersection of log keys and metadata keys
+log_participants_without_metadata,145,145,0,Participants present in logs but missing metadata
+metadata_participants_without_logs,37,37,0,Participants present in metadata but missing logs
+eligible_participants,606,597,-9,"Participants with logs, metadata, valid label, and usable records"
+joint_participant_excluded:DRQKANH3Q0,0,1,1,Participant in both logs and metadata but excluded: NO_USABLE_RECORDS (unspecified Parkinsons field in User_DRQKANH3Q0.txt)
+joint_participant_excluded:EIFBUG1US3,0,1,1,Participant in both logs and metadata but excluded: NO_USABLE_RECORDS (unspecified Parkinsons field in User_EIFBUG1US3.txt)
+joint_participant_excluded:FXD2HCNIPJ,0,1,1,Participant in both logs and metadata but excluded: MISSING_LABEL (unspecified Parkinsons field in User_FXD2HCNIPJ.txt)
+joint_participant_excluded:H9PJHE5OTR,0,1,1,Participant in both logs and metadata but excluded: NO_USABLE_RECORDS (unspecified Parkinsons field in User_H9PJHE5OTR.txt)
+joint_participant_excluded:HQW5YE0PUK,0,1,1,Participant in both logs and metadata but excluded: NO_USABLE_RECORDS (unspecified Parkinsons field in User_HQW5YE0PUK.txt)
+joint_participant_excluded:JORVLMISQA,0,1,1,Participant in both logs and metadata but excluded: NO_USABLE_RECORDS (unspecified Parkinsons field in User_JORVLMISQA.txt)
+joint_participant_excluded:KM4FAMJWJ3,0,1,1,Participant in both logs and metadata but excluded: NO_USABLE_RECORDS (unspecified Parkinsons field in User_KM4FAMJWJ3.txt)
+joint_participant_excluded:OPACZPPV1Q,0,1,1,Participant in both logs and metadata but excluded: NO_USABLE_RECORDS (unspecified Parkinsons field in User_OPACZPPV1Q.txt)
+joint_participant_excluded:PDKF0GKH59,0,1,1,Participant in both logs and metadata but excluded: NO_USABLE_RECORDS (unspecified Parkinsons field in User_PDKF0GKH59.txt)
+joint_participant_excluded:PVADT62JUM,0,1,1,Participant in both logs and metadata but excluded: MISSING_LABEL (unspecified Parkinsons field in User_PVADT62JUM.txt)
+joint_participant_excluded:QIHPY6RIK3,0,1,1,Participant in both logs and metadata but excluded: MISSING_LABEL (unspecified Parkinsons field in User_QIHPY6RIK3.txt)
+joint_participant_excluded:TOC5D4KGNO,0,1,1,Participant in both logs and metadata but excluded: NO_USABLE_RECORDS (unspecified Parkinsons field in User_TOC5D4KGNO.txt)
