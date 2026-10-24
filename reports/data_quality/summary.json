@@ -1,0 +1,15 @@
+{
+  "files_scanned": 2165,
+  "total_lines": 40524886,
+  "n_accepted": 39745054,
+  "n_warned": 314625,
+  "n_quarantined": 465207,
+  "n_blank": 0,
+  "unique_log_participants": 754,
+  "unique_metadata_participants": 646,
+  "participants_in_both_sources": 609,
+  "eligible_cohort_count": 597,
+  "raw_hashes_verified": true,
+  "git_commit": "26aaba43072724e474117be253a3c929180503f1",
+  "git_dirty": false
+}

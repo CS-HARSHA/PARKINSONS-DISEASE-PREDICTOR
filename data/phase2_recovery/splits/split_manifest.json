@@ -1,0 +1,30 @@
+{
+  "split_version": "1.0",
+  "dataset_identity": "Tappy Extended Keystroke Dataset, Mendeley Data Version 3",
+  "dataset_doi": "10.17632/z39mhdsynx.3",
+  "eligible_cohort_count": 597,
+  "split_ratio": "80/20 Stratified Participant-Disjoint",
+  "random_state": 42,
+  "training_partition": {
+    "count": 477,
+    "percentage": 79.9,
+    "pd_count": 345,
+    "control_count": 132,
+    "prevalence_pct": 72.33,
+    "file_path": "data\\phase2_recovery\\splits\\train_ids.csv"
+  },
+  "test_partition": {
+    "count": 120,
+    "percentage": 20.1,
+    "pd_count": 87,
+    "control_count": 33,
+    "prevalence_pct": 72.5,
+    "file_path": "data\\phase2_recovery\\splits\\test_ids.csv"
+  },
+  "validation_checks": {
+    "disjoint": true,
+    "exact_union_coverage": true,
+    "stratification_preserved": true,
+    "deterministic": true
+  }
+}

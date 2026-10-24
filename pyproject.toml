@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "parkinsons-disease-predictor"
+version = "0.2.0"
+description = "Parkinson's Disease Keystroke Log Pipeline (Phase 2)"
+authors = [{ name = "Data Pipeline Team" }]
+requires-python = ">=3.11"
+dependencies = [
+    "pandas>=2.3.0,<4.0.0",
+    "numpy>=1.26.0",
+    "pyarrow>=14.0.0",
+    "nbformat>=5.9.0",
+]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+addopts = "-ra -q"
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]

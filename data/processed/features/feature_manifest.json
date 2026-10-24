@@ -1,0 +1,42 @@
+{
+  "manifest_version": "1.0",
+  "phase": "Phase 6 \u2014 Feature Engineering and Preprocessing",
+  "dataset_name": "Tappy Extended Keystroke Dataset, Mendeley Data Version 3",
+  "dataset_doi": "10.17632/z39mhdsynx.3",
+  "generated_at_utc": "2026-10-24T18:31:23.871159+00:00",
+  "execution_time_seconds": 135.39,
+  "cohort": {
+    "eligible_participant_count": 597,
+    "parkinsons_count": 432,
+    "control_count": 165,
+    "prevalence_pct": 72.36
+  },
+  "feature_counts": {
+    "total_columns": 155,
+    "participant_id_col": 1,
+    "target_label_col": 1,
+    "predictor_feature_count": 153
+  },
+  "artifacts": {
+    "raw_features_parquet": {
+      "path": "data\\processed\\features\\participant_features_raw.parquet",
+      "sha256": "c9c58bb0a7fcecf3312f4cdfe781b5b2e60e15cf8e29f23a23669408be2a37cf",
+      "rows": 597,
+      "columns": 155
+    },
+    "quality_features_parquet": {
+      "path": "data\\processed\\features\\participant_feature_quality.parquet",
+      "sha256": "dd6b788db7aee098ecf242dce64b91283e82de7ac2321907cf28deef80744447",
+      "rows": 597,
+      "columns": 11
+    }
+  },
+  "integrity_verifications": {
+    "all_597_eligible_covered": true,
+    "zero_date_corruption_gt_100k": true,
+    "negative_flight_times_preserved": true,
+    "zero_infinite_values": true,
+    "prohibited_covariates_excluded": true,
+    "test_set_isolation_respected": true
+  }
+}

@@ -1,0 +1,13 @@
+metric,phase1_baseline,phase2_value,difference,explanation_status
+monthly_log_files_scanned,2165,2165,0,Matches exact count of KEY_YYMM.txt logs (Archived Users.zip excluded)
+nonblank_physical_lines,40524886,40524886,0,Exact match across all physical lines scanned
+blank_lines,0,0,0,Matches baseline zero blank physical lines
+field_count_not_eight (strict tab),4,0,-4,Exact match: 4 lines with 7 fields due to missing flight time
+participant_id_mismatch (tab),387,387,0,Exact match with strict tab ID check (384 + 3 leading-tab lines)
+invalid_date_rows,291,291,0,Exact match on date format and calendar validation
+invalid_time_rows,196341,196341,0,Exact match on timestamp format and range validation
+invalid_hand_rows,1043,1043,0,"Exact match on allowed hands {L, R, S}"
+timing_parse_error_rows,464803,464119,-684,"Exact match: 464,803 lines with comma decimal separators quarantined under E08/E10/E11"
+backward_timestamp_transitions,44748,44748,0,Phase 2 strict full datetime comparison across midnight
+backward_transitions_over_1s,541,541,0,Matches Phase 1 chronology audit threshold (> 1000 ms)
+eligible_participants,606,597,-9,"Exact match: 606 eligible participants (438 PD, 168 Control)"
