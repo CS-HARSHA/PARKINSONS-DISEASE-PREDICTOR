@@ -1,0 +1,29 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Testing & coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Generated interim data and Parquet artifacts (Rule 12 & Exit criterion 11)
+data/interim/*
+!data/interim/.gitkeep
+*.parquet
+
+# Temporary directories
+staging/
+staging_*/
+scratch/
+
+# OS artifacts
+Thumbs.db
+Desktop.ini
+.DS_Store
