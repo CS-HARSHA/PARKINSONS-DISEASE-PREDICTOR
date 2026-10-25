@@ -49,12 +49,12 @@ def mock_valid_eda_environment(tmp_path: Path):
 
     # Add Latency features
     for stat in ["mean", "std", "median", "iqr", "skew", "kurt"]:
-        feature_dict[f"lat1_{stat}"] = rng.normal(350.0, 50.0, size=n_total)
+        feature_dict[f"latency_{stat}"] = rng.normal(350.0, 50.0, size=n_total)
 
-    # Add Flight Time features (including negative rollover)
-    feature_dict["lat2_min"] = rng.uniform(-150.0, -10.0, size=n_total)
+    # Add Flight Time features using the observed nonnegative interval range.
+    feature_dict["flight_min"] = rng.uniform(1.0, 150.0, size=n_total)
     for stat in ["mean", "std", "median", "iqr"]:
-        feature_dict[f"lat2_{stat}"] = rng.normal(40.0, 20.0, size=n_total)
+        feature_dict[f"flight_{stat}"] = rng.normal(40.0, 20.0, size=n_total)
 
     # Fill remaining features to reach exactly 153 predictors
     current_count = len(feature_dict) - 2
@@ -169,7 +169,7 @@ def test_evaluate_readiness_gate_detects_date_corruption(mock_valid_eda_environm
     env = mock_valid_eda_environment
     df_corrupted = env["df_clean"].copy()
     # Inject date corruption
-    df_corrupted.loc[0, "lat1_mean"] = 170522.0
+    df_corrupted.loc[0, "latency_mean"] = 170522.0
 
     corrupted_path = tmp_path / "date_corrupted.parquet"
     df_corrupted.to_parquet(corrupted_path, index=False)
@@ -229,8 +229,13 @@ def test_dynamic_feature_computation(mock_valid_eda_environment):
     # Inventory
     inv = build_feature_inventory(df_train)
     assert len(inv) == 153
+    flight_min_row = inv.loc[inv["feature_name"] == "flight_min"]
+    assert len(flight_min_row) == 1
+    flight_min_text = " ".join(flight_min_row.iloc[0].astype(str).tolist())
+    assert "Flight Time (FT)" in flight_min_text
+    assert "DESTROYED_ROLLOVER" not in flight_min_text
     assert set(inv["family"].unique()).issubset({
-        "Hold Time (HT)", "Latency (L)", "Flight Time / Rollover (FT)",
+        "Hold Time (HT)", "Latency (L)", "Flight Time (FT)",
         "Hand Dynamics", "Transition Dynamics", "Typing Predictor",
     })
 

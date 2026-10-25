@@ -32,8 +32,7 @@
 - **Metadata Participants without Logs:** 37
 - **Eligible Cohort (Usable Logs + Valid Labels):** **597**
 
-The difference between the 609 participants in both sources and the 606 eligible participants is accounted for by exactly 3 participants with blank metadata labels:
-`FXD2HCNIPJ`, `PVADT62JUM`, and `QIHPY6RIK3`.
+Among the 609 participants present in both sources, 3 have blank metadata labels: `FXD2HCNIPJ`, `PVADT62JUM`, and `QIHPY6RIK3`. The other 606 participants have valid labels (438 `True`, 168 `False`). Of those 606, 9 have no usable accepted or accepted-with-warning records (6 `True`, 3 `False`), leaving the eligible cohort of 597 participants (432 `True`, 165 `False`).
 
 ---
 

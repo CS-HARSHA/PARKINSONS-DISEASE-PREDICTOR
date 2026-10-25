@@ -306,11 +306,11 @@ def build_feature_inventory(df_train: pd.DataFrame) -> pd.DataFrame:
         if col.startswith("hold_"):
             family = "Hold Time (HT)"
             unit = "Milliseconds (ms)"
-        elif col.startswith("lat1_"):
+        elif col.startswith("latency_"):
             family = "Latency (L)"
             unit = "Milliseconds (ms)"
-        elif col.startswith("lat2_"):
-            family = "Flight Time / Rollover (FT)"
+        elif col.startswith("flight_"):
+            family = "Flight Time (FT)"
             unit = "Milliseconds (ms)"
         elif col.startswith("hand_") or col.startswith("prop_"):
             family = "Hand Dynamics"
@@ -326,8 +326,6 @@ def build_feature_inventory(df_train: pd.DataFrame) -> pd.DataFrame:
         issues = []
         if pd.api.types.is_numeric_dtype(s) and (s > 100000).any():
             issues.append("DATE_CORRUPTED")
-        if col.startswith("lat2_min") and s.dropna().min() >= 0:
-            issues.append("DESTROYED_ROLLOVER")
         if n_null > 0:
             issues.append("CONTAINS_NULLS")
         status = ";".join(issues) if issues else "VERIFIED_NUMERIC"
@@ -413,7 +411,7 @@ def compute_descriptive_statistics(df_train: pd.DataFrame) -> pd.DataFrame:
 
 
 def screen_outliers_and_anomalies(df_train: pd.DataFrame) -> pd.DataFrame:
-    """Categorize and screen candidate anomalies dynamically into statistical, semantic, and date-corrupted."""
+    """Screen statistical extremes and date-corruption artifacts."""
     predictor_cols = [c for c in df_train.columns if c not in ["participant_id", "parkinsons_label"]]
     screening_rows = []
 
@@ -434,12 +432,6 @@ def screen_outliers_and_anomalies(df_train: pd.DataFrame) -> pd.DataFrame:
             threshold = "value > 100,000"
             rec = "Must re-aggregate from Phase 2 interim Parquet in Phase 6."
             n_flagged = n_gt_100k
-        elif col.startswith("lat2_min") and s.min() >= 0:
-            anomaly_class = "SEMANTIC_VIOLATION_DESTROYED_ROLLOVER"
-            severity = "HIGH"
-            threshold = "min >= 0 ms (negative rollover missing)"
-            rec = "Must preserve negative flight times in Phase 6."
-            n_flagged = len(s)
         elif n_extreme_iqr > 0:
             anomaly_class = "STATISTICAL_EXTREME_VALUE"
             severity = "LOW_EXPLORATORY"
@@ -509,8 +501,8 @@ def compute_training_class_summary(df_train: pd.DataFrame) -> pd.DataFrame:
     """Compute distribution comparisons between PD and Control on representative training features."""
     rep_features = [
         "hold_mean", "hold_median", "hold_std", "hold_iqr", "hold_skew", "hold_cv",
-        "lat1_mean", "lat1_median", "lat1_std", "lat1_iqr",
-        "lat2_mean", "lat2_median", "lat2_std",
+        "latency_mean", "latency_median", "latency_std", "latency_iqr",
+        "flight_mean", "flight_median", "flight_std",
     ]
     rep_features = [f for f in rep_features if f in df_train.columns]
 
@@ -597,20 +589,20 @@ def generate_eda_figures(df_train: pd.DataFrame, output_dir: Path | str) -> list
 
     # 3. Date Corruption Screening / Extreme Value Figure
     fig, axes = plt.subplots(1, 2, figsize=(12, 5))
-    if "lat1_max" in df_plot.columns and "hold_mean" in df_plot.columns:
-        sns.scatterplot(data=df_plot, x="hold_mean", y="lat1_max", hue="Group", palette=palette, alpha=0.8, ax=axes[0])
+    if "latency_max" in df_plot.columns and "hold_mean" in df_plot.columns:
+        sns.scatterplot(data=df_plot, x="hold_mean", y="latency_max", hue="Group", palette=palette, alpha=0.8, ax=axes[0])
         axes[0].axhline(100000, color="red", linestyle="--", label="Date Threshold (100k)")
-        axes[0].set_title("lat1_max vs hold_mean (Screening for >100,000)", fontsize=11, fontweight="bold")
+        axes[0].set_title("Maximum Latency vs Mean Hold Time", fontsize=11, fontweight="bold")
         axes[0].set_xlabel("Hold Time Mean (ms)", fontsize=10)
-        axes[0].set_ylabel("lat1_max (ms)", fontsize=10)
+        axes[0].set_ylabel("Maximum Latency (ms)", fontsize=10)
         axes[0].legend(loc="upper left")
 
-    if "lat2_max" in df_plot.columns and "hold_mean" in df_plot.columns:
-        sns.scatterplot(data=df_plot, x="hold_mean", y="lat2_max", hue="Group", palette=palette, alpha=0.8, ax=axes[1])
+    if "flight_max" in df_plot.columns and "hold_mean" in df_plot.columns:
+        sns.scatterplot(data=df_plot, x="hold_mean", y="flight_max", hue="Group", palette=palette, alpha=0.8, ax=axes[1])
         axes[1].axhline(100000, color="red", linestyle="--", label="Date Threshold (100k)")
-        axes[1].set_title("lat2_max vs hold_mean (Screening for >100,000)", fontsize=11, fontweight="bold")
+        axes[1].set_title("Maximum Flight Time vs Mean Hold Time", fontsize=11, fontweight="bold")
         axes[1].set_xlabel("Hold Time Mean (ms)", fontsize=10)
-        axes[1].set_ylabel("lat2_max (ms)", fontsize=10)
+        axes[1].set_ylabel("Maximum Flight Time (ms)", fontsize=10)
         axes[1].legend(loc="upper left")
     plt.tight_layout()
     fig3_path = out_dir / "fig3_date_corruption_evidence.png"
@@ -618,19 +610,25 @@ def generate_eda_figures(df_train: pd.DataFrame, output_dir: Path | str) -> list
     plt.close()
     saved_figures.append(str(fig3_path))
 
-    # 4. Flight Time / Rollover Distribution
+    # 4. Participant-Level Minimum Flight Time Distribution
     fig, ax = plt.subplots(figsize=(8, 5))
-    if "lat2_min" in df_plot.columns:
-        sns.histplot(df_plot["lat2_min"].dropna(), bins=30, color="#4575b4", ax=ax)
-        ax.axvline(0, color="black", linestyle="--", label="Zero Flight Time Line")
-        ax.set_title("Distribution of lat2_min: Flight Time Minimums", fontsize=12, fontweight="bold")
-        ax.set_xlabel("lat2_min (ms) [Negative indicates natural key rollover]", fontsize=10)
-        ax.set_ylabel("Participant Count", fontsize=10)
-        ax.legend()
+    if "flight_min" in df_plot.columns:
+        flight_min_values = df_plot["flight_min"].dropna()
+        if not flight_min_values.empty:
+            sns.histplot(flight_min_values, bins=30, color="#4575b4", ax=ax)
+            ax.set_title(
+                f"Participant-Level Minimum Flight Time (n={len(flight_min_values)})",
+                fontsize=12,
+                fontweight="bold",
+            )
+            ax.set_xlabel("Minimum Flight Time (ms)", fontsize=10)
+            ax.set_ylabel("Participant Count", fontsize=10)
+        else:
+            ax.text(0.5, 0.5, "No non-missing flight_min values", ha="center", va="center")
     else:
-        ax.text(0.5, 0.5, "lat2_min not present in training features", ha="center", va="center")
+        ax.text(0.5, 0.5, "flight_min not present in training features", ha="center", va="center")
     plt.tight_layout()
-    fig4_path = out_dir / "fig4_destroyed_rollover_flight_time.png"
+    fig4_path = out_dir / "fig4_flight_time_minimum_distribution.png"
     plt.savefig(fig4_path, dpi=200)
     plt.close()
     saved_figures.append(str(fig4_path))
@@ -638,7 +636,7 @@ def generate_eda_figures(df_train: pd.DataFrame, output_dir: Path | str) -> list
     # 5. Correlation Heatmap on Representative Core Features
     core_features = [
         "hold_mean", "hold_std", "hold_median", "hold_iqr", "hold_cv", "hold_skew",
-        "lat1_mean", "lat1_median", "lat1_std", "lat1_iqr",
+        "latency_mean", "latency_median", "latency_std", "latency_iqr",
     ]
     core_features = [f for f in core_features if f in df_plot.columns]
     fig, ax = plt.subplots(figsize=(10, 8))

@@ -6,7 +6,7 @@
 **Document Type:** Focused Narrative Literature Review  
 **Date:** 24 October 2026
 **Primary Dataset:** Tappy Extended Keystroke Dataset, Mendeley Data, Version 3 (DOI: `10.17632/z39mhdsynx.3`)
-**Target Evaluation Document:** [`docs/experimental_protocol.md`](file:///c:/Users/prane/.vscode/extensions/ms-vscode.cmake-tools-1.21.36/ml%20project/PARKINSONS-DISEASE-PREDICTOR/docs/experimental_protocol.md)
+**Target Evaluation Document:** [`docs/experimental_protocol.md`](experimental_protocol.md)
 
 ---
 
@@ -16,7 +16,7 @@ Parkinson’s disease (PD) is a progressive neurodegenerative disorder caused pr
 
 Over the past decade, digital health research has investigated passive, unobtrusive monitoring methods that capture motor symptoms during everyday activities using ubiquitous consumer devices. Among digital phenotyping modalities, **keystroke dynamics**—the micro-temporal analysis of timing intervals between keyboard keypress and release events during routine, natural computer interaction—has emerged as a compelling digital biomarker candidate.
 
-This literature review establishes the scientific, clinical, and computational foundations for developing a reproducible, leakage-controlled machine learning framework to evaluate whether computer keyboard interactions can discriminate individuals diagnosed with Parkinson’s disease from control participants. It specifically contextualizes the **Tappy Extended Keystroke Dataset (Mendeley Data Version 3)**, critically analyzes prior computational keystroke literature, identifies recurring methodological vulnerabilities (such as record-level data leakage and unverified cohort filtering), and directly informs the prospective experimental protocol defined in [`docs/experimental_protocol.md`](file:///c:/Users/prane/.vscode/extensions/ms-vscode.cmake-tools-1.21.36/ml%20project/PARKINSONS-DISEASE-PREDICTOR/docs/experimental_protocol.md).
+This literature review establishes the scientific, clinical, and computational foundations for developing a reproducible, leakage-controlled machine learning framework to evaluate whether computer keyboard interactions can discriminate individuals diagnosed with Parkinson’s disease from control participants. It specifically contextualizes the **Tappy Extended Keystroke Dataset (Mendeley Data Version 3)**, critically analyzes prior computational keystroke literature, identifies recurring methodological vulnerabilities (such as record-level data leakage and unverified cohort filtering), and directly informs the prospective experimental protocol defined in [`docs/experimental_protocol.md`](experimental_protocol.md).
 
 ---
 
@@ -118,14 +118,14 @@ Phase 2 completed an exhaustive, byte-level profile of the repository’s raw da
 - **Lossless Quarantine Retention:** 465,207 physical lines were quarantined due to validation failures. The dominant failure mode (464,803 lines) stems from European Windows locale comma-decimal formatting (e.g., `0066,4` rather than `0066.4`), which violates the plain decimal specification and is losslessly preserved in `data/interim/quarantine/*.parquet`.
 
 ### 5.3 Verified Participant Inventory & Cohort Reconciliation
-Phase 2 verified the participant hierarchy key-by-key in [`reports/data_quality/cohort_reconciliation.csv`](file:///c:/Users/prane/.vscode/extensions/ms-vscode.cmake-tools-1.21.36/ml%20project/PARKINSONS-DISEASE-PREDICTOR/reports/data_quality/cohort_reconciliation.csv):
+Phase 2 verified the participant hierarchy key-by-key in [`reports/data_quality/cohort_reconciliation.csv`](../reports/data_quality/cohort_reconciliation.csv):
 - **Unique Participant Keys across Logs:** 754 participants.
 - **Unique Participant Keys in Metadata:** 646 participants.
 - **Joint Intersection:** 609 participants present in both logs and metadata.
 - **Logs Only (No Metadata):** 145 participants.
 - **Metadata Only (No Logs):** 37 participants.
 - **Valid Diagnosis Labels:** 606 participants. Exactly 3 joint participants (`FXD2HCNIPJ`, `PVADT62JUM`, `QIHPY6RIK3`) have metadata files where all fields, including `Parkinsons:`, are blank (`MISSING_LABEL`).
-- **Eligible Cohort with Usable Records:** **597 participants** (432 Parkinson's Disease [True, 72.36%], 165 Healthy Controls [False, 27.64%]). Exactly 9 labeled participants have zero accepted records in `data/interim/accepted/` (2 with 0-byte log files: `DRQKANH3Q0`, `JORVLMISQA`; 7 whose monthly logs contain 100% comma-decimal quarantined lines: `EIFBUG1US3`, `H9PJHE5OTR`, `HQW5YE0PUK`, `KM4FAMJWJ3`, `OPACZPPV1Q`, `PDKF0GKH59`, `TOC5D4KGNO`).
+- **Eligible Cohort with Usable Records:** **597 participants** (432 Parkinson's Disease [True, 72.36%], 165 Healthy Controls [False, 27.64%]). Exactly 9 labeled participants have zero accepted records in `data/phase2_recovery/interim/accepted/` (2 with 0-byte log files: `DRQKANH3Q0`, `JORVLMISQA`; 7 whose monthly logs contain 100% comma-decimal quarantined lines: `EIFBUG1US3`, `H9PJHE5OTR`, `HQW5YE0PUK`, `KM4FAMJWJ3`, `OPACZPPV1Q`, `PDKF0GKH59`, `TOC5D4KGNO`).
 
 This empirical accounting explains why older derived tables in the repository (such as `features_clean.csv` containing 495 rows) cannot be accepted as authoritative without Phase 4 reconciliation.
 
@@ -245,7 +245,7 @@ Based on the synthesis of neurophysiological mechanisms, keystroke dynamics, and
 
 ## 12. Implications for the Future Experimental Protocol
 
-The findings of this literature review directly govern the design of the prospective experimental protocol in [`docs/experimental_protocol.md`](file:///c:/Users/prane/.vscode/extensions/ms-vscode.cmake-tools-1.21.36/ml%20project/PARKINSONS-DISEASE-PREDICTOR/docs/experimental_protocol.md):
+The findings of this literature review directly govern the design of the prospective experimental protocol in [`docs/experimental_protocol.md`](experimental_protocol.md):
 1. **Prediction Unit:** Fixed at exactly **one observation per participant**. All sessions from an individual must be aggregated into a single feature vector prior to participant-level partitioning.
 2. **Metric Selection:** Accuracy alone is rejected due to class imbalance; **balanced accuracy** is predeclared as the primary model-selection metric, complemented by ROC-AUC, PR-AUC, sensitivity, specificity, and F1-score.
 3. **Frozen Candidate Model Space:** Exploration is restricted to well-characterized models (Dummy, Logistic Regression, Linear SVM, RBF SVM, KNN, Random Forest); complex neural networks and large automated searches are deferred to avoid small-sample overfitting.

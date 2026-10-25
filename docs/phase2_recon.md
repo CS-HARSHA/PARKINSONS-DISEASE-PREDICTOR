@@ -84,13 +84,13 @@ Recovered from `Reports/local_audit/audit_summary.json`, `audit_count_reconcilia
 
 ## 5. Key Reconciliations Established
 
-### 5.1 Reconciliation of 609 Participants in Both Sources vs 606 Eligible Participants
+### 5.1 Reconciliation of 609 Joint Participants, 606 with Valid Labels, and 597 Eligible Participants
 Inspecting `Reports/local_audit/participant_audit.csv` and the actual metadata files revealed that exactly **3 participants** present in both logs and metadata have empty/unspecified metadata records:
 1. `FXD2HCNIPJ` (`data/raw/participant_metadata/User_FXD2HCNIPJ.txt`)
 2. `PVADT62JUM` (`data/raw/participant_metadata/User_PVADT62JUM.txt`)
 3. `QIHPY6RIK3` (`data/raw/participant_metadata/User_QIHPY6RIK3.txt`)
 
-Each of these three files contains field labels with blank values (e.g. `Parkinsons: ` with no boolean). Consequently, `label_status` is `MISSING_LABEL`, reducing the 609 joint participants to 606 eligible participants with valid labels (`438 True + 168 False = 606`).
+Each of these three files contains field labels with blank values (e.g. `Parkinsons: ` with no boolean). The three missing labels leave 606 joint participants with valid labels (`438 True + 168 False = 606`). Of those, 9 have no usable accepted or accepted-with-warning records (6 `True`, 3 `False`). Therefore, the final eligible cohort contains 597 participants (`432 True + 165 False = 597`).
 
 ### 5.2 Discrepancy Between Legacy Malformed Rows (7 vs 4) and ID Mismatches (384 vs 387)
 Phase 1 detailed audit resolved this exact discrepancy:

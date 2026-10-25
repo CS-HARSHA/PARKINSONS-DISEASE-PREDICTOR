@@ -7,7 +7,7 @@
 **Protocol Version:** 1.0 (Phase 3 Deliverable)  
 **Date:** 24 October 2026
 **Primary Dataset:** Tappy Extended Keystroke Dataset, Mendeley Data, Version 3 (DOI: `10.17632/z39mhdsynx.3`)
-**Companion Review Document:** [`docs/literature_review.md`](file:///c:/Users/prane/.vscode/extensions/ms-vscode.cmake-tools-1.21.36/ml%20project/PARKINSONS-DISEASE-PREDICTOR/docs/literature_review.md)
+**Companion Review Document:** [`docs/literature_review.md`](literature_review.md)
 **Status:** Frozen Prospective Protocol (Governing Phases 4–10)
 
 ---
@@ -51,7 +51,7 @@ The sole primary data source for this study is:
 This dataset must be designated unambiguously as **Tappy Extended Dataset (Mendeley Data V3)** throughout all subsequent project phases. It must not be confused with, nor substituted by, the historical 2016–2017 PhysioNet Tappy release, which contained an earlier and smaller cohort.
 
 ### 3.2 Target Label Provenance `[Verified]`
-Participant diagnosis labels originate from 646 individual text files located in `data/raw/participant_metadata/User_KEY.txt`. In Phase 2, these files were parsed and validated into [`data/interim/participant_labels.csv`](file:///c:/Users/prane/.vscode/extensions/ms-vscode.cmake-tools-1.21.36/ml%20project/PARKINSONS-DISEASE-PREDICTOR/data/interim/participant_labels.csv):
+Participant diagnosis labels originate from 646 individual text files located in `data/raw/participant_metadata/User_KEY.txt`. In Phase 2, these files were parsed and validated into [`data/phase2_recovery/interim/participant_labels.csv`](../data/phase2_recovery/interim/participant_labels.csv):
 - `Parkinsons: True` (case-insensitive) $\to$ Class `1` (Parkinson's Disease / PD).
 - `Parkinsons: False` (case-insensitive) $\to$ Class `0` (Control / Healthy Comparison).
 - Missing, blank, or ambiguous entries $\to$ `MISSING_LABEL` / `INVALID_LABEL` (excluded from eligible cohort).
@@ -61,7 +61,7 @@ Participant diagnosis labels originate from 646 individual text files located in
 ## 4. Verified Phase 2 Cohort Baseline and Known Limitations
 
 ### 4.1 Empirical Cohort Verification `[Verified]`
-Phase 2 completed an exhaustive, byte-level scan and reconciliation of all raw files, recorded in [`reports/data_quality/summary.json`](file:///c:/Users/prane/.vscode/extensions/ms-vscode.cmake-tools-1.21.36/ml%20project/PARKINSONS-DISEASE-PREDICTOR/reports/data_quality/summary.json) and [`reports/data_quality/cohort_reconciliation.csv`](file:///c:/Users/prane/.vscode/extensions/ms-vscode.cmake-tools-1.21.36/ml%20project/PARKINSONS-DISEASE-PREDICTOR/reports/data_quality/cohort_reconciliation.csv), establishing the definitive participant hierarchy:
+Phase 2 completed an exhaustive, byte-level scan and reconciliation of all raw files, recorded in [`reports/data_quality/summary.json`](../reports/data_quality/summary.json) and [`reports/data_quality/cohort_reconciliation.csv`](../reports/data_quality/cohort_reconciliation.csv), establishing the definitive participant hierarchy:
 
 ```text
 Total Unique Participant Keys: 791
@@ -77,7 +77,7 @@ Total Unique Participant Keys: 791
 
 ### 4.2 Cohort Discrepancy Accounting `[Verified]`
 - **The 609 to 606 Labeled Gap:** Exactly 3 participants present in both logs and metadata have empty metadata fields where `Parkinsons:` is blank (`FXD2HCNIPJ`, `PVADT62JUM`, `QIHPY6RIK3`).
-- **The 606 to 597 Usable Gap:** Exactly 9 labeled participants have zero usable records in `data/interim/accepted/`:
+- **The 606 to 597 Usable Gap:** Exactly 9 labeled participants have zero usable records in `data/phase2_recovery/interim/accepted/`:
   - 2 participants have 0-byte log files: `DRQKANH3Q0` (`DRQKANH3Q0_1709.txt`), `JORVLMISQA` (`JORVLMISQA_1709.txt`).
   - 7 participants contributed monthly logs containing 100% comma-decimal formatted numbers (e.g., `0066,4` from European Windows locales) which failed plain-decimal validation and were quarantined: `EIFBUG1US3`, `H9PJHE5OTR`, `HQW5YE0PUK`, `KM4FAMJWJ3`, `OPACZPPV1Q`, `PDKF0GKH59`, `TOC5D4KGNO`.
 - **The Legacy 495-Row Table (`features_clean.csv`):** An earlier exploratory table in the repository contained 495 rows. This legacy artifact omitted 102 validly labeled, usable participants without documentation. As mandated by Phase 2 rules, this 495-row table must not be trusted or utilized for modeling.
@@ -106,14 +106,14 @@ Total Unique Participant Keys: 791
 
 ## 6. Inclusion and Exclusion Criteria
 
-To prevent selection bias and maintain complete transparency, participant inclusion in Phase 4 must follow deterministic criteria recorded in [`data/interim/participant_inventory.csv`](file:///c:/Users/prane/.vscode/extensions/ms-vscode.cmake-tools-1.21.36/ml%20project/PARKINSONS-DISEASE-PREDICTOR/data/interim/participant_inventory.csv):
+To prevent selection bias and maintain complete transparency, participant inclusion in Phase 4 must follow deterministic criteria recorded in [`data/phase2_recovery/interim/participant_inventory.csv`](../data/phase2_recovery/interim/participant_inventory.csv):
 
 ### 6.1 Inclusion Criteria `[Proposed]`
 A participant is included in the primary modeling cohort if and only if **all** of the following conditions are satisfied:
 1. `in_logs == True`: At least one monthly keystroke log file (`KEY_YYMM.txt`) exists in `data/raw/keystroke_logs/`.
 2. `in_metadata == True`: A corresponding metadata file (`User_KEY.txt`) exists in `data/raw/participant_metadata/`.
 3. `label_status == 'VALID_LABEL'`: The metadata file contains an unambiguous boolean target label (`Parkinsons: True` or `Parkinsons: False`).
-4. `(n_accepted + n_warned) > 0`: The participant contributes at least one valid, accepted keystroke record in `data/interim/accepted/KEY_YYMM.parquet`.
+4. `(n_accepted + n_warned) > 0`: The participant contributes at least one valid, accepted keystroke record in `data/phase2_recovery/interim/accepted/KEY_YYMM.parquet`.
 
 Participants meeting all four criteria are assigned primary status `cohort_status = 'ELIGIBLE'`.
 
@@ -133,14 +133,14 @@ Participants are excluded from the primary predictive model if any of the follow
 Raw Keystroke Logs (2,165 files, 40.5M lines) ──► Phase 2 Parser & Cleaner
                                                            │
                                                            ▼
-                             data/interim/accepted/KEY_YYMM.parquet (39.7M clean + 314k warned)
+                             data/phase2_recovery/interim/accepted/KEY_YYMM.parquet (39.7M clean + 314k warned)
                                                            │
                                                            ▼ [Phase 4 / 6]
                              Feature Aggregation: Group by user_key
                              (Calculate Mean, Median, Std, IQR, Skew, Kurt for HT, L, FT)
                                                            │
                                                            ▼ [Phase 4]
-                             Join with data/interim/participant_labels.csv
+                             Join with data/phase2_recovery/interim/participant_labels.csv
                                                            │
                                                            ▼
                              Master Modelling Table (1 row per eligible participant, N=597)
@@ -161,7 +161,7 @@ Raw Keystroke Logs (2,165 files, 40.5M lines) ──► Phase 2 Parser & Cleaner
 Feature engineering in Phase 6 will generate aggregate predictors organized into three distinct families:
 1. **Hold-Time Family ($HT$):** Mean, standard deviation, median, interquartile range ($IQR$), coefficient of variation ($CV$), skewness, and kurtosis of key hold duration across all valid keystrokes. Reflects localized digital bradykinesia and finger release hesitation.
 2. **Latency Family ($L$):** Mean, standard deviation, median, $IQR$, $CV$, skewness, and kurtosis of key-down to key-down intervals. Reflects inter-key transition delays and motor hesitation.
-3. **Flight-Time Family ($FT$):** Mean, standard deviation, median, $IQR$, negative flight fraction (rollover percentage), and skewness of key-up to key-down intervals. Reflects motor coordination, bimanual transitions, and chording dynamics.
+3. **Flight-Time Family ($FT$):** Mean, standard deviation, median, $IQR$, negative flight fraction (rollover percentage), and skewness of key-up to key-down intervals. This is a candidate family; accepted Phase 2 records contained zero negative event-level flight times, so rollover preservation was not empirically demonstrated and a negative-flight fraction is not part of the current 153-feature Phase 6 schema.
 4. **Transition Directional Metrics:** Directional breakdown of timing across unimanual (`LL`, `RR`) versus bimanual (`LR`, `RL`, `LS`, `SL`, `RS`, `SR`, `SS`) transitions.
 
 ### 8.2 Strict Exclusion Allowlist `[Verified]`
@@ -175,11 +175,12 @@ The following columns must be strictly excluded from the feature matrix $X$:
 
 ## 9. Train/Test Split and Cross-Validation Strategy
 
-### 9.1 Outer Holdout Test Partition `[Proposed]`
+### 9.1 Outer Holdout Test Partition `[Verified]`
 - **Splitting Strategy:** Stratified, participant-disjoint random split.
 - **Split Ratio:** **80% Training Set, 20% Held-Out Test Set**.
 - **Stratification Variable:** Target label (`label`: PD vs. Control).
 - **Random Seed:** Strictly fixed at `random_state = 42`.
+- **Observed partition counts:** 477 training participants (345 PD, 132 control) and 120 held-out test participants (87 PD, 33 control); zero overlap and exact union coverage of all 597 eligible participants.
 - **Integrity Rule:** The 20% holdout test set is immediately quarantined upon generation in Phase 4. It must never be consulted during feature selection, model exploration, hyperparameter tuning, or threshold selection.
 
 ### 9.2 Inner Validation Scheme `[Proposed]`
@@ -345,12 +346,12 @@ Every key decision in this protocol is classified as **`[Verified]`** (empirical
 | **Clinical Covariates** | `[Verified]` | Quarantined from primary feature matrix | Prevents target and metadata leakage. | Only in separate secondary analysis. |
 | **Target Label Definition** | `[Verified]` | Binary: `Parkinsons: True` $\to 1$, `False` $\to 0$ | Verified against Phase 2 metadata extraction. | Never. Documented dataset label. |
 | **Eligible Cohort Base** | `[Verified]` | 597 eligible participants (432 PD, 165 Control) | Reconciled in Phase 2 `cohort_reconciliation.csv`. | If Phase 4 imposes a minimum typing count. |
-| **Train/Test Partitioning** | `[Proposed]` | Stratified 80% Training / 20% Held-Out Test | Balances statistical power in training with test evaluation size. | If class counts become too sparse in test set. |
+| **Train/Test Partitioning** | `[Verified]` | Fixed stratified 80/20 participant-disjoint split: 477 train (345 PD, 132 control), 120 holdout (87 PD, 33 control); random_state=42. | Exact coverage of all 597 eligible participants, with no overlap; counts and membership validated against recovery split files. | Amend only through a formally documented protocol revision before any holdout evaluation. |
 | **Validation Scheme** | `[Proposed]` | 5-Fold Stratified Cross-Validation on Training | Standard unbiased validation design within training set. | If inner fold test counts fall below 10 controls. |
-| **Random State** | `[Proposed]` | Fixed seed: `random_state = 42` | Ensures deterministic, reproducible partition assignment. | Never. Essential for reproducibility. |
+| **Random State** | `[Verified]` | Fixed seed: `random_state = 42` for the authoritative split. | Recorded in the split procedure and validated split artifacts. | Do not change the frozen split without a documented protocol amendment. |
 | **Primary Metric** | `[Proposed]` | Balanced Accuracy | Penalizes majority-class bias on imbalanced classes. | Must be formally amended prior to Phase 7. |
 | **Candidate Models** | `[Proposed]` | Dummy, LogReg, Linear SVM, RBF SVM, KNN, Random Forest | Diverse linear, non-linear, and ensemble models with established inductive bias. | If baseline models fail to train cleanly. |
-| **Minimum Keystroke Count** | `[Unresolved]` | Evaluated in Phase 4 (provisional candidate: $\ge 500$ keystrokes) | Ensures statistical validity of skewness and kurtosis estimates. | Decided and logged in Phase 4 before splitting. |
+| **Minimum Keystroke Count** | `[Verified]` | No additional minimum-key threshold is applied to the primary cohort; retain all 597 Phase 2-eligible participants. Reject the legacy `MIN_KEYSTROKES = 1000` exclusion rule. | The verified Phase 6 feature table covers the full eligible cohort and its frozen split. Avoid undocumented cohort truncation. | Any threshold-based sensitivity analysis must be secondary, predeclared, and must not redefine the primary cohort or frozen holdout. |
 | **Feature Transformation Choice** | `[Unresolved]` | RobustScaler vs. StandardScaler | Resolved in Phase 6 based on feature skewness and outlier frequency. | Selected inside cross-validation in Phase 6. |
 
 ---

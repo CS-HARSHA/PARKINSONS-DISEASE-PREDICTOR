@@ -6,7 +6,7 @@
 
 ---
 
-## 1. Accepted Typing Records (`data/interim/accepted/KEY_YYMM.parquet`)
+## 1. Accepted Typing Records (`data/phase2_recovery/interim/accepted/KEY_YYMM.parquet`)
 
 Contains all validated keystroke records that satisfied the canonical record contract, including clean records and records flagged with non-fatal review warnings.
 

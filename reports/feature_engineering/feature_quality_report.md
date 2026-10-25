@@ -1,3 +1,5 @@
+> **Historical / superseded Phase 6 report.** This copy has an unsupported statement that negative flight times were observed and preserved. Use the regenerated report at `reports/phase6_recovery/feature_engineering/`.
+
 # Feature Engineering Quality & Integrity Report
 
 **Project:** Parkinson’s Disease Prediction Using Typing Characteristics  

@@ -86,7 +86,7 @@ def generate_notebook():
                 "outputs": [],
                 "source": [
                     "# Canonical feature table path\n",
-                    "canonical_features_path = repo_root / 'data' / 'processed' / 'features' / 'participant_features_raw.parquet'\n",
+                    "canonical_features_path = repo_root / 'data' / 'phase6_recovery' / 'features' / 'participant_features_raw.parquet'\n",
                     "\n",
                     "# Authoritative split paths\n",
                     "train_ids_path = repo_root / 'data' / 'phase2_recovery' / 'splits' / 'train_ids.csv'\n",
@@ -171,8 +171,8 @@ def generate_notebook():
                     "## 3. Feature Inventory & Taxonomy\n",
                     "We catalog the typing predictors across their physiological and temporal families:\n",
                     "- Key Hold Time statistics (`hold_*`)\n",
-                    "- Latency / Inter-key interval statistics (`lat1_*`)\n",
-                    "- Flight Time statistics (`lat2_*`)\n",
+                    "- Latency / Inter-key interval statistics (`latency_*`)\n",
+                    "- Flight Time statistics (`flight_*`)\n",
                     "- Hand Dynamics proportions (`hand_*` / `prop_*`)\n",
                     "- Directional and Transition statistics (`*_LL`, `*_RR`, `*_LR`, etc.)",
                 ],
@@ -231,7 +231,7 @@ def generate_notebook():
                 "outputs": [],
                 "source": [
                     "desc_df = compute_descriptive_statistics(df_train)\n",
-                    "key_candidates = ['hold_mean', 'hold_std', 'hold_median', 'hold_cv', 'lat1_mean', 'lat1_std', 'lat2_mean']\n",
+                    "key_candidates = ['hold_mean', 'hold_std', 'hold_median', 'hold_cv', 'latency_mean', 'latency_std', 'flight_mean']\n",
                     "available_key = [f for f in key_candidates if f in desc_df['feature_name'].values]\n",
                     "if available_key:\n",
                     "    key_desc = desc_df[desc_df['feature_name'].isin(available_key)][['feature_name', 'mean', 'std', 'median', 'iqr', 'skewness', 'min', 'max']]\n",
@@ -318,7 +318,7 @@ def generate_notebook():
                 "metadata": {},
                 "source": [
                     "## 9. Diagnostic Figure Generation\n",
-                    "We export dynamic diagnostic figures to `reports/eda/figures/`.",
+                    "We export dynamic diagnostic figures to `reports/phase5_recovery/eda/figures/`.",
                 ],
             },
             {
@@ -327,7 +327,7 @@ def generate_notebook():
                 "metadata": {},
                 "outputs": [],
                 "source": [
-                    "fig_dir = repo_root / 'reports' / 'eda' / 'figures'\n",
+                    "fig_dir = repo_root / 'reports' / 'phase5_recovery' / 'eda' / 'figures'\n",
                     "saved_figs = generate_eda_figures(df_train, fig_dir)\n",
                     "print(f'Generated {len(saved_figs)} diagnostic EDA figures under {fig_dir}:')\n",
                     "for p in saved_figs:\n",

@@ -1,0 +1,38 @@
+[paths]
+interim_accepted_dir = "data/phase2_recovery/interim/accepted"
+participant_labels_path = "data/phase2_recovery/interim/participant_labels.csv"
+participant_inventory_path = "data/phase2_recovery/interim/participant_inventory.csv"
+train_ids_path = "data/phase2_recovery/splits/train_ids.csv"
+test_ids_path = "data/phase2_recovery/splits/test_ids.csv"
+
+features_output_dir = "data/phase6_recovery/features"
+raw_features_file = "participant_features_raw.parquet"
+quality_features_file = "participant_feature_quality.parquet"
+manifest_file = "feature_manifest.json"
+
+reports_dir = "reports/phase6_recovery/feature_engineering"
+docs_dir = "reports/phase6_recovery/docs"
+
+[cohort]
+expected_eligible_count = 597
+expected_train_count = 477
+expected_test_count = 120
+
+[extraction]
+min_obs_skewness = 20
+min_obs_kurtosis = 30
+min_obs_cv = 10
+cv_mean_epsilon = 0.000001
+max_hold_ms = 10000.0
+max_latency_ms = 100000.0
+
+allowed_hands = ["L", "R", "S"]
+allowed_directions = [
+    "LL", "LR", "RR", "RL",
+    "LS", "RS", "SR", "SL", "SS"
+]
+
+[preprocessing]
+default_imputer_strategy = "median"
+default_add_indicator = false
+default_scaler = "standard"

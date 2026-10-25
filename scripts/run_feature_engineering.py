@@ -7,6 +7,7 @@ and generates the authoritative feature manifest.
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import logging
@@ -15,6 +16,7 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 
 # Add project root to sys.path
@@ -64,7 +66,7 @@ def generate_feature_dictionary_markdown(output_path: Path):
         "Typing features are derived deterministically from validated event-level keystroke records under the Phase 2 specification:",
         "- **Hold Time (HT):** Duration of individual keypress ($T_{release} - T_{press}$) in milliseconds.",
         "- **Latency (L):** Interval between consecutive key-press events ($T_{press, n+1} - T_{press, n}$) in milliseconds.",
-        "- **Flight Time (FT):** Interval between key-release and consecutive key-press ($T_{press, n+1} - T_{release, n}$) in milliseconds. Negative values are valid and model key rollover during natural fluid typing.",
+        "- **Flight Time (FT):** Interval between key-release and consecutive key-press ($T_{press, n+1}- T_{release, n}$) in milliseconds. The Phase 2 validator permits negative values; the accepted-cohort audit observed none, so rollover preservation was not empirically demonstrated.",
         "- **Hand Dynamics:** Relative proportions of keys struck by left hand (`L`), right hand (`R`), or spacebar (`S`).",
         "- **Transition Dynamics:** Relative proportions and directional timing statistics across 9 transitions: `LL`, `LR`, `RL`, `RR`, `LS`, `RS`, `SL`, `SR`, `SS`.",
         "",
@@ -114,16 +116,16 @@ def generate_phase6_decisions_markdown(output_path: Path):
         "## Decision D01: Re-Extraction from Clean Phase 2 Parquet Records (Case 2 Resolution)",
         "",
         "- **Context:** Phase 4 data readiness gate and Phase 5 EDA identified that the legacy `features_clean.csv` was invalid: it omitted 102 participants (495 vs 597 eligible), had 28 columns corrupted with shifted YYMMDD date values (>100,000), and clamped negative flight times to NaN.",
-        "- **Decision:** Under Section 4 Case 2, re-extract participant-level features directly from the 2,143 accepted Parquet records in `data/interim/accepted/` covering all 597 eligible cohort participants.",
-        "- **Impact:** Restores 100% cohort coverage (597 participants: 432 PD, 165 Control), completely eliminates date corruption, and preserves natural rollover typing dynamics.",
+        "- **Decision:** Under Section 4 Case 2, re-extract participant-level features directly from the 2,143 accepted Parquet records in `data/phase2_recovery/interim/accepted/` covering the 597 eligible cohort participants.",
+        "- **Impact:** Restores the 597-participant cohort and removes legacy table date-corruption artifacts. The accepted-cohort audit observed no negative raw flight_ms values, so rollover preservation cannot be empirically demonstrated in this cohort.",
         "",
         "---",
         "",
-        "## Decision D02: Preservation of Negative Flight Times (Rollover Typing)",
+        "## Decision D02: Negative Flight-Time Validation Policy and Cohort Observation",
         "",
-        "- **Context:** During natural fluid keyboard typing, typists frequently initiate a keystroke before releasing the preceding key ($T_{press, n+1} < T_{release, n}$).",
-        "- **Decision:** In strict alignment with Phase 2 Decision D04, flight times < 0.0 ms are recognized as mathematically valid physical quantities and preserved without truncation or clamping.",
-        "- **Impact:** Enables capture of typing fluency and motor coordination differences between PD and Control participants.",
+        "- **Context:** The Phase 2 validator permits signed plain-decimal flight_ms values. The accepted-cohort audit found zero negative values among 40,059,679 accepted flight_ms observations from 2,143 Parquet files.",
+        "- **Decision:** Negative flight times remain valid under the validator and are not clamped by that rule. Because no negative event-level values were observed in the accepted cohort, this dataset cannot empirically demonstrate negative-flight preservation.",
+        "- **Impact:** Keeps the processing policy compatible with negative values if they occur in another valid dataset; no negative-flight biomarker is empirically demonstrated by this cohort.",
         "",
         "---",
         "",
@@ -192,6 +194,7 @@ def generate_feature_quality_report_markdown(
     feature_validation: dict[str, Any],
     quality_validation: dict[str, Any],
     quality_summary_df: pd.DataFrame,
+    flight_time_audit: dict[str, Any],
 ):
     """Generate reports/feature_engineering/feature_quality_report.md."""
     lines = [
@@ -211,8 +214,10 @@ def generate_feature_quality_report_markdown(
         f"- **Approved Predictor Columns:** {feature_validation['predictor_column_count']} typing-derived features.",
         f"- **Total Keystroke Events Aggregated:** {quality_validation['total_records_sum']:,} events.",
         f"- **Warning-Tagged Events Retained:** {quality_validation['total_warned_records_sum']:,} events.",
-        f"- **Date-Corrupted Columns (>100,000):** {len(feature_validation['date_corrupted_columns'])} (0 columns corrupted).",
-        f"- **Infinite Values:** {len(feature_validation['infinite_columns'])} (0 infinite values).",
+        f"- **Date-Corruption Signature Columns:** {len(feature_validation['date_corrupted_columns'])}.",
+        f"- **Predictor Columns Containing Infinite Values:** {len(feature_validation['infinite_columns'])}.",
+        f"- **Participants with Negative Flight-Time Minimum:** {flight_time_audit['participants_with_negative_minimum']} of {feature_validation['row_count']}.",
+        f"- **Minimum Observed Participant Flight Time:** {flight_time_audit['minimum_observed_flight_min_ms']} ms (`flight_min`).",
         "",
         "---",
         "",
@@ -222,7 +227,7 @@ def generate_feature_quality_report_markdown(
         "| :--- | :--- | :--- | :--- |",
         f"| **Cohort Coverage** | 495 participants (102 omitted) | **{feature_validation['row_count']} participants** | **RESOLVED (+102 participants)** |",
         f"| **Date Corruption (>100k)** | 28 corrupted columns | **0 corrupted columns** | **RESOLVED (100% clean)** |",
-        "| **Negative Flight Times** | Coerced to NaN / Clamped >= 0 | **Preserved (Rollover valid)** | **RESOLVED (Physiologically sound)** |",
+        f"| **Negative Flight Times** | Legacy-table issue requiring review | {flight_time_audit['participants_with_negative_minimum']} of {feature_validation['row_count']} participants have `flight_min < 0` | Empirical preservation is not demonstrated when no negative minima are present |",
         "| **Predictor Separation** | IDs & Labels mixed with features | **Strict allowlist enforced** | **RESOLVED (No leakage)** |",
         "",
         "---",
@@ -261,7 +266,7 @@ def generate_feature_quality_report_markdown(
         lines.append("- [x] Target labels complete, valid, and consistent with Phase 2 metadata.")
         lines.append("- [x] Predictor allowlist strictly excludes identifiers and clinical covariates.")
         lines.append("- [x] Date corruption (>100k) completely absent.")
-        lines.append("- [x] Negative flight times preserved for rollover typing.")
+        lines.append(f"- Negative-flight observation: {flight_time_audit['participants_with_negative_minimum']} participants have a negative participant-level `flight_min`; this does not prove negative event-level intervals were observed or preserved.")
         lines.append("- [x] Zero infinite values across all predictors.")
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -269,30 +274,70 @@ def generate_feature_quality_report_markdown(
     logger.info("Saved feature quality report to %s", output_path)
 
 
-def run_pipeline():
+def run_pipeline(config_path: str | Path | None = None):
     """Execute Phase 6 feature extraction and validation pipeline."""
     t0 = time.time()
-    config = FeatureEngineeringConfig.load(repo_root=repo_root)
+    config = FeatureEngineeringConfig.load(
+        config_path=config_path,
+        repo_root=repo_root,
+    )
 
     logger.info("Starting Phase 6 Feature Engineering & Preprocessing Pipeline")
     logger.info("Repository Root: %s", config.repo_root)
 
-    # 1. Load train and test IDs to verify cohort
+    # 1. Load and validate train/test IDs before constructing the cohort.
     train_df = pd.read_csv(config.train_ids_path)
     test_df = pd.read_csv(config.test_ids_path)
-    train_ids = train_df["participant_id"].tolist()
-    test_ids = test_df["participant_id"].tolist()
-    eligible_ids = sorted(train_ids + test_ids)
 
-    if len(eligible_ids) != config.expected_eligible_count:
+    def validated_split_ids(split_df: pd.DataFrame, split_name: str) -> list[str]:
+        if "participant_id" not in split_df.columns:
+            raise ValueError(f"{split_name} split is missing participant_id")
+        if split_df["participant_id"].isna().any():
+            raise ValueError(f"{split_name} split contains missing participant IDs")
+        values = split_df["participant_id"].astype(str).tolist()
+        if any(not value or value.strip() != value for value in values):
+            raise ValueError(f"{split_name} split contains blank or padded participant IDs")
+        if len(values) != len(set(values)):
+            raise ValueError(f"{split_name} split contains duplicate participant IDs")
+        return values
+
+    train_ids = validated_split_ids(train_df, "Training")
+    test_ids = validated_split_ids(test_df, "Test")
+    train_id_set, test_id_set = set(train_ids), set(test_ids)
+
+    if not train_id_set.isdisjoint(test_id_set):
+        overlap = sorted(train_id_set & test_id_set)
+        raise ValueError(f"Training and test splits overlap; example IDs: {overlap[:10]}")
+
+    split_union = train_id_set | test_id_set
+    if len(split_union) != config.expected_eligible_count:
         raise ValueError(
-            f"Eligible cohort mismatch: expected {config.expected_eligible_count}, observed {len(eligible_ids)}"
+            f"Eligible cohort mismatch: expected {config.expected_eligible_count}, "
+            f"observed {len(split_union)} unique split participants"
         )
+    eligible_ids = sorted(split_union)
 
-    # 2. Load authoritative labels
+    # 2. Require exactly one valid authoritative label per eligible participant.
     labels_df = pd.read_csv(config.participant_labels_path)
-    eligible_labels = labels_df[labels_df["user_key"].isin(eligible_ids)].dropna(subset=["label"])
-    label_map = dict(zip(eligible_labels["user_key"], eligible_labels["label"].astype(int)))
+    if "user_key" not in labels_df.columns or "label" not in labels_df.columns:
+        raise ValueError("Authoritative participant labels must contain user_key and label")
+    labels_df = labels_df.copy()
+    labels_df["user_key"] = labels_df["user_key"].astype(str)
+    eligible_labels = (
+        labels_df[labels_df["user_key"].isin(split_union)]
+        .dropna(subset=["label"])
+        .copy()
+    )
+    if eligible_labels["user_key"].duplicated().any():
+        raise ValueError("Authoritative labels contain duplicate eligible participant keys")
+    if set(eligible_labels["user_key"]) != split_union:
+        missing_labels = sorted(split_union - set(eligible_labels["user_key"]))
+        raise ValueError(f"Authoritative labels do not cover every eligible participant: {missing_labels[:10]}")
+    if not eligible_labels["label"].isin([0, 1, True, False]).all():
+        raise ValueError("Authoritative labels contain values other than binary 0/1")
+    label_map = dict(
+        zip(eligible_labels["user_key"], eligible_labels["label"].astype(int))
+    )
 
     # 3. Aggregate cohort features
     df_features, df_quality = aggregate_cohort_features(
@@ -301,6 +346,45 @@ def run_pipeline():
         labels_df=labels_df,
         config=config,
     )
+
+    # Independently verify feature/quality IDs and labels against the authoritative cohort.
+    required_metadata = {"participant_id", "parkinsons_label"}
+    if not required_metadata.issubset(df_features.columns):
+        raise ValueError(
+            f"Feature table lacks required metadata columns: {sorted(required_metadata - set(df_features.columns))}"
+        )
+    if "participant_id" not in df_quality.columns:
+        raise ValueError("Quality table is missing participant_id")
+    if df_features["participant_id"].isna().any() or df_quality["participant_id"].isna().any():
+        raise ValueError("Feature/quality table contains missing participant IDs")
+
+    feature_id_values = df_features["participant_id"].astype(str).tolist()
+    quality_id_values = df_quality["participant_id"].astype(str).tolist()
+    feature_id_set, quality_id_set = set(feature_id_values), set(quality_id_values)
+
+    if len(feature_id_values) != len(feature_id_set):
+        raise ValueError("Feature table contains duplicate participant IDs")
+    if len(quality_id_values) != len(quality_id_set):
+        raise ValueError("Quality table contains duplicate participant IDs")
+    if feature_id_set != split_union:
+        raise ValueError(
+            "Feature table IDs do not match the split union: "
+            f"missing={len(split_union - feature_id_set)}, "
+            f"unexpected={len(feature_id_set - split_union)}"
+        )
+    if quality_id_set != feature_id_set:
+        raise ValueError("Quality-table participant IDs do not match feature-table IDs")
+
+    label_consistency = all(
+        pd.notna(value)
+        and str(participant_id) in label_map
+        and int(value) == int(label_map[str(participant_id)])
+        for participant_id, value in zip(
+            df_features["participant_id"], df_features["parkinsons_label"]
+        )
+    )
+    if not label_consistency:
+        raise ValueError("Feature labels do not match authoritative participant labels")
 
     # 4. Validate feature table
     feature_val = validate_feature_table(
@@ -322,10 +406,92 @@ def run_pipeline():
         logger.error("Feature validation issues: %s", feature_val["issues"])
         raise RuntimeError(f"Feature table validation failed: {feature_val['issues']}")
 
+    if not quality_val["passed"]:
+        logger.error(
+            "Quality validation failed: %s",
+            quality_val.get("issues", []),
+        )
+        raise RuntimeError(
+            f"Quality table validation failed: {quality_val}"
+        )
+
     # 6. Save Parquet outputs
     config.features_output_dir.mkdir(parents=True, exist_ok=True)
     raw_features_path = config.features_output_dir / config.raw_features_file
     quality_features_path = config.features_output_dir / config.quality_features_file
+
+    # Compute manifest integrity checks from the actual tables and splits.
+    approved_predictors = set(get_predictor_columns())
+    actual_predictor_columns = [
+        c for c in df_features.columns
+        if c not in {"participant_id", "parkinsons_label"}
+    ]
+    predictor_schema_match = (
+        len(actual_predictor_columns) == len(approved_predictors)
+        and set(actual_predictor_columns) == approved_predictors
+    )
+
+    numeric_predictors = df_features[actual_predictor_columns].select_dtypes(include=[np.number])
+    numeric_values = numeric_predictors.to_numpy(dtype=np.float64, na_value=np.nan)
+    infinite_predictor_values = int(np.isinf(numeric_values).sum())
+    predictor_values_gt_100000 = int((numeric_values > 100000).sum())
+    finite_values = numeric_values[np.isfinite(numeric_values)]
+    exact_date_signature_values = int((
+        (finite_values >= 160000)
+        & (finite_values <= 180000)
+        & (finite_values == np.floor(finite_values))
+    ).sum())
+
+    flight_min_values = (
+        df_features["flight_min"].dropna().astype(float)
+        if "flight_min" in df_features.columns
+        else pd.Series(dtype="float64")
+    )
+    participants_with_negative_flight_minimum = int((flight_min_values < 0).sum())
+    minimum_observed_flight_min_ms = (
+        float(flight_min_values.min()) if not flight_min_values.empty else None
+    )
+
+    integrity_verifications = {
+        "expected_cohort_size_matched": bool(
+            len(df_features) == config.expected_eligible_count
+            and len(df_quality) == config.expected_eligible_count
+        ),
+        "feature_ids_match_split_union": bool(
+            len(feature_id_values) == config.expected_eligible_count
+            and feature_id_set == split_union
+        ),
+        "train_test_splits_disjoint": bool(train_id_set.isdisjoint(test_id_set)),
+        "feature_quality_ids_aligned": bool(
+            len(quality_id_values) == config.expected_eligible_count
+            and quality_id_set == feature_id_set
+        ),
+        "authoritative_labels_match": bool(label_consistency),
+        "approved_predictor_schema_enforced": bool(predictor_schema_match),
+        "zero_predictor_values_gt_100000": bool(predictor_values_gt_100000 == 0),
+        "zero_exact_yymmdd_date_signatures": bool(exact_date_signature_values == 0),
+        "zero_infinite_predictor_values": bool(infinite_predictor_values == 0),
+    }
+    failed_checks = [
+        name for name, passed in integrity_verifications.items() if not passed
+    ]
+    if failed_checks:
+        raise RuntimeError(
+            "Computed Phase 6 integrity checks failed: " + ", ".join(failed_checks)
+        )
+
+    flight_time_observation_audit = {
+        "observation_scope": "participant-level feature table",
+        "feature_name": "flight_min",
+        "participants_with_negative_minimum": participants_with_negative_flight_minimum,
+        "minimum_observed_flight_min_ms": minimum_observed_flight_min_ms,
+        "negative_minimum_observed": bool(participants_with_negative_flight_minimum > 0),
+        "interpretation": (
+            "The Phase 2 validator permits negative raw flight_ms values, but the accepted-cohort "
+            "audit observed none. Participant-level minima alone do not prove negative event-level "
+            "intervals were present or preserved."
+        ),
+    }
 
     df_features.to_parquet(raw_features_path, index=False)
     df_quality.to_parquet(quality_features_path, index=False)
@@ -354,6 +520,7 @@ def run_pipeline():
         feature_val,
         quality_val,
         summary_df,
+        flight_time_observation_audit,
     )
 
     # 10. Generate Authoritative Feature Manifest
@@ -390,13 +557,25 @@ def run_pipeline():
                 "columns": df_quality.shape[1],
             },
         },
-        "integrity_verifications": {
-            "all_597_eligible_covered": True,
-            "zero_date_corruption_gt_100k": True,
-            "negative_flight_times_preserved": True,
-            "zero_infinite_values": True,
-            "prohibited_covariates_excluded": True,
-            "test_set_isolation_respected": True,
+        "integrity_verifications": integrity_verifications,
+        "integrity_metrics": {
+            "predictor_values_gt_100000": predictor_values_gt_100000,
+            "exact_yymmdd_integer_date_signatures": exact_date_signature_values,
+            "infinite_predictor_values": infinite_predictor_values,
+        },
+        "flight_time_observation_audit": flight_time_observation_audit,
+        "split_integrity": {
+            "train_count": len(train_id_set),
+            "test_count": len(test_id_set),
+            "train_test_intersection_count": len(train_id_set & test_id_set),
+            "split_union_count": len(split_union),
+            "feature_id_count": len(feature_id_set),
+            "quality_id_count": len(quality_id_set),
+        },
+        "preprocessing_state": {
+            "imputation_fitted": False,
+            "scaler_fitted": False,
+            "policy": "Fit preprocessing inside training folds in Phase 7; Phase 6 exports unscaled features.",
         },
     }
 
@@ -408,5 +587,18 @@ def run_pipeline():
     logger.info("Phase 6 pipeline completed successfully in %.2f seconds", time.time() - t0)
 
 
+def main():
+    parser = argparse.ArgumentParser(
+        description="Run Phase 6 feature engineering and preprocessing."
+    )
+    parser.add_argument(
+        "--config",
+        default="configs/feature_engineering.toml",
+        help="Path to the feature-engineering TOML configuration.",
+    )
+    args = parser.parse_args()
+    run_pipeline(config_path=args.config)
+
+
 if __name__ == "__main__":
-    run_pipeline()
+    main()

@@ -1,3 +1,5 @@
+> **Historical design notes.** Rollover passages describe a risk in the legacy table, not observed negative flight intervals in the accepted cohort. The accepted-cohort audit found zero negative raw `flight_ms` values.
+
 # Phase 6 Feature Engineering & Preprocessing Decision Matrix
 
 **Project:** Parkinson’s Disease Prediction Using Typing Characteristics  
@@ -16,7 +18,7 @@ Phase 5 Exploratory Data Analysis verified that the legacy table `data/processed
 2. Total loss of typing overlap dynamics caused by coercing negative flight times ($FT \le 0$) to `NaN`.
 3. Cohort under-coverage omitting 102 valid eligible participants (17.1% truncation).
 
-This document establishes the concrete, prioritized decisions that Phase 6 must investigate and resolve when generating the clean feature table from validated Phase 2 records in [`data/interim/accepted/`](file:///c:/Users/prane/.vscode/extensions/ms-vscode.cmake-tools-1.21.36/ml%20project/PARKINSONS-DISEASE-PREDICTOR/data/interim/accepted/).
+This document establishes the concrete, prioritized decisions that Phase 6 must investigate and resolve when generating the clean feature table from validated Phase 2 records in [`data/phase2_recovery/interim/accepted/`](../../data/phase2_recovery/interim/accepted).
 
 ---
 
@@ -24,7 +26,7 @@ This document establishes the concrete, prioritized decisions that Phase 6 must 
 
 | Priority | Decision Area | Phase 5 Empirical Finding | Concrete Phase 6 Implementation Requirement |
 |---|---|---|---|
-| **P0 (Critical)** | **Feature Re-extraction Source** | Legacy `features_clean.csv` is corrupted and incomplete (495 rows). | Re-aggregate timing features from scratch directly from verified Phase 2 Parquet files in [`data/interim/accepted/`](file:///c:/Users/prane/.vscode/extensions/ms-vscode.cmake-tools-1.21.36/ml%20project/PARKINSONS-DISEASE-PREDICTOR/data/interim/accepted/) across all **597 eligible participants**. |
+| **P0 (Critical)** | **Feature Re-extraction Source** | Legacy `features_clean.csv` is corrupted and incomplete (495 rows). | Re-aggregate timing features from scratch directly from verified Phase 2 Parquet files in [`data/phase2_recovery/interim/accepted/`](../../data/phase2_recovery/interim/accepted) across all **597 eligible participants**. |
 | **P0 (Critical)** | **Preservation of Rollover (Negative Flight Time)** | Legacy table set `lat2_ms <= 0` to `NaN`, wiping out typing overlap and setting minimum flight time to $\ge 0$ ms. | Compute genuine flight time ($FT = t_{\text{down}, i+1} - t_{\text{up}, i}$), preserving negative values as physically valid rollover. Compute negative flight fraction (`rollover_ratio = (FT < 0).mean()`) as a primary coordination biomarker. |
 | **P0 (Critical)** | **Elimination of Date Corruption** | Legacy table had 28 columns with max values $> 100,000$ (e.g. `171226.0`), inflating kurtosis to $> 720,000$. | Leverage Phase 2 rule `W05_SUSPECT_DATE_CODE_VALUE`. Ensure timing aggregates strictly exclude any suspect date codes or apply domain clipping prior to moment calculation. |
 | **P1 (High)** | **Participant Coverage & Minimum Keystroke Sensitivity** | Legacy notebook dropped 102 eligible participants with $< 1000$ keystrokes without approval. | Evaluate minimum keystroke thresholding (e.g., full cohort $N=597$ vs $\ge 500$ keys vs $\ge 1000$ keys) within training cross-validation folds to verify stability of skewness and kurtosis estimates. |

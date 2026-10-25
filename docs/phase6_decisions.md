@@ -1,3 +1,5 @@
+> **Superseded copy.** Refer to `reports/phase6_recovery/docs/phase6_decisions.md` for the current Phase 6 decisions.
+
 # Phase 6 Feature Engineering & Preprocessing Decision Log
 
 **Project:** Parkinson’s Disease Prediction Using Typing Characteristics  

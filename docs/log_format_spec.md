@@ -132,7 +132,9 @@ Across all 646 files in `data/raw/participant_metadata/User_*.txt`:
 - **Label Distribution:**
   - Total metadata files: 646 (455 `True`, 188 `False`, 3 blank)
   - Joint with logs: 609 participants (438 `True`, 168 `False`, 3 blank)
-  - **Eligible Cohort:** 606 participants with logs and valid labels ($438 + 168 = 606$).
+  - **Joint Keys with Valid Diagnosis Labels:** 606 participants present in both logs and metadata with valid labels ($438 + 168 = 606$).
+  - **Eligible Cohort:** 597 participants with valid labels and at least one usable accepted or accepted-with-warning record ($432 + 165 = 597$).
+  - **No Usable Records:** 9 otherwise validly labeled joint participants were excluded (6 `True`, 3 `False`).
   - The 3 participants in both sources with missing labels are:
     `FXD2HCNIPJ`, `PVADT62JUM`, `QIHPY6RIK3`.
 

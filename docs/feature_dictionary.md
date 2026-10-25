@@ -1,3 +1,5 @@
+> **Superseded copy.** Refer to `reports/phase6_recovery/docs/feature_dictionary.md` for the current Phase 6 feature dictionary.
+
 # Typing Feature Dictionary
 
 **Project:** Parkinson’s Disease Prediction Using Typing Characteristics  

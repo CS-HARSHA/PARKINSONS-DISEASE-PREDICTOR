@@ -1,3 +1,5 @@
+> **Historical / superseded report.** This report uses the legacy `lat1_*`/`lat2_*` schema and old plots. Do not use its rollover or missingness claims as current. Current outputs are `notebooks/05_exploratory_data_analysis_executed.ipynb` and `reports/phase5_recovery/eda/figures/`.
+
 # Exploratory Data Analysis (EDA) Report
 
 **Project:** Parkinson’s Disease Prediction Using Typing Characteristics  
@@ -7,9 +9,9 @@
 **Primary Dataset:** Tappy Extended Keystroke Dataset, Mendeley Data Version 3 (DOI: `10.17632/z39mhdsynx.3`)  
 **EDA Status:** **PHASE 4 READINESS GATE PASSED — VALIDATED TRAINING COHORT EDA COMPLETE**  
 **Companion Artifacts:**  
-- [`notebooks/05_exploratory_data_analysis.ipynb`](file:///c:/Users/prane/.vscode/extensions/ms-vscode.cmake-tools-1.21.36/ml%20project/PARKINSONS-DISEASE-PREDICTOR/notebooks/05_exploratory_data_analysis.ipynb)  
-- [`reports/feature_engineering/feature_quality_report.md`](file:///c:/Users/prane/.vscode/extensions/ms-vscode.cmake-tools-1.21.36/ml%20project/PARKINSONS-DISEASE-PREDICTOR/reports/feature_engineering/feature_quality_report.md)  
-- [`reports/modelling_dataset/data_readiness_report.md`](file:///c:/Users/prane/.vscode/extensions/ms-vscode.cmake-tools-1.21.36/ml%20project/PARKINSONS-DISEASE-PREDICTOR/reports/modelling_dataset/data_readiness_report.md)  
+- [`notebooks/05_exploratory_data_analysis.ipynb`](../../notebooks/05_exploratory_data_analysis.ipynb)  
+- [`reports/feature_engineering/feature_quality_report.md`](../feature_engineering/feature_quality_report.md)  
+- [`reports/modelling_dataset/data_readiness_report.md`](../modelling_dataset/data_readiness_report.md)  
 
 ---
 
@@ -80,7 +82,7 @@ The 153 typing predictors are organized across documented physiological and temp
 - Distinct feature families (Hold Time vs Latency vs Flight Time) demonstrate low cross-correlation ($|\rho| < 0.50$), confirming that they convey complementary motor information.
 
 ### 4.4 Diagnostic Figures Generated
-The following figures are published under [`reports/eda/figures/`](file:///c:/Users/prane/.vscode/extensions/ms-vscode.cmake-tools-1.21.36/ml%20project/PARKINSONS-DISEASE-PREDICTOR/reports/eda/figures/):
+The following figures are published under [`reports/eda/figures/`](figures):
 1. `fig1_missingness_by_feature.png`: Top missing transition features.
 2. `fig2_hold_time_distributions.png`: Hold time mean and std distributions by group.
 3. `fig3_date_corruption_evidence.png`: Screening scatterplot demonstrating zero date contamination.
