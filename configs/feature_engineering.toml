@@ -1,0 +1,50 @@
+# Feature Engineering & Preprocessing Configuration
+# Parkinson's Disease Prediction Using Typing Characteristics
+# Dataset: Tappy Extended Keystroke Dataset, Mendeley Data Version 3 (DOI: 10.17632/z39mhdsynx.3)
+
+[paths]
+interim_accepted_dir = "data/interim/accepted"
+participant_labels_path = "data/interim/participant_labels.csv"
+participant_inventory_path = "data/interim/participant_inventory.csv"
+train_ids_path = "data/processed/splits/train_ids.csv"
+test_ids_path = "data/processed/splits/test_ids.csv"
+
+# Output directories
+features_output_dir = "data/processed/features"
+raw_features_file = "participant_features_raw.parquet"
+quality_features_file = "participant_feature_quality.parquet"
+manifest_file = "feature_manifest.json"
+
+reports_dir = "reports/feature_engineering"
+docs_dir = "docs"
+
+[cohort]
+expected_eligible_count = 597
+expected_train_count = 477
+expected_test_count = 120
+
+[extraction]
+# Minimum observations required to reliably compute skewness and kurtosis
+min_obs_skewness = 20
+min_obs_kurtosis = 30
+min_obs_cv = 10
+
+# Threshold for near-zero mean in CV calculation to prevent division explosion
+cv_mean_epsilon = 1e-6
+
+# Domain timing bounds: filter out system suspension / sleep outliers and suspect date codes
+max_hold_ms = 10000.0
+max_latency_ms = 100000.0
+
+# Allowed categorical values per Phase 2 log format specification
+allowed_hands = ["L", "R", "S"]
+allowed_directions = [
+    "LL", "LR", "RL", "RR",
+    "LS", "RS", "SL", "SR", "SS"
+]
+
+[preprocessing]
+# Default preprocessing configuration for downstream model pipelines
+default_imputer_strategy = "median"
+default_add_indicator = false
+default_scaler = "standard"  # Options: "standard", "robust", "none"

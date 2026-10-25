@@ -1,0 +1,71 @@
+{
+  "manifest_version": "1.0",
+  "phase": "Phase 6 \u2014 Feature Engineering and Preprocessing",
+  "dataset_name": "Tappy Extended Keystroke Dataset, Mendeley Data Version 3",
+  "dataset_doi": "10.17632/z39mhdsynx.3",
+  "generated_at_utc": "2026-10-25T08:03:26.686763+00:00",
+  "execution_time_seconds": 79.47,
+  "cohort": {
+    "eligible_participant_count": 597,
+    "parkinsons_count": 432,
+    "control_count": 165,
+    "prevalence_pct": 72.36
+  },
+  "feature_counts": {
+    "total_columns": 155,
+    "participant_id_col": 1,
+    "target_label_col": 1,
+    "predictor_feature_count": 153
+  },
+  "artifacts": {
+    "raw_features_parquet": {
+      "path": "data\\phase6_recovery\\features\\participant_features_raw.parquet",
+      "sha256": "b762f94ba06a40231198fafcfc74e33f8adc56af070116c089155e3be89867bd",
+      "rows": 597,
+      "columns": 155
+    },
+    "quality_features_parquet": {
+      "path": "data\\phase6_recovery\\features\\participant_feature_quality.parquet",
+      "sha256": "a9bf139fd66486519eee7f20bdc1d3ac9d773d44a136633856f3258dc72dc18a",
+      "rows": 597,
+      "columns": 11
+    }
+  },
+  "integrity_verifications": {
+    "expected_cohort_size_matched": true,
+    "feature_ids_match_split_union": true,
+    "train_test_splits_disjoint": true,
+    "feature_quality_ids_aligned": true,
+    "authoritative_labels_match": true,
+    "approved_predictor_schema_enforced": true,
+    "zero_predictor_values_gt_100000": true,
+    "zero_exact_yymmdd_date_signatures": true,
+    "zero_infinite_predictor_values": true
+  },
+  "integrity_metrics": {
+    "predictor_values_gt_100000": 0,
+    "exact_yymmdd_integer_date_signatures": 0,
+    "infinite_predictor_values": 0
+  },
+  "flight_time_observation_audit": {
+    "observation_scope": "participant-level feature table",
+    "feature_name": "flight_min",
+    "participants_with_negative_minimum": 0,
+    "minimum_observed_flight_min_ms": 1.0,
+    "negative_minimum_observed": false,
+    "interpretation": "The Phase 2 validator permits negative raw flight_ms values, but the accepted-cohort audit observed none. Participant-level minima alone do not prove negative event-level intervals were present or preserved."
+  },
+  "split_integrity": {
+    "train_count": 477,
+    "test_count": 120,
+    "train_test_intersection_count": 0,
+    "split_union_count": 597,
+    "feature_id_count": 597,
+    "quality_id_count": 597
+  },
+  "preprocessing_state": {
+    "imputation_fitted": false,
+    "scaler_fitted": false,
+    "policy": "Fit preprocessing inside training folds in Phase 7; Phase 6 exports unscaled features."
+  }
+}

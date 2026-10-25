@@ -1,0 +1,7 @@
+stage_number,stage_name,participant_count,pd_count,control_count,unlabeled_count,delta_from_previous,description
+1,Total Unique Keys Discovered,791,N/A,N/A,791,0,All distinct 10-character user keys identified across log files and metadata files.
+2,Participants with Keystroke Logs,754,N/A,N/A,754,-37,Participants with >=1 monthly log file in data/raw/keystroke_logs/. (37 metadata-only keys excluded).
+3,Joint Intersection (Logs AND Metadata),609,N/A,N/A,609,-145,Participants present in both keystroke logs and metadata. (145 log-only keys excluded).
+4,Joint Participants with Valid Diagnosis Label,606,438,168,0,-3,Participants in both sources with explicit Parkinsons: True/False. (3 missing labels excluded).
+5,Joint Labeled Participants with Usable Records (ELIGIBLE COHORT),597,432,165,0,-9,"Eligible modeling cohort: has logs, metadata, valid label, and >=1 accepted record. (9 excluded: 2 zero-byte, 7 100% comma quarantined)."
+6,Legacy Derived Feature Table (features_clean.csv),495,357,138,0,-102,Historical table from pre-Phase 2 script omitting 102 valid eligible participants due to unapproved MIN_KEYSTROKES=1000 cutoff.

@@ -1,0 +1,215 @@
+"""Generate notebooks/07_baseline_models.ipynb cleanly matching run_baseline_models.py results."""
+
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+
+def generate_notebook():
+    repo_root = Path(__file__).resolve().parent.parent
+    nb_path = repo_root / "notebooks" / "07_baseline_models.ipynb"
+    nb_path.parent.mkdir(parents=True, exist_ok=True)
+
+    nb = {
+        "cells": [
+            {
+                "cell_type": "markdown",
+                "metadata": {},
+                "source": [
+                    "# Phase 7 — Baseline Model Comparison\n",
+                    "## Parkinson's Disease Prediction Using Typing Characteristics\n",
+                    "\n",
+                    "**Primary Dataset:** Tappy Extended Keystroke Dataset, Mendeley Data Version 3 (DOI: 10.17632/z39mhdsynx.3)  \n",
+                    "**Working Branch:** `praneeth`  \n",
+                    "**Scope & Phase Boundary:** Strict Phase 7 baseline model exploration. Evaluates 6 prospective scikit-learn architectures on the frozen 477 training participants using 5-fold Stratified Cross-Validation.  \n",
+                    "**Primary Metric:** Balanced Accuracy (weights Sensitivity and Specificity equally to penalize majority-class exploitation).  \n",
+                    "**Test Set Quarantine:** The 120 held-out test participants are strictly quarantined and never loaded or evaluated.",
+                ],
+            },
+            {
+                "cell_type": "code",
+                "execution_count": None,
+                "metadata": {},
+                "outputs": [],
+                "source": [
+                    "import sys\n",
+                    "from pathlib import Path\n",
+                    "import pandas as pd\n",
+                    "import numpy as np\n",
+                    "import matplotlib.pyplot as plt\n",
+                    "import seaborn as sns\n",
+                    "\n",
+                    "# Configure paths relative to repository root\n",
+                    "repo_root = Path.cwd().resolve()\n",
+                    "if repo_root.name == 'notebooks':\n",
+                    "    repo_root = repo_root.parent\n",
+                    "sys.path.insert(0, str(repo_root))\n",
+                    "\n",
+                    "from src.modelling.run_baseline_models import (\n",
+                    "    get_models,\n",
+                    "    evaluate_fold,\n",
+                    "    positive_scores,\n",
+                    ")\n",
+                    "\n",
+                    "print(f\"Repository root: {repo_root}\")\n",
+                ],
+            },
+            {
+                "cell_type": "markdown",
+                "metadata": {},
+                "source": [
+                    "## 1. Verification of Training Cohort and Clean Predictors\n",
+                    "\n",
+                    "We verify that the input feature table contains the certified 153 typing-derived features with no infinite values, and that exactly 477 training participants are isolated.",
+                ],
+            },
+            {
+                "cell_type": "code",
+                "execution_count": None,
+                "metadata": {},
+                "outputs": [],
+                "source": [
+                    "features_path = repo_root / 'data/processed/features/participant_features_raw.parquet'\n",
+                    "train_ids_path = repo_root / 'data/processed/splits/train_ids.csv'\n",
+                    "\n",
+                    "features = pd.read_parquet(features_path)\n",
+                    "train_ids = pd.read_csv(train_ids_path)\n",
+                    "\n",
+                    "print(f\"Total features parquet shape: {features.shape}\")\n",
+                    "print(f\"Frozen training IDs: {len(train_ids)}\")\n",
+                    "\n",
+                    "# Isolate training cohort\n",
+                    "training_set = set(train_ids['participant_id'].astype(str))\n",
+                    "train_df = features[features['participant_id'].astype(str).isin(training_set)].copy()\n",
+                    "X_train = train_df.drop(columns=['participant_id', 'parkinsons_label'])\n",
+                    "y_train = train_df['parkinsons_label'].astype(int)\n",
+                    "\n",
+                    "print(f\"Training matrix X: {X_train.shape}\")\n",
+                    "print(f\"Training labels y: {y_train.value_counts().to_dict()} (PD: {y_train.mean():.1%})\")\n",
+                    "assert X_train.shape == (477, 153), f\"Unexpected X_train shape: {X_train.shape}\"\n",
+                    "assert not np.isinf(X_train.to_numpy(dtype=float)).any(), \"Infinite values detected in predictors!\"\n",
+                ],
+            },
+            {
+                "cell_type": "markdown",
+                "metadata": {},
+                "source": [
+                    "## 2. Prospective Model Architectures & Leakage-Free Preprocessing\n",
+                    "\n",
+                    "In strict compliance with TRIPOD+AI and the Phase 3 protocol, all imputations (`SimpleImputer(strategy='median')`) and feature standardizations (`StandardScaler()`) are embedded inside scikit-learn `Pipeline` objects to prevent cross-validation leakage.",
+                ],
+            },
+            {
+                "cell_type": "code",
+                "execution_count": None,
+                "metadata": {},
+                "outputs": [],
+                "source": [
+                    "models = get_models()\n",
+                    "for name, pipe in models.items():\n",
+                    "    steps = [step_name for step_name, _ in pipe.steps]\n",
+                    "    print(f\"{name:22s} -> Pipeline steps: {steps}\")\n",
+                ],
+            },
+            {
+                "cell_type": "markdown",
+                "metadata": {},
+                "source": [
+                    "## 3. Cross-Validation Results Summary\n",
+                    "\n",
+                    "We inspect the 5-fold Stratified Cross-Validation results computed by `src/modelling/run_baseline_models.py`.",
+                ],
+            },
+            {
+                "cell_type": "code",
+                "execution_count": None,
+                "metadata": {},
+                "outputs": [],
+                "source": [
+                    "summary_path = repo_root / 'reports/modelling/baseline_cv_summary.csv'\n",
+                    "summary_df = pd.read_csv(summary_path)\n",
+                    "\n",
+                    "display_cols = [\n",
+                    "    'model',\n",
+                    "    'balanced_accuracy_mean',\n",
+                    "    'balanced_accuracy_std',\n",
+                    "    'sensitivity_mean',\n",
+                    "    'specificity_mean',\n",
+                    "    'precision_mean',\n",
+                    "    'accuracy_mean',\n",
+                    "    'roc_auc_mean',\n",
+                    "    'average_precision_mean',\n",
+                    "]\n",
+                    "\n",
+                    "print(\"=== 5-Fold Stratified Cross-Validation Performance (Sorted by Balanced Accuracy) ===\")\n",
+                    "summary_df[display_cols].to_string(index=False)\n",
+                ],
+            },
+            {
+                "cell_type": "markdown",
+                "metadata": {},
+                "source": [
+                    "## 4. Visual Analysis of Baseline Estimators\n",
+                    "\n",
+                    "We display the diagnostic visualizations generated from the cross-validation experiments.",
+                ],
+            },
+            {
+                "cell_type": "code",
+                "execution_count": None,
+                "metadata": {},
+                "outputs": [],
+                "source": [
+                    "from IPython.display import Image, display\n",
+                    "\n",
+                    "figures_dir = repo_root / 'reports/modelling/figures'\n",
+                    "for fig_name in [\n",
+                    "    'fig1_balanced_accuracy_comparison.png',\n",
+                    "    'fig2_sensitivity_vs_specificity.png',\n",
+                    "    'fig3_roc_auc_vs_balanced_acc.png',\n",
+                    "    'fig4_rf_aggregate_confusion_matrix.png',\n",
+                    "]:\n",
+                    "    fig_path = figures_dir / fig_name\n",
+                    "    if fig_path.is_file():\n",
+                    "        print(f\"Displaying {fig_name}:\")\n",
+                    "        display(Image(filename=str(fig_path)))\n",
+                ],
+            },
+            {
+                "cell_type": "markdown",
+                "metadata": {},
+                "source": [
+                    "## 5. Model Selection & Prospective Conclusion\n",
+                    "\n",
+                    "### Key Findings:\n",
+                    "1. **Deception of Standard Accuracy Exposed:** The Dummy Prior baseline achieves **72.33% standard accuracy** by simply predicting the majority PD class, but achieves exactly **50.00% balanced accuracy** with **0.0% specificity**. Any model evaluated primarily on standard accuracy is vulnerable to trivial majority-class collapse.\n",
+                    "2. **Baseline Champion:** **Random Forest** achieves the highest 5-fold cross-validated Balanced Accuracy (**0.5938 ± 0.0350**), highest ROC-AUC (**0.6664 ± 0.0181**), and highest PR-AUC (**0.8373 ± 0.0192**).\n",
+                    "3. **Prospective Selection Rule:** The margin between Random Forest and the second-place Logistic Regression (**0.5532 ± 0.0421**) is **+0.0406** (+4.06%), far exceeding the protocol's tie-break threshold of $\\pm 0.005$. Therefore, Random Forest is selected as the candidate model architecture for Phase 8.\n",
+                    "4. **Holdout Test Set Isolation:** All 120 test participants remain fully quarantined in cold storage for final unblinded evaluation in Phase 10.",
+                ],
+            },
+        ],
+        "metadata": {
+            "kernelspec": {
+                "display_name": "Python 3",
+                "language": "python",
+                "name": "python3",
+            },
+            "language_info": {
+                "name": "python",
+                "version": "3.13.7",
+            },
+        },
+        "nbformat": 4,
+        "nbformat_minor": 5,
+    }
+
+    with open(nb_path, "w", encoding="utf-8") as f:
+        json.dump(nb, f, indent=2)
+
+    print(f"Generated {nb_path.relative_to(repo_root)}")
+
+
+if __name__ == "__main__":
+    generate_notebook()

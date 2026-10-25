@@ -1,0 +1,17 @@
+code,code_type,total_occurrences,unique_lines_affected,accepted_lines_count,quarantined_lines_count,description
+E01_FIELD_COUNT,ERROR,0,0,0,0,Number of fields differs from canonical shape
+E02_BAD_ENCODING,ERROR,0,0,0,0,Source-line bytes are not valid UTF-8
+E03_BAD_USERKEY,ERROR,387,387,0,387,Key is not exactly 10 uppercase letters or digits
+E04_USERKEY_MISMATCH,ERROR,387,387,0,387,Record key differs from filename key
+E05_BAD_DATE,ERROR,291,291,0,291,Date is not 6 digits or not a valid calendar date
+E06_BAD_TIME,ERROR,196341,196341,0,196341,Timestamp is not HH:MM:SS.SSS or out of range
+E07_BAD_HAND,ERROR,1043,1043,0,1043,"Hand is outside allowed set {L, R, S}"
+E08_BAD_HOLD,ERROR,463687,463687,0,463687,Hold time is not a plain decimal or is negative
+E09_BAD_DIRECTION,ERROR,1489,1489,0,1489,Direction is outside the 9 allowed transitions
+E10_BAD_LATENCY,ERROR,464119,464119,0,464119,Latency is not a plain decimal or is negative
+E11_BAD_FLIGHT,ERROR,463533,463533,0,463533,Flight time is not a plain decimal
+W01_BACKWARD_TIMESTAMP,WARNING,44748,44748,44346,402,Datetime earlier than preceding parseable record
+W02_DUPLICATE_RECORD,WARNING,258100,258100,257943,157,Record fields identical to an earlier row in file
+W03_DATE_FILENAME_MISMATCH,WARNING,217,217,0,217,Record YYMM differs from filename YYMM
+W04_EXTREME_HOLD,WARNING,13261,13261,13185,76,Hold time exceeds threshold (> 2000 ms)
+W05_SUSPECT_DATE_CODE_VALUE,WARNING,348,348,0,348,Timing value numerically equals YYMMDD date
