@@ -1,0 +1,12 @@
+{
+  "model_type": "logistic_regression",
+  "feature": "macd",
+  "coefficient": 0.3891411470354287,
+  "intercept": -0.0358738934285806,
+  "corridor_low": 0.6,
+  "corridor_high": 1.0,
+  "training_feature_min": 0.00865124716553288,
+  "training_feature_max": 0.09696819972196478,
+  "training_feature_median": 0.027849458483754513,
+  "disclaimer": "Research screening demo only; not a medical diagnosis."
+}
