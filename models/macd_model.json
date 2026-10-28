@@ -1,0 +1,28 @@
+{
+  "model_type": "logistic_regression",
+  "feature": "macd",
+  "ql": 0.6,
+  "qh": 1.0,
+  "unit": "seconds",
+  "min_corridor_pairs": 1,
+  "coef": 0.568611936023502,
+  "intercept": 0.050102990898716865,
+  "coefficient": 0.568611936023502,
+  "training_stats": {
+    "min": 0.00865124716553288,
+    "p1": 0.011103378603104211,
+    "p5": 0.014464442779009138,
+    "median": 0.02838581736909323,
+    "p95": 0.07513722402597402,
+    "p99": 0.09010043091168085,
+    "max": 0.10954216867469879
+  },
+  "training_feature_min": 0.00865124716553288,
+  "training_feature_max": 0.10954216867469879,
+  "training_feature_median": 0.02838581736909323,
+  "min_keystrokes": 20,
+  "trained_on": "all processed sessions, subject labels",
+  "created_utc": "2026-10-28T11:21:32.576290+00:00",
+  "paper_reference": "Milne, Farrahi & Nicolaou, Less is More",
+  "disclaimer": "Research screening demo only; not a medical diagnosis."
+}

@@ -1,0 +1,11 @@
+__pycache__/
+.pytest_cache/
+*.py[cod]
+.venv/
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+results/figures/*
+results/metrics/*
+models/*.json
+!models/macd_model.json

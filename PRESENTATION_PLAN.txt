@@ -1,0 +1,244 @@
+PRESENTATION PLAN
+==================
+
+Project title
+-------------
+An Explainable Machine Learning Pipeline for Parkinson's Screening Using Keystroke Dynamics
+
+Subtitle: Cross-cohort evaluation of hold-time variability and MACD
+
+The presentation should explain the full machine-learning story: why keystroke timing may contain a motor-control signal, how the data are cleaned, what the EDA shows, why MACD is selected, how the model is evaluated, and what the exploratory model comparison found.
+
+Focus on the machine-learning pipeline. Present the webapp as future integration rather than the central contribution.
+
+Recommended length: 12–18 minutes and approximately 12–17 slides.
+
+SLIDE 1 — TITLE
+---------------
+Title: An Explainable Machine Learning Pipeline for Parkinson's Screening Using Keystroke Dynamics
+Subtitle: Cross-cohort evaluation of hold-time variability and MACD
+
+Include team members, institution/course, PhysioNet neuroQWERTY MIT-CSXPD dataset, and date.
+
+Introduce this as a research and machine-learning demonstration, not a medical diagnostic system. The project investigates whether timing patterns in keyboard typing can provide an interpretable signal associated with Parkinson's disease.
+
+SLIDE 2 — PROBLEM MOTIVATION
+----------------------------
+Title: Why keystroke timing?
+
+Typing contains motor-control information beyond the words being typed. Focus on key hold time, change in hold time between consecutive keys, timing variability, and differences between controls and PD subjects.
+
+Suggested example:
+
+Key A hold time = 0.12 s
+Key B hold time = 0.18 s
+Absolute change = |0.18 - 0.12| = 0.06 s
+
+The project does not analyse typed words. It uses timing information only. The hypothesis is that motor impairment may appear as reduced consistency or larger changes in successive key timings.
+
+SLIDE 3 — RESEARCH QUESTION AND HYPOTHESIS
+------------------------------------------
+Research question:
+Can simple, interpretable features extracted from keystroke hold times distinguish PD subjects from control subjects across independent study cohorts?
+
+Hypothesis:
+PD subjects may demonstrate higher mean hold times, greater timing variability, larger absolute changes between consecutive hold times, and higher MACD values.
+
+Make clear that this is an association and screening research question, not a diagnosis question.
+
+SLIDE 4 — DATASET
+------------------
+Dataset: PhysioNet neuroQWERTY MIT-CSXPD
+
+MIT-CS1PD: Early-PD cohort, 31 subjects, 62 sessions.
+MIT-CS2PD: De novo, untreated-PD cohort, 54 subjects, 54 sessions.
+Total: 85 subjects and 116 valid sessions.
+
+The data contain keyboard event timings, hold durations in seconds, and subject-level PD/control labels.
+
+A cohort is a group of subjects collected under one study protocol. The project keeps cohorts separate during evaluation to test transfer between study populations.
+
+SLIDE 5 — END-TO-END PIPELINE
+-----------------------------
+Raw PhysioNet files
+  -> Data loading
+  -> Cleaning and quality checks
+  -> Exploratory data analysis
+  -> Feature extraction
+  -> Subject-level aggregation
+  -> Cross-cohort evaluation
+  -> Model and feature benchmark
+  -> Exported model for future webapp
+
+Code mapping:
+Loading: src/data_loading.py
+Cleaning: src/cleaning.py
+EDA: src/eda.py
+Features: src/features.py and src/feature_sets.py
+Aggregation: src/feature_extraction.py
+Modeling: src/modeling.py
+Evaluation: src/evaluation.py
+Benchmarking: src/benchmark.py
+Execution: scripts/
+
+The src directory contains reusable implementation. The scripts directory contains execution entry points.
+
+SLIDE 6 — DATA CLEANING
+-----------------------
+The pipeline removes invalid rows, negative hold times, unrealistically long hold times, invalid timestamps, time-order reversals, mouse events, modifier keys, Backspace events, and sessions with fewer than 20 valid keystrokes.
+
+The cleaning stage writes data/processed/cleaning_summary.json so removal decisions are auditable.
+
+Cleaning is separated from feature engineering so the team can inspect what was removed before calculating features.
+
+SLIDE 7 — EDA: HOLD-TIME COMPARISON
+-----------------------------------
+Show results/figures/hold_time_by_label.png.
+
+MIT-CS1PD: Control mean hold 0.1065 s; PD mean hold 0.1427 s.
+MIT-CS2PD: Control mean hold 0.1049 s; PD mean hold 0.1299 s.
+
+Interpretation: PD subjects show higher subject-level average hold times in this dataset.
+
+Use careful language: this is an observed association and may be influenced by cohort composition, device, medication, or collection conditions. Do not say that Parkinson's causes longer hold times.
+
+SLIDE 8 — EDA: CONSECUTIVE CHANGES AND MACD MOTIVATION
+-------------------------------------------------------
+Show results/figures/consecutive_change_by_label.png and results/figures/macd_by_label.png.
+
+Consecutive changes:
+MIT-CS1PD: Control 0.0313 s; PD 0.0511 s.
+MIT-CS2PD: Control 0.0266 s; PD 0.0429 s.
+
+MACD:
+MIT-CS1PD: Control 0.0242 s; PD 0.0469 s.
+MIT-CS2PD: Control 0.0221 s; PD 0.0368 s.
+
+The PD groups show larger subject-level changes between consecutive hold times. MACD summarizes this behaviour into one interpretable feature.
+
+MACD is not simply hold-time standard deviation. It measures average absolute change between consecutive hold times within a defined corridor.
+
+SLIDE 9 — MACD FEATURE DEFINITION
+---------------------------------
+For hold times h1 through hn:
+
+1. Calculate the session's 60th percentile.
+2. Keep hold times from the 60th percentile to the session maximum.
+3. Consider adjacent pairs only when both values are in the corridor.
+4. Calculate the mean absolute difference.
+
+MACD = average absolute change between valid consecutive hold times.
+
+Example:
+Valid hold times: 0.12, 0.18, 0.15, 0.22.
+Absolute changes: 0.06, 0.03, 0.07.
+MACD = (0.06 + 0.03 + 0.07) / 3 = 0.0533 seconds.
+
+The corridor focuses the feature on the upper part of the hold-time distribution and reduces the influence of very short or potentially noisy events.
+
+SLIDE 10 — SUBJECT-LEVEL AGGREGATION
+------------------------------------
+Keystrokes -> session hold-time sequence -> session MACD -> subject-level average MACD -> model input.
+
+A subject may contribute multiple sessions. The pipeline calculates MACD per session, groups sessions by subject, averages session values, and evaluates at subject level.
+
+All sessions from one subject stay in the same train or test split. This prevents subject-specific leakage.
+
+SLIDE 11 — CROSS-COHORT EVALUATION
+----------------------------------
+Fold 1: Train on MIT-CS1PD and test on MIT-CS2PD.
+Fold 2: Train on MIT-CS2PD and test on MIT-CS1PD.
+
+A random split may place similar study-specific patterns in both training and testing. Cross-cohort evaluation asks whether the signal transfers to a different study cohort.
+
+Safeguards: subject-disjoint splits, no session leakage, held-out cohort used only for testing, and subject-level bootstrap confidence intervals.
+
+SLIDE 12 — BASELINE RESULTS
+---------------------------
+Show results/figures/roc_macd.png.
+
+AUC: 0.8505.
+Bootstrap 95% CI: 0.7577–0.9290.
+
+The bootstrap interval was calculated by repeatedly resampling subjects with replacement and recomputing AUC. It describes uncertainty in the estimated AUC, not the range of performance for individual subjects.
+
+Because the sample is relatively small, the interval is wide. The result is not proof of clinical readiness.
+
+SLIDE 13 — MODEL AND FEATURE BENCHMARK
+-------------------------------------
+Feature/model and mean held-out fold AUC:
+
+MACD + random forest: 0.8650.
+MACD + logistic regression: 0.8513.
+MACD + standard deviation + logistic regression: 0.8451.
+MACD + standard deviation + mean hold + logistic regression: 0.8382.
+Standard deviation + logistic regression: 0.8321.
+Mean hold time + logistic regression: 0.7481.
+
+The small random forest using MACD alone was the exploratory leader. Only two cross-cohort folds are available, several models were compared, the random forest was selected after the benchmark, and no independent external test set has confirmed it.
+
+Use the phrase promising exploratory candidate, not proven improvement.
+
+SLIDE 14 — EXPLAINABILITY AND MODEL CHOICE
+------------------------------------------
+Logistic regression is easy to explain, has one coefficient, has a direct relationship between MACD and score, is easy to export to JSON, and is easy to reproduce in JavaScript.
+
+Random forest can capture nonlinear relationships and had higher exploratory AUC, but it is more complex, can overfit a small dataset, is harder to explain in a browser, and needs stronger validation.
+
+Retain logistic regression as the paper replication and transparent baseline. Treat random forest as exploratory until independently validated.
+
+SLIDE 15 — FUTURE WEBAPP PLAN
+-----------------------------
+Browser keydown/keyup events -> hold-time extraction -> JavaScript MACD -> exported model JSON -> research screening score.
+
+The webapp should capture timing only, not typed text; ignore repeated keydown events; require enough observations; warn when values are outside the training range; show a research-only disclaimer; and never provide a diagnosis.
+
+The Python and JavaScript MACD implementations should remain equivalent through parity tests.
+
+SLIDE 16 — LIMITATIONS
+----------------------
+Dataset limitations: small sample, only two cohorts, clinic-collected data, limited device and typing-context representation, and possible study-specific effects.
+
+Modeling limitations: only two cross-cohort folds, exploratory benchmark, no independent external test set, wide confidence intervals, and need for stronger validation.
+
+Deployment limitations: browser timing differs from the PhysioNet logger, device differences may affect hold times, medication status may affect timing, and the project must not guide clinical decisions.
+
+SLIDE 17 — CONCLUSION
+---------------------
+1. EDA supports the feature motivation: PD subjects showed higher average hold times, larger consecutive timing changes, and higher MACD in both cohorts.
+2. The MACD baseline is interpretable and reproducible, with AUC approximately 0.8505 under cross-cohort evaluation.
+3. The random forest is a promising exploratory candidate, with mean held-out fold AUC 0.8650, but needs stronger validation before being considered a confirmed improvement.
+
+Final statement: The contribution is not only a model score. It is a reproducible, explainable, leakage-aware pipeline connecting EDA motivation to feature engineering, evaluation, benchmarking, and future web deployment.
+
+TEAM DIVISION
+-------------
+1. Problem motivation and medical context.
+2. Dataset and cohort explanation.
+3. Data loading and cleaning.
+4. EDA hold-time comparison.
+5. EDA consecutive changes and MACD motivation.
+6. MACD mathematics and feature extraction.
+7. Subject aggregation and leakage prevention.
+8. Cross-cohort evaluation and bootstrap confidence interval.
+9. Model and feature benchmark.
+10. Webapp plan, limitations, and conclusion.
+
+PRESENTATION LANGUAGE RULES
+---------------------------
+Use 'associated with', not 'causes'.
+Use 'screening research score', not 'diagnosis'.
+Use 'exploratory improvement', not 'proven improvement'.
+Distinguish descriptive EDA from held-out evaluation, and distinguish the paper replication baseline from the exploratory benchmark.
+
+MOST IMPORTANT VISUALS
+----------------------
+1. End-to-end pipeline diagram.
+2. Hold-time comparison.
+3. Consecutive-change comparison.
+4. MACD comparison.
+5. MACD formula and numerical example.
+6. Cross-cohort split diagram.
+7. ROC curve.
+8. Model benchmark table.
+9. Future webapp architecture.
