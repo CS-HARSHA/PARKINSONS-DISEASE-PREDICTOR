@@ -1,0 +1,122 @@
+[
+  {
+    "feature_set": "macd",
+    "model": "logistic_regression",
+    "mean_fold_auc": 0.8512820512820513,
+    "pooled_auc_descriptive": 0.853266888150609,
+    "fold_1_auc": 0.8222222222222222,
+    "fold_2_auc": 0.8803418803418803
+  },
+  {
+    "feature_set": "macd",
+    "model": "random_forest",
+    "mean_fold_auc": 0.8649839743589743,
+    "pooled_auc_descriptive": 0.858250276854928,
+    "fold_1_auc": 0.8645833333333334,
+    "fold_2_auc": 0.8653846153846153
+  },
+  {
+    "feature_set": "macd",
+    "model": "rbf_svm",
+    "mean_fold_auc": 0.8211805555555556,
+    "pooled_auc_descriptive": 0.818936877076412,
+    "fold_1_auc": 0.8090277777777779,
+    "fold_2_auc": 0.8333333333333334
+  },
+  {
+    "feature_set": "stdev",
+    "model": "logistic_regression",
+    "mean_fold_auc": 0.8321047008547009,
+    "pooled_auc_descriptive": 0.7990033222591362,
+    "fold_1_auc": 0.7625,
+    "fold_2_auc": 0.9017094017094017
+  },
+  {
+    "feature_set": "stdev",
+    "model": "random_forest",
+    "mean_fold_auc": 0.7254807692307692,
+    "pooled_auc_descriptive": 0.7206533776301218,
+    "fold_1_auc": 0.7180555555555557,
+    "fold_2_auc": 0.7329059829059829
+  },
+  {
+    "feature_set": "stdev",
+    "model": "rbf_svm",
+    "mean_fold_auc": 0.8216880341880342,
+    "pooled_auc_descriptive": 0.7486157253599114,
+    "fold_1_auc": 0.7416666666666667,
+    "fold_2_auc": 0.9017094017094017
+  },
+  {
+    "feature_set": "mean_hold",
+    "model": "logistic_regression",
+    "mean_fold_auc": 0.7480769230769231,
+    "pooled_auc_descriptive": 0.7242524916943522,
+    "fold_1_auc": 0.7055555555555556,
+    "fold_2_auc": 0.7905982905982907
+  },
+  {
+    "feature_set": "mean_hold",
+    "model": "random_forest",
+    "mean_fold_auc": 0.5838942307692309,
+    "pooled_auc_descriptive": 0.5968992248062015,
+    "fold_1_auc": 0.5673611111111112,
+    "fold_2_auc": 0.6004273504273505
+  },
+  {
+    "feature_set": "mean_hold",
+    "model": "rbf_svm",
+    "mean_fold_auc": 0.7181623931623933,
+    "pooled_auc_descriptive": 0.6882613510520488,
+    "fold_1_auc": 0.65,
+    "fold_2_auc": 0.7863247863247864
+  },
+  {
+    "feature_set": "macd_stdev",
+    "model": "logistic_regression",
+    "mean_fold_auc": 0.8451388888888889,
+    "pooled_auc_descriptive": 0.8294573643410853,
+    "fold_1_auc": 0.8013888888888889,
+    "fold_2_auc": 0.888888888888889
+  },
+  {
+    "feature_set": "macd_stdev",
+    "model": "random_forest",
+    "mean_fold_auc": 0.8262553418803419,
+    "pooled_auc_descriptive": 0.8142303433001107,
+    "fold_1_auc": 0.8020833333333334,
+    "fold_2_auc": 0.8504273504273504
+  },
+  {
+    "feature_set": "macd_stdev",
+    "model": "rbf_svm",
+    "mean_fold_auc": 0.8061965811965812,
+    "pooled_auc_descriptive": 0.7940199335548174,
+    "fold_1_auc": 0.7833333333333333,
+    "fold_2_auc": 0.8290598290598291
+  },
+  {
+    "feature_set": "macd_stdev_mean",
+    "model": "logistic_regression",
+    "mean_fold_auc": 0.8381944444444445,
+    "pooled_auc_descriptive": 0.8255813953488372,
+    "fold_1_auc": 0.7875,
+    "fold_2_auc": 0.888888888888889
+  },
+  {
+    "feature_set": "macd_stdev_mean",
+    "model": "random_forest",
+    "mean_fold_auc": 0.7948985042735043,
+    "pooled_auc_descriptive": 0.7782392026578073,
+    "fold_1_auc": 0.7479166666666667,
+    "fold_2_auc": 0.8418803418803419
+  },
+  {
+    "feature_set": "macd_stdev_mean",
+    "model": "rbf_svm",
+    "mean_fold_auc": 0.7805555555555557,
+    "pooled_auc_descriptive": 0.7635658914728681,
+    "fold_1_auc": 0.7277777777777779,
+    "fold_2_auc": 0.8333333333333334
+  }
+]

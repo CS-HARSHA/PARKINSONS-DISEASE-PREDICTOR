@@ -1,0 +1,32 @@
+[
+  {
+    "name": "macd",
+    "auc_pooled": 0.850498338870432,
+    "ci_low": 0.7591085271317829,
+    "ci_high": 0.9302464008859357,
+    "auc_by_direction": {
+      "MIT-CS1PD->MIT-CS2PD": 0.8222222222222222,
+      "MIT-CS2PD->MIT-CS1PD": 0.8803418803418803
+    }
+  },
+  {
+    "name": "macd_log",
+    "auc_pooled": 0.85437430786268,
+    "ci_low": 0.7646594684385382,
+    "ci_high": 0.9313538205980066,
+    "auc_by_direction": {
+      "MIT-CS1PD->MIT-CS2PD": 0.8291666666666666,
+      "MIT-CS2PD->MIT-CS1PD": 0.8803418803418803
+    }
+  },
+  {
+    "name": "macd_norm",
+    "auc_pooled": 0.7436323366555925,
+    "ci_low": 0.6323366555924695,
+    "ci_high": 0.8399778516057586,
+    "auc_by_direction": {
+      "MIT-CS1PD->MIT-CS2PD": 0.7444444444444445,
+      "MIT-CS2PD->MIT-CS1PD": 0.7649572649572649
+    }
+  }
+]

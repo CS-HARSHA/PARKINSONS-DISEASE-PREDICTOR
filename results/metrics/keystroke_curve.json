@@ -1,0 +1,58 @@
+[
+  {
+    "n_keystrokes": 50,
+    "sessions_shorter_than_n": 0,
+    "auc_pooled": 0.699889258028793,
+    "ci_low": 0.5802602436323366,
+    "ci_high": 0.8067691029900331
+  },
+  {
+    "n_keystrokes": 100,
+    "sessions_shorter_than_n": 0,
+    "auc_pooled": 0.7641196013289037,
+    "ci_low": 0.6550387596899224,
+    "ci_high": 0.85437430786268
+  },
+  {
+    "n_keystrokes": 150,
+    "sessions_shorter_than_n": 0,
+    "auc_pooled": 0.8028792912513842,
+    "ci_low": 0.7004291251384274,
+    "ci_high": 0.888704318936877
+  },
+  {
+    "n_keystrokes": 200,
+    "sessions_shorter_than_n": 0,
+    "auc_pooled": 0.8272425249169436,
+    "ci_low": 0.7319905869324472,
+    "ci_high": 0.9086378737541527
+  },
+  {
+    "n_keystrokes": 300,
+    "sessions_shorter_than_n": 1,
+    "auc_pooled": 0.840531561461794,
+    "ci_low": 0.7524916943521596,
+    "ci_high": 0.9224944629014397
+  },
+  {
+    "n_keystrokes": 500,
+    "sessions_shorter_than_n": 5,
+    "auc_pooled": 0.8421926910299004,
+    "ci_low": 0.7469545957918051,
+    "ci_high": 0.9236018826135105
+  },
+  {
+    "n_keystrokes": 1000,
+    "sessions_shorter_than_n": 23,
+    "auc_pooled": 0.8289036544850498,
+    "ci_low": 0.7297895902547066,
+    "ci_high": 0.9158637873754153
+  },
+  {
+    "n_keystrokes": "full",
+    "sessions_shorter_than_n": 116,
+    "auc_pooled": 0.850498338870432,
+    "ci_low": 0.7591085271317829,
+    "ci_high": 0.9302464008859357
+  }
+]

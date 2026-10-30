@@ -1,0 +1,15 @@
+{
+  "name": "baseline_mean",
+  "n_subjects": 85,
+  "auc_pooled": 0.5564784053156147,
+  "auc_by_direction": {
+    "MIT-CS1PD->MIT-CS2PD": 0.7055555555555556,
+    "MIT-CS2PD->MIT-CS1PD": 0.7905982905982907
+  },
+  "ci_low": 0.43189368770764125,
+  "ci_high": 0.6788621262458471,
+  "metadata": {
+    "n_features": 1,
+    "notes": "Session scores averaged per subject; subject-safe cross-cohort evaluation."
+  }
+}
