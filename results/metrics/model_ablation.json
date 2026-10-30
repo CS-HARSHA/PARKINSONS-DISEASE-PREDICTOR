@@ -1,0 +1,68 @@
+[
+  {
+    "model": "logistic",
+    "features": "macd",
+    "auc_pooled": 0.850498338870432,
+    "ci_low": 0.7591085271317829,
+    "ci_high": 0.9302464008859357,
+    "auc_by_direction": {
+      "MIT-CS1PD->MIT-CS2PD": 0.8222222222222222,
+      "MIT-CS2PD->MIT-CS1PD": 0.8803418803418803
+    }
+  },
+  {
+    "model": "linear_svm",
+    "features": "macd",
+    "auc_pooled": 0.850498338870432,
+    "ci_low": 0.7591085271317829,
+    "ci_high": 0.9302464008859357,
+    "auc_by_direction": {
+      "MIT-CS1PD->MIT-CS2PD": 0.8222222222222222,
+      "MIT-CS2PD->MIT-CS1PD": 0.8803418803418803
+    }
+  },
+  {
+    "model": "random_forest",
+    "features": "macd",
+    "auc_pooled": 0.850498338870432,
+    "ci_low": 0.7591085271317829,
+    "ci_high": 0.9302464008859357,
+    "auc_by_direction": {
+      "MIT-CS1PD->MIT-CS2PD": 0.8222222222222222,
+      "MIT-CS2PD->MIT-CS1PD": 0.8803418803418803
+    }
+  },
+  {
+    "model": "knn",
+    "features": "macd",
+    "auc_pooled": 0.850498338870432,
+    "ci_low": 0.7591085271317829,
+    "ci_high": 0.9302464008859357,
+    "auc_by_direction": {
+      "MIT-CS1PD->MIT-CS2PD": 0.8222222222222222,
+      "MIT-CS2PD->MIT-CS1PD": 0.8803418803418803
+    }
+  },
+  {
+    "model": "logistic",
+    "features": "macd_std",
+    "auc_pooled": 0.6107419712070875,
+    "ci_low": 0.48062015503875966,
+    "ci_high": 0.7270348837209303,
+    "auc_by_direction": {
+      "MIT-CS1PD->MIT-CS2PD": 0.8027777777777778,
+      "MIT-CS2PD->MIT-CS1PD": 0.9102564102564102
+    }
+  },
+  {
+    "model": "logistic",
+    "features": "macd_std_mean",
+    "auc_pooled": 0.5825027685492803,
+    "ci_low": 0.4551356589147287,
+    "ci_high": 0.7037790697674419,
+    "auc_by_direction": {
+      "MIT-CS1PD->MIT-CS2PD": 0.7541666666666667,
+      "MIT-CS2PD->MIT-CS1PD": 0.8418803418803419
+    }
+  }
+]

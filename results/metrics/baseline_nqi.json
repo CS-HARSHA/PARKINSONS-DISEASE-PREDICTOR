@@ -1,0 +1,10 @@
+{
+  "name": "baseline_nqi",
+  "auc_pooled": 0.7447397563676633,
+  "ci_low": 0.637859911406423,
+  "ci_high": 0.8466223698781838,
+  "auc_by_direction": {
+    "MIT-CS1PD->MIT-CS2PD": 0.7319444444444445,
+    "MIT-CS2PD->MIT-CS1PD": 0.7991452991452992
+  }
+}

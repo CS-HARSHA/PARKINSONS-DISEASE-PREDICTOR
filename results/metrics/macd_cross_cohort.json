@@ -1,0 +1,15 @@
+{
+  "name": "macd_cross_cohort",
+  "n_subjects": 85,
+  "auc_pooled": 0.850498338870432,
+  "auc_by_direction": {
+    "MIT-CS1PD->MIT-CS2PD": 0.8222222222222222,
+    "MIT-CS2PD->MIT-CS1PD": 0.8803418803418803
+  },
+  "ci_low": 0.7591085271317829,
+  "ci_high": 0.9302464008859357,
+  "metadata": {
+    "n_features": 1,
+    "notes": "Session scores averaged per subject; subject-safe cross-cohort evaluation."
+  }
+}

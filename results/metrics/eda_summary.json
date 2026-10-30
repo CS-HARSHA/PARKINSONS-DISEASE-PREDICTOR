@@ -1,0 +1,65 @@
+{
+  "total_sessions": 116,
+  "total_subjects": 85,
+  "by_cohort": {
+    "MIT-CS1PD": {
+      "sessions": 62,
+      "subjects": 31,
+      "pd_subjects": 18,
+      "control_subjects": 13,
+      "keystrokes_min": 443,
+      "keystrokes_median": 1188.0,
+      "keystrokes_max": 3322
+    },
+    "MIT-CS2PD": {
+      "sessions": 54,
+      "subjects": 54,
+      "pd_subjects": 24,
+      "control_subjects": 30,
+      "keystrokes_min": 299,
+      "keystrokes_median": 1503.0,
+      "keystrokes_max": 3181
+    }
+  },
+  "macd_min": 0.00865124716553288,
+  "macd_median": 0.02838581736909323,
+  "macd_max": 0.10954216867469879,
+  "subject_level_group_summary": {
+    "MIT-CS1PD_Control": {
+      "n_subjects": 13,
+      "mean_hold_subject_mean": 0.10651430194291932,
+      "mean_hold_subject_median": 0.10097878673700075,
+      "mean_stdev_hold": 0.029769830485193403,
+      "mean_abs_consecutive_change": 0.03133159625449603,
+      "mean_macd": 0.024171935236357737,
+      "median_macd": 0.02217113999429468
+    },
+    "MIT-CS1PD_PD": {
+      "n_subjects": 18,
+      "mean_hold_subject_mean": 0.14268322312433537,
+      "mean_hold_subject_median": 0.14158841985074289,
+      "mean_stdev_hold": 0.052865066601527906,
+      "mean_abs_consecutive_change": 0.05107300160898779,
+      "mean_macd": 0.04693066038710893,
+      "median_macd": 0.039024943911700985
+    },
+    "MIT-CS2PD_Control": {
+      "n_subjects": 30,
+      "mean_hold_subject_mean": 0.10490006393149746,
+      "mean_hold_subject_median": 0.09733407065270575,
+      "mean_stdev_hold": 0.02935444962838839,
+      "mean_abs_consecutive_change": 0.026561489255176863,
+      "mean_macd": 0.022115368691300093,
+      "median_macd": 0.02146930075615904
+    },
+    "MIT-CS2PD_PD": {
+      "n_subjects": 24,
+      "mean_hold_subject_mean": 0.1299364513259923,
+      "mean_hold_subject_median": 0.12089854868487152,
+      "mean_stdev_hold": 0.04357188098363917,
+      "mean_abs_consecutive_change": 0.04287483055969818,
+      "mean_macd": 0.03683362838368536,
+      "median_macd": 0.03373846307651293
+    }
+  }
+}
