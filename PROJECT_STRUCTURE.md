@@ -1,11 +1,11 @@
 # Final project inventory
 
-The repository implements the 15-stage specification pipeline.
+The repository matches the attached 10-work-package breakdown.
 
 ## Pipeline
 
 ```text
-01 prepare → 02 EDA → 03 features → 04 MACD → 05 corridor → 06 variants → 07 simple baselines → 08 nQi → 09 FRESH extraction → 10 FRESH evaluation → 11 ablation → 12 keystroke curve → 13 noise → 14 comparison → 15 export → pytest
+01 prepare → 02 EDA → 03 features → 04 MACD → 05 corridor → 06 variants → 07 simple baselines → 08 nQi → 09 FRESH extraction → 10 FRESH evaluation → 11 ablation → 12 keystroke curve → 13 noise → 14 comparison → 15 export → tests
 ```
 
 ## Files
@@ -16,6 +16,7 @@ The repository implements the 15-stage specification pipeline.
 - `PRESENTATION_PLAN.txt`
 - `PROJECT_STRUCTURE.md`
 - `README.md`
+- `SLIDE_TEMPLATE.md`
 - `TEAM_WORKPLAN.md`
 - `data/processed/cleaning_summary.json`
 - `data/processed/fresh_features.csv`
@@ -145,6 +146,7 @@ The repository implements the 15-stage specification pipeline.
 - `data/raw/MIT-CS2PD/data_MIT-CS2PD/1463511198.1063_001_014.csv`
 - `data/raw/less_is_more.pdf`
 - `data/raw/less_is_more.txt`
+- `data/raw/neuroQWERTY.zip`
 - `data/raw/nqDataLoader.py`
 - `data/raw/readme.ipynb`
 - `docs_GLOSSARY.md`
@@ -227,12 +229,16 @@ The repository implements the 15-stage specification pipeline.
 - `tests/conftest.py`
 - `tests/fixtures/macd_parity.json`
 - `tests/parity_check.mjs`
+- `tests/test_baselines.py`
+- `tests/test_baselines_nqi.py`
 - `tests/test_benchmark.py`
 - `tests/test_cleaning.py`
 - `tests/test_evaluation.py`
 - `tests/test_feature_extraction.py`
 - `tests/test_features.py`
+- `tests/test_fresh_selection.py`
 - `tests/test_js_parity.md`
+- `tests/test_robustness.py`
 - `webapp/css/style.css`
 - `webapp/index.html`
 - `webapp/js/app.js`
