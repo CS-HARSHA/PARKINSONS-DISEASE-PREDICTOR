@@ -1,0 +1,511 @@
+.capture-card {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 1.15rem;
+  border: 1px solid var(--st-border-color, #dce3ed);
+  border-radius: 18px;
+  background: var(--st-secondary-background-color, #ffffff);
+  color: var(--st-text-color, #182538);
+  font-family: var(--st-font, sans-serif);
+}
+.capture-card * { box-sizing: border-box; }
+.capture-topline {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  margin-bottom: 1rem;
+  color: var(--st-secondary-text-color, #66758a);
+  font-size: .83rem;
+  font-weight: 650;
+}
+.step-dot { width: 8px; height: 8px; border-radius: 50%; background: #8b9bb0; }
+.step-dot.active { background: #2375e1; box-shadow: 0 0 0 4px rgba(35,117,225,.12); }
+.capture-target { margin-left: auto; font-size: .76rem; font-weight: 550; }
+.passage-wrap {
+  padding: 1rem 1.05rem;
+  border: 1px solid var(--st-border-color, #dce3ed);
+  border-radius: 13px;
+  background: var(--st-background-color, #f7f9fc);
+}
+.passage-label, .typing-label {
+  display: block;
+  margin-bottom: .55rem;
+  color: var(--st-secondary-text-color, #66758a);
+  font-size: .72rem;
+  font-weight: 750;
+  letter-spacing: .075em;
+}
+.passage-text { margin: 0; line-height: 1.7; font-size: .96rem; }
+.typing-label { margin-top: 1.05rem; }
+#typing-input {
+  display: block;
+  width: 100%;
+  min-height: 126px;
+  resize: vertical;
+  padding: .9rem 1rem;
+  border: 1px solid var(--st-border-color, #cfd8e5);
+  border-radius: 12px;
+  outline: none;
+  background: var(--st-background-color, #fff);
+  color: var(--st-text-color, #182538);
+  font: inherit;
+  font-size: .96rem;
+  line-height: 1.6;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+#typing-input:focus { border-color: var(--st-primary-color, #2375e1); box-shadow: 0 0 0 3px rgba(35,117,225,.12); }
+#typing-input:disabled { opacity: .65; cursor: not-allowed; }
+.progress-row { display: flex; align-items: center; gap: .8rem; margin-top: 1rem; }
+.progress-track { height: 8px; flex: 1; overflow: hidden; border-radius: 999px; background: var(--st-border-color, #e5eaf1); }
+.progress-fill { width: 0; height: 100%; border-radius: inherit; background: var(--st-primary-color, #2375e1); transition: width .12s ease; }
+.progress-count { min-width: 76px; text-align: right; color: var(--st-secondary-text-color, #66758a); font-size: .78rem; font-variant-numeric: tabular-nums; }
+.capture-actions { display: flex; align-items: center; gap: .65rem; margin-top: 1.05rem; }
+.capture-actions button { min-height: 42px; padding: .65rem 1rem; border-radius: 10px; font: inherit; font-size: .88rem; font-weight: 700; cursor: pointer; }
+.start-button { border: 1px solid var(--st-primary-color, #2375e1); background: var(--st-primary-color, #2375e1); color: white; }
+.start-button:disabled { opacity: .55; cursor: not-allowed; }
+.cancel-button { border: 1px solid var(--st-border-color, #dce3ed); background: transparent; color: var(--st-text-color, #182538); }
+.cancel-button:disabled { opacity: .45; cursor: not-allowed; }
+.analyse-button { border: 1px solid var(--st-primary-color, #2375e1); background: transparent; color: var(--st-primary-color, #2375e1); }
+.analyse-button:disabled { opacity: .45; cursor: not-allowed; }
+.capture-status { margin: .85rem 0 0; color: var(--st-secondary-text-color, #66758a); font-size: .78rem; line-height: 1.5; }
+@media (max-width: 560px) {
+  .capture-card { padding: .9rem; }
+  .capture-topline { flex-wrap: wrap; }
+  .capture-target { width: 100%; margin-left: 1rem; }
+}
+
+/* Main assessment card */
+.capture-card {
+    width: 100%;
+    max-width: 100%;
+    padding: 26px;
+    border-radius: 20px;
+    background: #1e293b;
+    border-color: #334155;
+    color: #f8fafc;
+}
+
+/* Top status */
+#capture-state {
+    color: #f8fafc;
+    font-size: 15px;
+    font-weight: 750;
+}
+
+#capture-target {
+    color: #cbd5e1;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Passage */
+.passage-label {
+    color: #93c5fd;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.passage-text {
+    color: #f8fafc;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.passage-wrap {
+    background: #334155;
+    border-color: #475569;
+}
+
+/* Input section */
+.typing-label {
+    color: #f8fafc;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+#typing-input {
+    width: 100%;
+    min-height: 230px;
+    padding: 18px;
+    font-size: 17px;
+    line-height: 1.8;
+    color: #f8fafc;
+    background: #0f172a;
+    border: 1px solid #64748b;
+    border-radius: 12px;
+}
+
+/* Progress and counter */
+#progress-count {
+    color: #f8fafc;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+#timing-count {
+    color: #f8fafc;
+    font-size: 15px;
+    font-weight: 750;
+    margin-top: 12px;
+}
+
+#capture-status {
+    color: #e2e8f0;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Buttons */
+.capture-actions button {
+    min-height: 46px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 9px;
+}
+
+.submit-button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.submit-button:not(:disabled) {
+    opacity: 1;
+    cursor: pointer;
+    background: #2563eb;
+    color: #ffffff;
+}
+
+@media (max-width: 560px) {
+    .capture-card {
+        padding: 20px;
+    }
+}
+
+button {
+    min-height: 54px !important;
+    padding: 12px 20px !important;
+
+    border-radius: 12px !important;
+    font-size: 15px !important;
+    font-weight: 750 !important;
+
+    opacity: 1 !important;
+    transition: all 0.2s ease !important;
+}
+
+/* Disabled buttons remain clearly readable */
+button:disabled,
+button[disabled] {
+    background-color: #475569 !important;
+    border: 1px solid #64748b !important;
+
+    color: #f8fafc !important;
+    -webkit-text-fill-color: #f8fafc !important;
+
+    opacity: 1 !important;
+    filter: none !important;
+    box-shadow: none !important;
+
+    cursor: not-allowed !important;
+}
+
+/* Keep disabled button content visible */
+button:disabled *,
+button[disabled] * {
+    color: #f8fafc !important;
+    -webkit-text-fill-color: #f8fafc !important;
+    opacity: 1 !important;
+}
+
+/* Enabled buttons */
+button:not(:disabled) {
+    cursor: pointer !important;
+}
+
+button:not(:disabled):hover {
+    filter: brightness(1.10);
+}
+
+/* Keyboard accessibility */
+button:focus-visible {
+    outline: 3px solid #38bdf8 !important;
+    outline-offset: 3px !important;
+}
+
+/* Cancel button — clearly visible during capture */
+button[data-action="cancel"] {
+    background: #991b1b !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    border: 1px solid #f87171 !important;
+    border-radius: 10px !important;
+    font-weight: 750 !important;
+    opacity: 1 !important;
+    cursor: pointer !important;
+}
+
+button[data-action="cancel"]:not(:disabled):hover {
+    background: #b91c1c !important;
+}
+
+/* Disabled Cancel button remains readable */
+button[data-action="cancel"]:disabled {
+    background: #475569 !important;
+    color: #f8fafc !important;
+    -webkit-text-fill-color: #f8fafc !important;
+    border-color: #64748b !important;
+    opacity: 1 !important;
+    cursor: not-allowed !important;
+}
+
+/* Passage visibility */
+.passage-text {
+    color: #f8fafc !important;
+    line-height: 1.8 !important;
+    font-size: 15px !important;
+}
+
+.passage-label {
+    color: #cbd5e1 !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.8px;
+}
+
+/* Typing area */
+.typing-label {
+    color: #f8fafc !important;
+    font-weight: 750 !important;
+}
+
+#typing-input {
+    color: #f8fafc !important;
+    caret-color: #60a5fa !important;
+    font-size: 15px !important;
+    line-height: 1.7 !important;
+}
+
+#typing-input::placeholder {
+    color: #94a3b8 !important;
+    opacity: 1 !important;
+}
+
+/* Progress indicators */
+.timing-count,
+.progress-count,
+.capture-status {
+    color: #f1f5f9 !important;
+    font-weight: 650 !important;
+}
+
+.progress-track {
+    background: #334155 !important;
+}
+
+.progress-fill {
+    background: #ff4b55 !important;
+}
+
+/* Consistent button sizing */
+#start-button,
+#cancel-button,
+#submit-button {
+    min-height: 50px !important;
+    padding: 12px 20px !important;
+    border-radius: 11px !important;
+    font-size: 14px !important;
+    font-weight: 800 !important;
+    opacity: 1 !important;
+    transition: all 0.2s ease;
+}
+
+/* Start - red */
+#start-button {
+    background: #ef4444 !important;
+    border: 1px solid #ef4444 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Cancel - red when active */
+#cancel-button:not(:disabled) {
+    background: #b91c1c !important;
+    border: 1px solid #ef4444 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Analyse - blue when active */
+#submit-button:not(:disabled) {
+    background: #2563eb !important;
+    border: 1px solid #3b82f6 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+/* All disabled buttons remain readable */
+#start-button:disabled,
+#cancel-button:disabled,
+#submit-button:disabled {
+    background: #475569 !important;
+    border: 1px solid #64748b !important;
+    color: #f8fafc !important;
+    -webkit-text-fill-color: #f8fafc !important;
+    opacity: 1 !important;
+    cursor: not-allowed !important;
+}
+
+/* Ensure button labels remain visible */
+#start-button *,
+#cancel-button *,
+#submit-button * {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+#start-button:disabled *,
+#cancel-button:disabled *,
+#submit-button:disabled * {
+    color: #f8fafc !important;
+    -webkit-text-fill-color: #f8fafc !important;
+}
+
+/* Hover */
+#start-button:not(:disabled):hover {
+    background: #dc2626 !important;
+}
+
+#cancel-button:not(:disabled):hover {
+    background: #991b1b !important;
+}
+
+#submit-button:not(:disabled):hover {
+    background: #1d4ed8 !important;
+}
+
+/* Keyboard accessibility */
+#start-button:focus-visible,
+#cancel-button:focus-visible,
+#submit-button:focus-visible {
+    outline: 3px solid #93c5fd !important;
+    outline-offset: 3px !important;
+}
+
+.capture-card .capture-actions {
+    display: flex !important;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px !important;
+    margin-top: 20px;
+}
+
+.capture-card .capture-actions button {
+    min-height: 52px !important;
+    min-width: 125px;
+    padding: 12px 22px !important;
+
+    border-radius: 11px !important;
+    border-width: 1px !important;
+    border-style: solid !important;
+
+    font-size: 14px !important;
+    font-weight: 800 !important;
+
+    opacity: 1 !important;
+    filter: none !important;
+    box-shadow: none !important;
+
+    transition: background-color 0.2s ease,
+                border-color 0.2s ease,
+                transform 0.2s ease !important;
+}
+
+/* START - Active */
+.capture-card .capture-actions button#start-button:not(:disabled) {
+    background: #ff4b55 !important;
+    border-color: #ff4b55 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+/* START - Disabled */
+.capture-card .capture-actions button#start-button:disabled {
+    background: #475569 !important;
+    border-color: #64748b !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+/* CANCEL - Active */
+.capture-card .capture-actions button#cancel-button:not(:disabled) {
+    background: #b91c1c !important;
+    border-color: #ef4444 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+/* CANCEL - Disabled */
+.capture-card .capture-actions button#cancel-button:disabled {
+    background: #475569 !important;
+    border-color: #64748b !important;
+    color: #f8fafc !important;
+    -webkit-text-fill-color: #f8fafc !important;
+}
+
+/* ANALYSE - Active */
+.capture-card .capture-actions button#submit-button:not(:disabled) {
+    background: #2563eb !important;
+    border-color: #3b82f6 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+/* ANALYSE - Disabled */
+.capture-card .capture-actions button#submit-button:disabled {
+    background: #475569 !important;
+    border-color: #64748b !important;
+    color: #f8fafc !important;
+    -webkit-text-fill-color: #f8fafc !important;
+}
+
+/* Force nested button text to remain visible */
+.capture-card .capture-actions button *,
+.capture-card .capture-actions button:disabled * {
+    color: inherit !important;
+    -webkit-text-fill-color: inherit !important;
+    opacity: 1 !important;
+}
+
+/* Hover effects */
+.capture-card .capture-actions button#start-button:not(:disabled):hover {
+    background: #dc2626 !important;
+    transform: translateY(-1px);
+}
+
+.capture-card .capture-actions button#cancel-button:not(:disabled):hover {
+    background: #991b1b !important;
+    transform: translateY(-1px);
+}
+
+.capture-card .capture-actions button#submit-button:not(:disabled):hover {
+    background: #1d4ed8 !important;
+    transform: translateY(-1px);
+}
+
+/* Keyboard focus */
+.capture-card .capture-actions button:focus-visible {
+    outline: 3px solid #93c5fd !important;
+    outline-offset: 3px !important;
+}
+
+@media (max-width: 520px) {
+    .capture-card .capture-actions {
+        gap: 10px !important;
+    }
+
+    .capture-card .capture-actions button {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+}
