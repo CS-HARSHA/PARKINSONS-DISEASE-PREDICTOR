@@ -1,0 +1,42 @@
+<section class="capture-card" aria-label="Typing assessment">
+  <div class="capture-topline">
+    <span class="step-dot"></span>
+    <span id="capture-state">Assessment ready</span>
+    <span class="capture-target" id="capture-target">200–1,000 keystrokes</span>
+  </div>
+
+  <div class="passage-wrap">
+    <div class="passage-label">TYPE THE PROVIDED PARAGRAPH</div>
+    <p class="passage-text" id="passage-text"></p>
+  </div>
+
+  <label class="typing-label" for="typing-input">Your typing area</label>
+  <textarea
+    id="typing-input"
+    rows="5"
+    spellcheck="false"
+    autocomplete="off"
+    autocorrect="off"
+    autocapitalize="off"
+    placeholder="Your typed text appears here..."
+    disabled
+  ></textarea>
+
+  <div class="progress-row">
+    <div class="progress-track" role="progressbar" aria-label="Typing progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+    <span class="progress-count" id="progress-count">0% of minimum required</span>
+  </div>
+  <div class="timing-count" id="timing-count">Valid keystrokes: 0 / 1000 | Minimum: 200</div>
+
+  <div class="capture-actions">
+    <button class="start-button" id="start-button" type="button">Start typing test <span aria-hidden="true">→</span></button>
+    <button class="cancel-button" id="cancel-button" data-action="cancel" type="button" disabled>Cancel</button>
+    <button class="submit-button" id="submit-button" type="button" disabled>Analyse My Typing <span aria-hidden="true">→</span></button>
+  </div>
+
+  <p class="capture-status" id="capture-status" aria-live="polite">
+    Type naturally. You can submit once 200 valid keystrokes have been captured.
+  </p>
+</section>

@@ -60,6 +60,23 @@ pytest -q
 
 The raw archive must exist before stage 01. The pipeline writes the processed session schema, cleaning audit, feature tables, saved metrics, figures, reports, and `models/macd_model.json`.
 
+## Streamlit typing assessment
+
+The interactive typing assessment has a separate, smaller dependency set in
+`requirements-app.txt`. Use a clean virtual environment from the repository
+root:
+
+```powershell
+py -3.14 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements-app.txt
+python -m streamlit run app.py
+```
+
+The app was verified with Python 3.14.5, Streamlit 1.66.1, NumPy 2.5.4, and
+protobuf 7.36.2. The broader `requirements.txt` is for the research pipeline;
+install `requirements-app.txt` to run the Streamlit app.
+
 ## Key outputs
 
 - `data/processed/sessions.json`: cleaned session records
