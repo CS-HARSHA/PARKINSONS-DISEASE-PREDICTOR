@@ -5,7 +5,5 @@ __pycache__/
 data/raw/*
 !data/raw/.gitkeep
 data/processed/*
-results/figures/*
-results/metrics/*
 models/*.json
 !models/macd_model.json
