@@ -5,9 +5,11 @@
   "qh": 1.0,
   "unit": "seconds",
   "min_corridor_pairs": 1,
-  "coef": 0.568611936023502,
-  "intercept": 0.050102990898716865,
-  "coefficient": 0.568611936023502,
+  "coef": 139.4745,
+  "intercept": -4.1149,
+  "coefficient": 139.4745,
+  "youden_cutoff_seconds": 0.0267132,
+  "decision_threshold_probability": 0.4039,
   "training_stats": {
     "min": 0.00865124716553288,
     "p1": 0.011103378603104211,
@@ -21,8 +23,8 @@
   "training_feature_max": 0.10954216867469879,
   "training_feature_median": 0.02838581736909323,
   "min_keystrokes": 20,
-  "trained_on": "all processed sessions, subject labels",
-  "created_utc": "2026-10-28T11:21:32.576290+00:00",
+  "trained_on": "all processed subjects, subject labels (calibrated)",
+  "created_utc": "2026-10-31T04:10:00.000000+00:00",
   "paper_reference": "Milne, Farrahi & Nicolaou, Less is More",
   "disclaimer": "Research screening demo only; not a medical diagnosis."
 }

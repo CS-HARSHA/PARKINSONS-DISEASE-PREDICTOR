@@ -7,7 +7,7 @@ from . import config
 
 
 def fit_logistic(features: np.ndarray, labels: np.ndarray) -> LogisticRegression:
-    model = LogisticRegression(random_state=config.RANDOM_SEED)
+    model = LogisticRegression(C=1e5, random_state=config.RANDOM_SEED, max_iter=2000)
     model.fit(np.asarray(features, dtype=float).reshape(-1, 1), np.asarray(labels, dtype=int))
     return model
 

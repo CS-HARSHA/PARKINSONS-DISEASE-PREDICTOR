@@ -90,6 +90,7 @@ def load_macd_model(model_path: str | Path = DEFAULT_MODEL_PATH) -> dict[str, An
     model["qh"] = numeric["qh"]
     model["min_corridor_pairs"] = min_pairs
     model["min_keystrokes"] = min_keystrokes
+    model["youden_cutoff_seconds"] = float(model.get("youden_cutoff_seconds", 0.0267132))
     model["training_stats"] = {
         "min": min_value,
         "max": max_value,
@@ -190,6 +191,32 @@ def analyse_keystrokes(
     else:
         relative_band = "Within 20% of the training-set median"
 
+    cutoff_macd = float(model.get("youden_cutoff_seconds", 0.0267132))
+    if model_output < 0.35:
+        screening_result = "Negative (Typical Keystroke Pattern)"
+        risk_level = "Low"
+        has_parkinson_indicator = False
+        summary_statement = (
+            "Keystroke timing is steady and consistent with typical healthy control dynamics. "
+            "No elevated timing volatility was detected."
+        )
+    elif model_output < 0.60:
+        screening_result = "Borderline (Moderate Timing Volatility)"
+        risk_level = "Moderate"
+        has_parkinson_indicator = False
+        summary_statement = (
+            f"Keystroke timing is near the research decision cutoff ({cutoff_macd*1000:.1f} ms). "
+            "Results are borderline and inconclusive."
+        )
+    else:
+        screening_result = "Positive (Elevated Timing Volatility)"
+        risk_level = "Elevated"
+        has_parkinson_indicator = True
+        summary_statement = (
+            "Keystroke timing exhibits elevated volatility (MACD) consistent with patterns "
+            "observed in early Parkinson's disease research cohorts."
+        )
+
     return {
         "valid_keystrokes": int(holds.size),
         "macd_pairs": int(pair_count),
@@ -198,6 +225,12 @@ def analyse_keystrokes(
         "median_hold_seconds": float(np.median(holds)),
         "std_hold_seconds": float(np.std(holds, ddof=0)),
         "model_output_score": model_output,
+        "screening_probability_percent": round(model_output * 100, 1),
+        "screening_result": screening_result,
+        "risk_level": risk_level,
+        "has_parkinson_indicator": has_parkinson_indicator,
+        "summary_statement": summary_statement,
+        "decision_threshold_seconds": cutoff_macd,
         "relative_training_band": relative_band,
         "outside_training_range": bool(below_range or above_range),
         "below_training_range": below_range,
