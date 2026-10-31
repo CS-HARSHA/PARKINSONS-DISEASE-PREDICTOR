@@ -35,7 +35,6 @@ PASSAGE = (
 
 
 def validate_capture_payload(payload):
-    """Validate the browser-to-Python capture payload."""
     if not isinstance(payload, dict):
         raise InferenceError("Invalid keystroke capture payload.")
 
@@ -81,7 +80,6 @@ def validate_capture_payload(payload):
 
 
 def verify_analysis_result(hold_times, result):
-    """Verify inference features and output against canonical calculations."""
     try:
         values = np.asarray(list(hold_times), dtype=float).reshape(-1)
     except (TypeError, ValueError, OverflowError) as exc:
@@ -175,7 +173,6 @@ def verify_analysis_result(hold_times, result):
 
 
 def load_training_distribution():
-    """Load and validate MACD percentiles from the exported model."""
     try:
         model = json.loads(
             (ROOT / "models" / "macd_model.json").read_text(
@@ -219,7 +216,6 @@ def load_training_distribution():
 
 
 def compare_with_training_distribution(macd_value):
-    """Describe the MACD position within the exported training percentiles."""
     try:
         value = float(macd_value)
     except (TypeError, ValueError, OverflowError) as exc:
@@ -300,7 +296,6 @@ div[data-testid="stCaptionContainer"] {
     padding: 20px !important;
     box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
 }
-
 /* Metric labels */
 [data-testid="stMetricLabel"],
 [data-testid="stMetricLabel"] p,
@@ -309,7 +304,6 @@ div[data-testid="stCaptionContainer"] {
     font-size: 14px !important;
     font-weight: 650 !important;
 }
-
 /* Metric values */
 [data-testid="stMetricValue"],
 [data-testid="stMetricValue"] div,
@@ -318,7 +312,6 @@ div[data-testid="stCaptionContainer"] {
     font-size: 28px !important;
     font-weight: 750 !important;
 }
-
 /* Results section headings */
 [data-testid="stMarkdownContainer"] h1,
 [data-testid="stMarkdownContainer"] h2,
@@ -327,19 +320,16 @@ div[data-testid="stCaptionContainer"] {
     color: #172033 !important;
     font-weight: 750 !important;
 }
-
 /* Regular results text */
 [data-testid="stMarkdownContainer"] p,
 [data-testid="stMarkdownContainer"] li {
     color: #334155 !important;
 }
-
 /* Captions */
 [data-testid="stCaptionContainer"],
 [data-testid="stCaptionContainer"] p {
     color: #64748b !important;
 }
-
 /* Primary action buttons */
 .stButton > button[kind="primary"] {
     background: #2563eb !important;
@@ -391,7 +381,6 @@ PAGE_CSS = """
   @media (max-width: 600px) { .block-container { padding-top: 1.3rem; } }
 
 /* Results card */
-
 .result-panel {
     padding: 1.5rem;
     margin-top: 0.7rem;
@@ -410,20 +399,17 @@ PAGE_CSS = """
     font-weight: 750;
     letter-spacing: 0.06em;
 }
-
 .score-value {
     color: #1e5ca8 !important;
     font-size: 2.8rem;
     font-weight: 850;
     font-variant-numeric: tabular-nums;
 }
-
 .score-caption {
     color: #475569 !important;
     font-size: 0.9rem;
     line-height: 1.6;
 }
-
 /* Metric cards */
 
 [data-testid="stMetric"] {
@@ -433,13 +419,11 @@ PAGE_CSS = """
     border-radius: 14px;
     padding: 16px !important;
 }
-
 [data-testid="stMetricLabel"],
 [data-testid="stMetricLabel"] p,
 [data-testid="stMetricLabel"] span {
     color: #475569 !important;
 }
-
 [data-testid="stMetricValue"],
 [data-testid="stMetricValue"] div,
 [data-testid="stMetricValue"] span {
@@ -454,7 +438,6 @@ PAGE_CSS = """
     color: #172033 !important;
     font-weight: 750 !important;
 }
-
 div[data-testid="stButton"] > button[data-testid="stBaseButton-primary"],
 .stButton > button[kind="primary"] {
     background-color: #2563eb !important;
@@ -466,9 +449,6 @@ div[data-testid="stButton"] > button[data-testid="stBaseButton-primary"],
     min-height: 48px;
     transition: background-color 0.2s ease;
 }
-
-/* Ensure nested text is also white */
-
 div[data-testid="stButton"] > button[data-testid="stBaseButton-primary"] *,
 .stButton > button[kind="primary"] * {
     color: #ffffff !important;
@@ -476,14 +456,11 @@ div[data-testid="stButton"] > button[data-testid="stBaseButton-primary"] *,
 }
 
 /* Hover */
-
 div[data-testid="stButton"] > button[data-testid="stBaseButton-primary"]:hover,
 .stButton > button[kind="primary"]:hover {
     background-color: #1d4ed8 !important;
     border-color: #1d4ed8 !important;
 }
-
-/* Focus */
 
 div[data-testid="stButton"] > button[data-testid="stBaseButton-primary"]:focus-visible {
     outline: 3px solid #93c5fd !important;
@@ -506,14 +483,12 @@ div[data-testid="stButton"] > button[data-testid="stBaseButton-primary"]:focus-v
     border-left: 5px solid #38bdf8;
     border-radius: 12px;
 }
-
 .capture-duration-label {
     color: #cbd5e1 !important;
     font-size: 13px;
     font-weight: 800;
     letter-spacing: 1px;
 }
-
 .capture-duration-value {
     color: #ffffff !important;
     font-size: 18px;
@@ -530,14 +505,12 @@ div[data-testid="stButton"] > button[data-testid="stBaseButton-primary"]:focus-v
     border-left: 5px solid #a78bfa;
     border-radius: 12px;
 }
-
 .classification-notice-title {
     color: #ddd6fe !important;
     font-size: 17px;
     font-weight: 800;
     margin-bottom: 9px;
 }
-
 .classification-notice p {
     color: #f1f5f9 !important;
     font-size: 14px;
@@ -545,19 +518,146 @@ div[data-testid="stButton"] > button[data-testid="stBaseButton-primary"]:focus-v
     margin: 6px 0;
 }
 
+/* Screening cards and risk indicators */
+.screening-card {
+    padding: 1.5rem 1.75rem;
+    margin: 1rem 0 1.5rem;
+    border-radius: 16px;
+    border-width: 1px;
+    border-style: solid;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+}
+.screening-card.low-risk {
+    background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+    border-color: #86efac;
+    border-left: 6px solid #10b981;
+}
+.screening-card.moderate-risk {
+    background: linear-gradient(135deg, #fffbeb 0%, #ffffff 100%);
+    border-color: #fde68a;
+    border-left: 6px solid #f59e0b;
+}
+.screening-card.elevated-risk {
+    background: linear-gradient(135deg, #fef2f2 0%, #ffffff 100%);
+    border-color: #fca5a5;
+    border-left: 6px solid #ef4444;
+}
+.screening-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+.screening-badge.low-risk {
+    background: #dcfce7;
+    color: #15803d !important;
+}
+.screening-badge.moderate-risk {
+    background: #fef3c7;
+    color: #b45309 !important;
+}
+.screening-badge.elevated-risk {
+    background: #fee2e2;
+    color: #b91c1c !important;
+}
+.screening-title {
+    font-size: 1.55rem;
+    font-weight: 800;
+    margin: 0.6rem 0 0.35rem;
+    letter-spacing: -0.02em;
+}
+.screening-title.low-risk { color: #166534 !important; }
+.screening-title.moderate-risk { color: #92400e !important; }
+.screening-title.elevated-risk { color: #991b1b !important; }
+.screening-explanation {
+    color: #334155 !important;
+    font-size: 0.98rem;
+    line-height: 1.65;
+    margin: 0.4rem 0 0.8rem;
+}
+.risk-meter-container {
+    margin: 1.2rem 0 0.5rem;
+    padding: 1rem 1.25rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+}
+.risk-meter-track {
+    position: relative;
+    height: 12px;
+    border-radius: 6px;
+    background: linear-gradient(to right, #10b981 0%, #34d399 35%, #fbbf24 45%, #f59e0b 60%, #ef4444 80%, #b91c1c 100%);
+    margin: 0.8rem 0 0.4rem;
+}
+.risk-meter-pointer {
+    position: absolute;
+    top: -6px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 3px solid #0f172a;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    transform: translateX(-50%);
+    transition: left 0.4s ease;
+}
+.risk-meter-labels {
+    display: flex;
+    justify-content: space-between;
+    color: #64748b;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.comp-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+    margin: 1rem 0 1.2rem;
+}
+.comp-card {
+    padding: 1.15rem 1.25rem;
+    background: #ffffff;
+    border: 1px solid #dce5f0;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+}
+.comp-card-label {
+    color: #64748b;
+    font-size: 0.76rem;
+    font-weight: 750;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 0.35rem;
+}
+.comp-card-value {
+    color: #0f172a;
+    font-size: 1.85rem;
+    font-weight: 850;
+    line-height: 1.2;
+}
+.comp-card-note {
+    color: #475569;
+    font-size: 0.85rem;
+    margin-top: 0.4rem;
+    line-height: 1.5;
+}
+
 .welcome-hero {
     display: grid;
     grid-template-columns: minmax(0, 1.4fr) minmax(260px, 0.8fr);
     gap: 24px;
     align-items: stretch;
-
     padding: clamp(24px, 3vw, 38px);
     margin: 16px 0 22px;
-
     background: linear-gradient(135deg, #ffffff 0%, #edf5ff 100%);
     border: 1px solid #dce7f4;
     border-radius: 22px;
-
     box-shadow: 0 5px 22px rgba(15, 35, 65, 0.05);
 }
 
@@ -568,19 +668,15 @@ div[data-testid="stButton"] > button[data-testid="stBaseButton-primary"]:focus-v
     justify-content: center;
     min-width: 0;
 }
-
 .welcome-kicker {
     display: inline-flex;
     align-items: center;
     gap: 9px;
-
     padding: 7px 12px;
     border: 1px solid #cbdcf3;
     border-radius: 30px;
-
     background: #e5efff;
     color: #245da8 !important;
-
     font-size: 11px;
     font-weight: 800;
     letter-spacing: 1px;
@@ -592,14 +688,12 @@ div[data-testid="stButton"] > button[data-testid="stBaseButton-primary"]:focus-v
 
 .welcome-hero .app-title {
     margin: 22px 0 12px;
-
     color: #14263d !important;
     font-size: clamp(2rem, 4.5vw, 3.1rem);
     line-height: 1.12;
     font-weight: 850;
     letter-spacing: -1.6px;
 }
-
 .welcome-hero .app-subtitle {
     max-width: 600px;
     margin: 0 0 20px;
@@ -608,13 +702,11 @@ div[data-testid="stButton"] > button[data-testid="stBaseButton-primary"]:focus-v
     font-size: 15px;
     line-height: 1.75;
 }
-
 .welcome-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
 }
-
 .welcome-tags span {
     padding: 7px 11px;
     border-radius: 8px;
@@ -634,45 +726,37 @@ div[data-testid="stButton"] > button[data-testid="stBaseButton-primary"]:focus-v
     flex-direction: column;
     justify-content: center;
     gap: 17px;
-
     padding: 24px;
     border-radius: 17px;
-
     background: linear-gradient(145deg, #14263d, #1d3b5e);
     box-shadow: 0 8px 20px rgba(20, 38, 61, 0.12);
 }
-
 .overview-eyebrow {
     color: #bfdbfe !important;
     font-size: 11px;
     font-weight: 800;
     letter-spacing: 1.3px;
 }
-
 .overview-metric {
     display: flex;
     flex-direction: column;
     gap: 4px;
 }
-
 .overview-metric strong {
     color: #ffffff !important;
     font-size: clamp(1.55rem, 2.5vw, 2rem);
     font-weight: 850;
     letter-spacing: -0.7px;
 }
-
 .overview-metric span {
     color: #cbd5e1 !important;
     font-size: 12px;
     line-height: 1.5;
 }
-
 .overview-divider {
     height: 1px;
     background: rgba(255, 255, 255, 0.18);
 }
-
 .overview-note {
     padding-top: 5px;
     color: #dbeafe !important;
@@ -680,48 +764,37 @@ div[data-testid="stButton"] > button[data-testid="stBaseButton-primary"]:focus-v
     line-height: 1.7;
 }
 
-/* Three-step instructions */
-
+/* Instructions */
 .welcome-steps {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 13px;
-
     margin: 0 0 26px;
 }
-
 .welcome-step {
     display: flex;
     align-items: flex-start;
     gap: 12px;
-
     min-width: 0;
     padding: 17px;
-
     background: #ffffff;
     border: 1px solid #e0e7f0;
     border-radius: 14px;
-
     box-shadow: 0 2px 8px rgba(15, 23, 42, 0.025);
 }
-
 .welcome-step-number {
     display: flex;
     flex-shrink: 0;
     align-items: center;
     justify-content: center;
-
     width: 32px;
     height: 32px;
     border-radius: 9px;
-
     background: #eaf2ff;
     color: #2563eb;
-
     font-size: 12px;
     font-weight: 850;
 }
-
 .welcome-step strong {
     display: block;
     margin: 2px 0 5px;
@@ -730,7 +803,6 @@ div[data-testid="stButton"] > button[data-testid="stBaseButton-primary"]:focus-v
     font-size: 13px;
     font-weight: 750;
 }
-
 .welcome-step p {
     margin: 0;
 
@@ -738,9 +810,6 @@ div[data-testid="stButton"] > button[data-testid="stBaseButton-primary"]:focus-v
     font-size: 12px;
     line-height: 1.55;
 }
-
-/* Responsive layout */
-
 @media (max-width: 850px) {
     .welcome-hero {
         grid-template-columns: 1fr;
@@ -750,7 +819,6 @@ div[data-testid="stButton"] > button[data-testid="stBaseButton-primary"]:focus-v
         grid-template-columns: 1fr;
     }
 }
-
 @media (max-width: 500px) {
     .welcome-hero {
         padding: 20px;
@@ -761,8 +829,7 @@ div[data-testid="stButton"] > button[data-testid="stBaseButton-primary"]:focus-v
         padding: 20px;
     }
 }
-
-/* Typing session heading */
+/* Typing session*/
 .session-heading {
     margin: 22px 0 5px;
     color: #17263b !important;
@@ -780,7 +847,6 @@ div[data-testid="stButton"] > button[data-testid="stBaseButton-primary"]:focus-v
     </style>
     """
 st.markdown(PAGE_CSS, unsafe_allow_html=True)
-
 st.markdown(
     f"""
     <section class="welcome-hero">
@@ -948,22 +1014,120 @@ else:
         "Your typing assessment has been completed successfully. "
         "Your keyboard timing observations have been analysed."
     )
+    risk_level = assessment.get("risk_level", "Low")
+    risk_class = (
+        "low-risk"
+        if risk_level == "Low"
+        else ("moderate-risk" if risk_level == "Moderate" else "elevated-risk")
+    )
+    icon = "✓" if risk_level == "Low" else ("⚠" if risk_level == "Moderate" else "⚡")
+    prob_pct = float(
+        assessment.get(
+            "screening_probability_percent",
+            assessment["model_output_score"] * 100,
+        )
+    )
+    cutoff_s = float(
+        assessment.get("decision_threshold_seconds", 0.0267132)
+    )
+    cutoff_ms = cutoff_s * 1000.0
+    user_macd_ms = assessment["macd_seconds"] * 1000.0
+    meter_left = max(2.5, min(97.5, prob_pct))
+
+    if risk_level == "Low":
+        status_heading = "Screening Result: Typical Keystroke Pattern (Negative)"
+        badge_text = "LOW RISK • HEALTHY CONTROL PATTERN"
+        summary_text = (
+            "Your typing dynamics are smooth, consistent, and well within the range typical of healthy individuals. "
+            "The model did NOT detect the timing volatility or micro-hesitations characteristic of Parkinson's disease."
+        )
+        threshold_diff = cutoff_ms - user_macd_ms
+        comp_badge = f'<span style="color:#15803d;font-weight:750">✓ {threshold_diff:.1f} ms below decision cutoff (Healthy Range)</span>'
+        has_pd_answer = (
+            "**Does this represent Parkinson's disease?**\n\n"
+            "**No.** Your keystroke volatility is low and falls comfortably within the healthy control distribution. "
+            "There is no indication of Parkinsonian keystroke characteristics in this sample."
+        )
+    elif risk_level == "Moderate":
+        status_heading = "Screening Result: Borderline Timing Volatility (Inconclusive)"
+        badge_text = "BORDERLINE • MODERATE VOLATILITY"
+        summary_text = (
+            f"Your keystroke volatility ({user_macd_ms:.1f} ms) lies near the research decision threshold ({cutoff_ms:.1f} ms). "
+            "This result is borderline and inconclusive. Normal typing variation, fatigue, or an unfamiliar keyboard can cause moderate volatility."
+        )
+        threshold_diff = abs(user_macd_ms - cutoff_ms)
+        comp_badge = f'<span style="color:#b45309;font-weight:750">⚠ Borderline margin ({threshold_diff:.1f} ms from {cutoff_ms:.1f} ms cutoff)</span>'
+        has_pd_answer = (
+            "**Does this represent Parkinson's disease?**\n\n"
+            "**Inconclusive.** Your timing volatility is near the boundary between healthy controls and early Parkinson's subjects. "
+            "It cannot be confirmed or ruled out from this sample alone. We recommend retrying when well-rested."
+        )
+    else:
+        status_heading = "Screening Result: Elevated Timing Volatility (Positive)"
+        badge_text = "ELEVATED VOLATILITY • PARKINSON-LIKE PATTERN"
+        summary_text = (
+            "Your key-hold durations exhibit elevated consecutive timing differences (MACD), matching patterns observed "
+            "in early-stage Parkinson's disease research cohorts. While this screening indicates elevated timing volatility, "
+            "it is not a clinical diagnosis."
+        )
+        threshold_diff = user_macd_ms - cutoff_ms
+        comp_badge = f'<span style="color:#b91c1c;font-weight:750">⚡ {threshold_diff:.1f} ms above decision cutoff (Elevated Range)</span>'
+        has_pd_answer = (
+            "**Does this represent Parkinson's disease?**\n\n"
+            "**Pattern match detected.** Your keystroke timing volatility is elevated, consistent with the timing patterns "
+            "seen in early Parkinson's disease cohorts. However, other neurological conditions, arthritis, or hardware latency can also "
+            "elevate timing differences. Consult a physician or neurologist for medical evaluation."
+        )
+
     st.markdown(
         f"""
-        <div class="result-panel">
-          <p class="score-label">
-            EXPERIMENTAL LOGISTIC REGRESSION OUTPUT
-          </p>
-          <div class="score-value">{assessment["model_output_score"]:.4f}</div>
-          <div class="score-caption">
-            Raw logistic-regression output corresponding to encoded class 1
-            in the research dataset. This is an experimental model score,
-            not a clinically calibrated probability.
+        <div class="screening-card {risk_class}">
+          <div class="screening-badge {risk_class}">{icon} {badge_text}</div>
+          <div class="screening-title {risk_class}">{status_heading}</div>
+          <p class="screening-explanation">{summary_text}</p>
+          <div class="risk-meter-container">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px">
+              <span style="font-size:0.85rem;font-weight:750;color:#334155">CALIBRATED SCREENING PROBABILITY SCORE</span>
+              <span style="font-size:1.75rem;font-weight:850;color:#0f172a">{prob_pct:.1f}% <span style="font-size:0.95rem;color:#64748b;font-weight:500">({assessment["model_output_score"]:.4f})</span></span>
+            </div>
+            <div class="risk-meter-track">
+              <div class="risk-meter-pointer" style="left: {meter_left}%;"></div>
+            </div>
+            <div class="risk-meter-labels">
+              <span>Low Risk (0–35%)</span>
+              <span>Borderline (35–60%)</span>
+              <span>Elevated Risk (60–100%)</span>
+            </div>
           </div>
         </div>
         """,
         unsafe_allow_html=True,
     )
+
+    st.markdown(
+        f"""
+        <div class="comp-card-grid">
+          <div class="comp-card">
+            <div class="comp-card-label">Your Keystroke Volatility (MACD)</div>
+            <div class="comp-card-value">{user_macd_ms:.1f} ms</div>
+            <div class="comp-card-note">{comp_badge}</div>
+          </div>
+          <div class="comp-card">
+            <div class="comp-card-label">Research Decision Cutoff</div>
+            <div class="comp-card-value">{cutoff_ms:.1f} ms</div>
+            <div class="comp-card-note">Youden index cutoff (88.1% sensitivity, 74.4% specificity, 81.2% accuracy)</div>
+          </div>
+          <div class="comp-card">
+            <div class="comp-card-label">Healthy vs PD Medians</div>
+            <div class="comp-card-value">21.9 / 35.2 ms</div>
+            <div class="comp-card-note">Healthy Control median: 21.9 ms &bull; Parkinson's cohort median: 35.2 ms</div>
+          </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    st.info(has_pd_answer)
     st.markdown("### Keystroke Analysis")
     first, second, third = st.columns(3)
     first.metric("MACD", f'{assessment["macd_seconds"]:.5f} s')

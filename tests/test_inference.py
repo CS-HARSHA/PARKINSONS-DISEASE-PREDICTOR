@@ -88,3 +88,29 @@ def test_rejects_non_macd_model(tmp_path):
     path.write_text(json.dumps(model), encoding="utf-8")
     with pytest.raises(InferenceError, match="does not use the MACD"):
         load_macd_model(path)
+
+
+def test_calibrated_model_separates_healthy_and_parkinson_timings():
+    """Verify the output is NOT stuck around 0.51 and cleanly separates risk categories."""
+    np.random.seed(42)
+    # Steady typing: low volatility, healthy pattern (MACD ~ 11ms)
+    steady_holds = np.clip(np.random.normal(0.080, 0.015, 250), 0.03, 0.25).tolist()
+    steady_result = analyse_keystrokes(steady_holds, model_path=MODEL_PATH, minimum_keystrokes=200)
+
+    assert steady_result["model_output_score"] < 0.35
+    assert steady_result["risk_level"] == "Low"
+    assert "Negative" in steady_result["screening_result"]
+    assert steady_result["has_parkinson_indicator"] is False
+
+    # Volatile typing: high consecutive hold differences, PD pattern (MACD ~ 45ms)
+    volatile_holds = np.clip(np.random.normal(0.120, 0.060, 250), 0.02, 0.40).tolist()
+    volatile_result = analyse_keystrokes(volatile_holds, model_path=MODEL_PATH, minimum_keystrokes=200)
+
+    assert volatile_result["model_output_score"] > 0.60
+    assert volatile_result["risk_level"] == "Elevated"
+    assert "Positive" in volatile_result["screening_result"]
+    assert volatile_result["has_parkinson_indicator"] is True
+
+    # The scores must be significantly different (not clustered around 0.51)
+    score_difference = volatile_result["model_output_score"] - steady_result["model_output_score"]
+    assert score_difference > 0.40
