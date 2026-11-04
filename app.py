@@ -852,7 +852,7 @@ st.markdown(
     <section class="welcome-hero">
         <div class="welcome-main">
             <div class="welcome-kicker">
-                <span>⌨</span> RESEARCH PROTOTYPE
+                RESEARCH PROTOTYPE
             </div>
             <h1 class="app-title">{APP_TITLE}</h1>
             <p class="app-subtitle">
@@ -1020,7 +1020,6 @@ else:
         if risk_level == "Low"
         else ("moderate-risk" if risk_level == "Moderate" else "elevated-risk")
     )
-    icon = "✓" if risk_level == "Low" else ("⚠" if risk_level == "Moderate" else "⚡")
     prob_pct = float(
         assessment.get(
             "screening_probability_percent",
@@ -1042,7 +1041,7 @@ else:
             "The model did NOT detect the timing volatility or micro-hesitations characteristic of Parkinson's disease."
         )
         threshold_diff = cutoff_ms - user_macd_ms
-        comp_badge = f'<span style="color:#15803d;font-weight:750">✓ {threshold_diff:.1f} ms below decision cutoff (Healthy Range)</span>'
+        comp_badge = f'<span style="color:#15803d;font-weight:750">{threshold_diff:.1f} ms below decision cutoff (Healthy Range)</span>'
         has_pd_answer = (
             "**Does this represent Parkinson's disease?**\n\n"
             "**No.** Your keystroke volatility is low and falls comfortably within the healthy control distribution. "
@@ -1056,7 +1055,7 @@ else:
             "This result is borderline and inconclusive. Normal typing variation, fatigue, or an unfamiliar keyboard can cause moderate volatility."
         )
         threshold_diff = abs(user_macd_ms - cutoff_ms)
-        comp_badge = f'<span style="color:#b45309;font-weight:750">⚠ Borderline margin ({threshold_diff:.1f} ms from {cutoff_ms:.1f} ms cutoff)</span>'
+        comp_badge = f'<span style="color:#b45309;font-weight:750">Borderline margin ({threshold_diff:.1f} ms from {cutoff_ms:.1f} ms cutoff)</span>'
         has_pd_answer = (
             "**Does this represent Parkinson's disease?**\n\n"
             "**Inconclusive.** Your timing volatility is near the boundary between healthy controls and early Parkinson's subjects. "
@@ -1071,7 +1070,7 @@ else:
             "it is not a clinical diagnosis."
         )
         threshold_diff = user_macd_ms - cutoff_ms
-        comp_badge = f'<span style="color:#b91c1c;font-weight:750">⚡ {threshold_diff:.1f} ms above decision cutoff (Elevated Range)</span>'
+        comp_badge = f'<span style="color:#b91c1c;font-weight:750">{threshold_diff:.1f} ms above decision cutoff (Elevated Range)</span>'
         has_pd_answer = (
             "**Does this represent Parkinson's disease?**\n\n"
             "**Pattern match detected.** Your keystroke timing volatility is elevated, consistent with the timing patterns "
@@ -1082,7 +1081,7 @@ else:
     st.markdown(
         f"""
         <div class="screening-card {risk_class}">
-          <div class="screening-badge {risk_class}">{icon} {badge_text}</div>
+          <div class="screening-badge {risk_class}">{badge_text}</div>
           <div class="screening-title {risk_class}">{status_heading}</div>
           <p class="screening-explanation">{summary_text}</p>
           <div class="risk-meter-container">

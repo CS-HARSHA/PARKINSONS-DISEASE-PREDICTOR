@@ -1,10 +1,3 @@
-"""Runtime inference helpers for the Streamlit keystroke research demo.
-
-This module deliberately returns an experimental model score and descriptive
-measurements only.  The exported model does not include a validated decision
-threshold, and browser-collected timing has not been established as equivalent
-to the PhysioNet acquisition process.
-"""
 from __future__ import annotations
 
 import json
@@ -18,7 +11,6 @@ from .features import macd_with_count
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_MODEL_PATH = ROOT / "models" / "macd_model.json"
 MAX_HOLD_SECONDS = 5.0
-
 
 class InferenceError(ValueError):
     """Raised when captured timing data cannot be analysed safely."""
@@ -81,7 +73,6 @@ def load_macd_model(model_path: str | Path = DEFAULT_MODEL_PATH) -> dict[str, An
     if min_pairs < 1:
         raise InferenceError("Model minimum corridor-pair count must be at least one.")
 
-    # Normalize keys so callers do not need to know legacy JSON aliases.
     if min_keystrokes < 2:
         raise InferenceError("Model minimum keystroke count must be at least two.")
     model["coef"] = numeric["coefficient"]

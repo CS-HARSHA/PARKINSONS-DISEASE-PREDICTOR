@@ -1,16 +1,11 @@
-"""Streamlit Components V2 wrapper for browser-side keystroke timing capture."""
 from __future__ import annotations
-
 from pathlib import Path
-
 import streamlit as st
 
 _COMPONENT_DIR = Path(__file__).resolve().parent
 
-
 @st.cache_resource
 def _register_component():
-    """Register the frontend component once per Streamlit server process."""
     if not hasattr(st.components, "v2"):
         raise RuntimeError(
             "This app requires Streamlit 1.51 or newer for Components V2. "

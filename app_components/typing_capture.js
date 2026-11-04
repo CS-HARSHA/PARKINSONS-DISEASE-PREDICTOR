@@ -92,7 +92,6 @@ export default function (component) {
     const durationSeconds = (event.timeStamp - keyDownTimes.get(keyId)) / 1000;
     keyDownTimes.delete(keyId);
 
-    // Match the research pipeline's accepted timing domain: finite, >= 0 and < 5 s.
     if (
       Number.isFinite(durationSeconds) &&
       durationSeconds >= 0 &&
@@ -110,7 +109,6 @@ export default function (component) {
   }
 
   function handleWindowBlur() {
-    // Do not pair a keydown before a focus loss with a keyup after focus returns.
     keyDownTimes.clear();
   }
 
@@ -140,7 +138,6 @@ export default function (component) {
       completed: true
     };
 
-    // The text is checked locally and never included in the message to Python.
     input.value = "";
     input.disabled = true;
     startButton.disabled = true;
@@ -151,7 +148,6 @@ export default function (component) {
     status.textContent = "Timing capture complete. The typed text has been cleared from the input.";
 
     setStateValue("capture_result", timingOnlyPayload);
-    // Drop the local timing array after handing off the numeric payload.
     holdTimes = [];
   }
 
@@ -203,24 +199,19 @@ export default function (component) {
   updateProgress();
 
   return () => {
-    // Remove button event listeners.
     startButton.removeEventListener("click", startCapture);
     cancelButton.removeEventListener("click", cancelCapture);
     submitButton.removeEventListener("click", submitCapture);
 
-    // Remove typing event listeners.
     input.removeEventListener("keydown", keyDown);
     input.removeEventListener("keyup", keyUp);
     input.removeEventListener("input", updateProgress);
 
-    // Remove window event listeners.
     window.removeEventListener("blur", handleWindowBlur);
 
-    // Clear all locally retained timing data.
     keyDownTimes.clear();
     holdTimes = [];
 
-    // Clear the typed text and disable the input.
     input.value = "";
     input.disabled = true;
   };
