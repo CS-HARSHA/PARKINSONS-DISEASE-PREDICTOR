@@ -3,7 +3,5 @@ __pycache__/
 *.py[cod]
 .venv/
 data/raw/*
-!data/raw/.gitkeep
-data/processed/*
 models/*.json
 !models/macd_model.json
